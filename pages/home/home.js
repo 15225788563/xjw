@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    search: "/imgs/2.png",
+    search: "/imgs/13.png",
     img:"/imgs/3.png",
     nav:[
         {

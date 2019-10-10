@@ -1,18 +1,22 @@
 /* pages/home/home.wxss */
+.connet{
+  height: 100%;
+  background: #f5f5f5;
+}
 .harder{
   display: flex;
-  justify-content: space-around;
   align-items:flex-start;
   background: #ccc;
   height: 100px;
-  padding-top: 10px;
+  padding-top: 30px;
 }
 .harder>.Search{
   position: relative;
+  margin-left: 63rpx
 }
 .harder>.Search>image{
   position: absolute;
-  top: 5.5rpx;left: 45rpx;bottom: 0;right: 0;
+  top: 5.5rpx;left: 12rpx;bottom: 0;right: 0;
   width: 42rpx;
   height: 42rpx;
 }
@@ -21,22 +25,29 @@
   height: 45rpx;
 }
 .harder>view>input{
-  background: #fff;
-  width: 585rpx;
+  background: #d2d7d4;
+  color: #fff;
+  width: 285rpx;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding-left: 92rpx;
+  padding-left: 56rpx;
   font-size: 10px;
   height: 46rpx;
+  margin-right: 37rpx;
 }
+.harder>view>input::-webkit-input-placeholder{
+  color:#fff;
+}
+
+
 .Finance{
-  width: 654rpx;
+  width: 690rpx;
   height: 100px;
-  margin: -55px auto;
+  margin: -45px auto;
   padding-top: 10px;
   border-radius: 10px;
   text-align: center;
-  background: #f2f2f2;
+  background: #fff;
   box-shadow: 0 5px 5px  #d3d2d2;
 }
 .Finance>view:first-child>text{
@@ -58,11 +69,11 @@
   flex-wrap:wrap;
 }
 .nav>view{
-  width: 25%;
+  width: 20%;
   text-align: center;
   margin: 5px 0;
   font-size: 8px;
-  color: #939393;
+  color: #000;
 }
 .nav image{
   width: 81rpx;
@@ -85,7 +96,7 @@
   height: 60px;
   width: 100%;
   border-radius: 10px;
-  background: #f2f2f2;
+  background: #dcdcdc;
   text-align: center;
   line-height: 60px;
   font-size: 12px;
@@ -96,7 +107,7 @@
   }
   .Contacts>.hemo{
     margin-left: 7%;
-    border-left: 10px solid #d7d7d7;
+    border-left: 10px solid #09c15f;
     padding-left: 2%;
   }
   .Contacts>.list{
