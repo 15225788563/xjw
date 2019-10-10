@@ -2,7 +2,7 @@
 .harder{
   display: flex;
   justify-content: space-around;
-  align-items:baseline;
+  align-items:flex-start;
   background: #ccc;
   height: 100px;
   padding-top: 10px;
@@ -12,13 +12,13 @@
 }
 .harder>.Search>image{
   position: absolute;
-  top: 5rpx;left: 45rpx;bottom: 0;right: 0;
+  top: 5.5rpx;left: 45rpx;bottom: 0;right: 0;
   width: 42rpx;
   height: 42rpx;
 }
 .harder>view>image{
-  width: 41rpx;
-  height: 41rpx;
+  width: 45rpx;
+  height: 45rpx;
 }
 .harder>view>input{
   background: #fff;
@@ -27,6 +27,7 @@
   border-radius: 10px;
   padding-left: 92rpx;
   font-size: 10px;
+  height: 46rpx;
 }
 .Finance{
   width: 654rpx;
@@ -70,9 +71,15 @@
   margin: 0 auto;
 }
 .navlst{
-  padding-left: 4%;
+  display: flex;
+  align-items: center;
+  padding-left: 7%;
   font-size: 13px;
   margin-bottom: 5px;
+}
+.navlst>image{
+  width: 35rpx;
+  height: 35rpx;
 }
 .Advertisement{
   height: 60px;
@@ -88,7 +95,7 @@
     margin-top: 20px;
   }
   .Contacts>.hemo{
-    margin-left: 4%;
+    margin-left: 7%;
     border-left: 10px solid #d7d7d7;
     padding-left: 2%;
   }

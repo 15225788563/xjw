@@ -40,7 +40,7 @@
   </view>
   <!-- 助手 -->
   <view class="navlst">
-    <text>[筐子助手] 在线答疑，让租借更简单</text>
+    <image src="/imgs/4.png"/><text>[筐子助手] 在线答疑，让租借更简单</text>
   </view>
   <!-- 广告 -->
   <view class="Advertisement">
