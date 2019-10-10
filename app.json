@@ -1,11 +1,10 @@
 {
   "pages": [
-    "pages/My/My",
     "pages/home/home",
     "pages/Reportform/Report form",
     "pages/Share/Share",
     "pages/find/find",
-    
+    "pages/My/My",
     "pages/index/index"
   ],
   "tabBar": {
