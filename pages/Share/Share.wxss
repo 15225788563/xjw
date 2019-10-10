@@ -1,1 +1,89 @@
 /* pages/Share/Share.wxss */
+.harder{
+  display: flex;
+  justify-content: space-around;
+  align-items:flex-start;
+  background: #ccc;
+  height: 100px;
+  padding-top: 10px;
+}
+.harder>.Search{
+  position: relative;
+}
+.harder>.Search>image{
+  position: absolute;
+  top: 5.5rpx;left: 45rpx;bottom: 0;right: 0;
+  width: 42rpx;
+  height: 42rpx;
+}
+.harder>view>image{
+  width: 45rpx;
+  height: 45rpx;
+}
+.harder>view>input{
+  background: #fff;
+  width: 585rpx;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding-left: 92rpx;
+  font-size: 10px;
+  height: 46rpx;
+}
+.u-wrp-bnr {
+  margin: -60px auto 0 auto;
+  width: 655rpx;
+  height: 340rpx;
+  display: block;
+  position: relative;
+  background: #f0f0f0;
+  box-shadow: 0 5px 5px  #e5e5e5;
+}
+.u-img-slide {
+  width: 100%;
+  height: inherit;
+}
+.nav{
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+.nav image{
+  width: 81rpx;
+  height: 81rpx;
+  display: block;
+
+}
+.nav text{
+  font-size: 10px;
+  color: #666666;
+}
+
+.Order .list{
+  height: 170px;
+  background: #f2f2f2;
+  margin-bottom: 10px;
+}
+.Order .list .Title{
+  display: flex;
+  align-items:center;
+  justify-content: space-around;
+  padding: 15px 0;
+}
+.Order .list .Title .time{
+  font-size: 12px;
+}
+.Order .list .lists{
+  display: flex;
+  align-items:center;
+  justify-content: space-around;
+}
+.Order .list .lists text{
+  font-size: 13px;
+}
+.Order .list .lists .head{
+  font-family: "SimSun";
+}
+.Order .list .lists button{
+  border-radius: 50px;
+  background: #bcbcbc;
+}

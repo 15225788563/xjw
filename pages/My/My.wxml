@@ -1,2 +1,36 @@
-<!--pages/My/My.wxml-->
-<text>个人中心页</text>
+<view class="connet">
+<!-- 头部 -->
+  <view class="harder">
+    <view class="user">
+      <view>
+        <image src="/imgs/10.png" />
+      </view>
+      <view>
+        <text class="user">何小月 ></text>
+        <view>
+          <text class="lv">LV.1</text> <text>|</text> <text>市场有风险，投资需谨慎</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 钱包 -->
+  <view class="wallet">
+    <view wx:for="{{wallet}}">
+      <view>
+        <view class="walletname"><text>{{item.walletname}}</text> <image src="{{item.walleturl}}" /></view>
+        <text>{{item.walletkey}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 功能 -->
+  <view class="function">
+      <view wx:for="{{function}}">
+        <view class="list item{{index%2==0? 'odd':'even'}}">
+          <view>
+            <image src="{{item.url}}" /><text>{{item.name}}</text>
+          </view>
+          <image src="{{item.img}}" />
+        </view>
+      </view>
+  </view>
+</view>

@@ -5,7 +5,71 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    wallet:[
+      {
+        "walletname":"总资产(元)",
+        "walleturl":"/imgs/9.png",
+        "walletkey":"45298.5"
+      },
+      {
+        "walletname": "昨日收益(元)",
+        "walleturl": "",
+        "walletkey": "45298.5"
+      },
+      {
+        "walletname": "可用余额(元)",
+        "walleturl": "",
+        "walletkey": "45298.5"
+      },
+      {
+        "walletname": "卡劵包",
+        "walleturl": "",
+        "walletkey": "45298.5"
+      }
+    ],
+    function:[
+      {
+        "url":"/imgs/11.png",
+        "name":"我的积分",
+        "img":"/imgs/12.png",
+      },
+      {
+        "url": "/imgs/11.png",
+        "name": "密码修改",
+        "img": "/imgs/12.png",
+      },
+      {
+        "url": "/imgs/11.png",
+        "name": "子账户管理",
+        "img": "/imgs/12.png",
+      },
+      {
+        "url": "/imgs/11.png",
+        "name": "档口管理",
+        "img": "/imgs/12.png",
+      },
+      {
+        "url": "/imgs/11.png",
+        "name": "会员信息",
+        "img": "/imgs/12.png",
+      },
+      {
+        "url": "/imgs/11.png",
+        "name": "操作日记",
+        "img": "/imgs/12.png",
+      },
+      {
+        "url": "/imgs/11.png",
+        "name": "微信推送(绑定微信)",
+        "img": "/imgs/12.png",
+      },
+      {
+        "url": "/imgs/11.png",
+        "name": "智能提醒(选择提醒选项)",
+        "img": "/imgs/12.png",
+      }
+      
+    ],
   },
 
   /**

@@ -1,1 +1,58 @@
-<text>共享页</text>
+<view class="connet">
+  <!-- 头部 -->
+  <view class="harder" > 
+    <view class="Search">
+      <image src="/imgs/2.png"/>
+      <input placeholder="查看产品库存" />
+    </view>
+    <view>
+      <image src="/imgs/3.png" />
+    </view> 
+  </view>
+  <!-- 轮播图 -->
+  <view class="banner">
+    <swiper class='u-wrp-bnr' indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true'>
+      <block wx:for="{{bnrUrl}}" wx:for-index="index">
+        <swiper-item>
+          <image src='{{item.url}}' class='u-img-slide' mode='widthFix'></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 导航 -->
+  <view class="nav">
+    <view wx:for="{{navs}}">
+      <view data-id="{{item.id}}">
+        <image src="{{item.url}}"/>
+        <text>{{item.name}}</text> 
+      </view>
+    </view>
+  </view>
+  <!-- 订单 -->
+  <view class="Order">
+    <view wx:for="{{Orderlist}}">
+      <view class="list">
+        <view class="Title">
+          <text>{{item.Ordername}}</text> <text class="time">{{item.Ordertiem}}</text>
+        </view>
+        <view class="lists">
+          <view>
+            <text class="head">订单号：</text><text>{{item.Ordernumber}}
+            </text>
+            <text class="head">支付租金：</text><text>{{item.Orderrent}}元
+            </text>
+            <text class="head">支付押金：</text><text>{{item.Orderdeposit}}元
+            </text>
+            <text class="head">支付人：</text><text>{{item.Orderduser}}
+            </text>
+            <text class="head">订单状态：</text><text>{{item.Orderstate}}
+            </text>
+          </view>
+          <view>
+            <button size="mini">查看详情</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

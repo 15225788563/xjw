@@ -1,1 +1,39 @@
-<text>报表页</text>
+<view class="connet">
+ <!-- 头部 -->
+  <view class="harder">
+    <view class="username">
+      <text>杨思思</text>
+    </view>
+    <!-- 今日营业额 -->
+    <view class="revenue">
+      <text>今日营业额
+      </text>
+      <view>
+        <image src="/imgs/8.png"/><text>更新时间：16:00</text>
+      </view>
+      <text class="RMB">￥7688，00</text>
+    </view>
+    <!-- 今日营业详情 -->
+    <view class="details">
+      <view>
+        <text class="consumption">平均消费
+        </text><text>￥7688，00</text>
+      </view>
+      <view>
+        <text class="consumption">单均消费
+        </text><text>￥7688，00</text>
+      </view>
+    </view>
+  </view>
+  <view class="nav" wx:for="{{lists}}">
+    <view class="list">
+      <view class="txt">
+        <text>{{item.name}}
+        </text><text class="Subtitle">{{item.nname}}</text>
+      </view>
+      <view class="img">
+        <image src="{{item.url}}"/>
+      </view>
+    </view>
+  </view>
+</view>

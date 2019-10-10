@@ -1,1 +1,71 @@
 /* pages/Reportform/Report form.wxss */
+.harder{
+  background: #c9c9c9;
+  padding-top: 25px;
+  height: 200px;
+}
+.harder>.username{
+  width: 256rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  text-align: center;
+  font-size: 24rpx;
+  display: block;
+  margin: 0 auto;
+  background: #999999;
+  color: #fff;
+}
+.harder>.revenue{
+  text-align: center;
+  margin-top: 10px;
+}
+.harder>.revenue>view{
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  margin-bottom: 10px;
+}
+.harder>.revenue>view>image{
+  width: 26rpx;
+  height: 26rpx;
+}
+.harder>.revenue>view>text{
+  font-size: 8px;
+  color: #868686;
+}
+.harder>.details{
+  display: flex;
+}
+.harder>.details>view{
+  width: 50%;
+  text-align: center;
+}
+.harder>.details>view>.consumption{
+  color: #868686;
+}
+.harder>.details>view>text{
+  font-size: 10px;
+
+}
+.nav{
+  margin-top: -26px;
+}
+.nav>.list{
+  margin: 0 auto 50px auto;
+  border-radius: 10px;
+  width: 660rpx;
+  height: 80px;
+  display: flex;
+  align-items:center;
+  justify-content: space-around;
+  background: #f2f2f2;
+  box-shadow: 0 5px 5px  #e5e5e5;
+}
+.nav>.list>.txt>.Subtitle{
+  font-size: 10px;
+  color: #666666;
+}
+.nav>.list>.img>image{
+  width: 90rpx;
+  height: 90rpx;
+}

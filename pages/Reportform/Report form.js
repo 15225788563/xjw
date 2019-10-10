@@ -5,7 +5,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    lists:[
+      {
+        "url":"/imgs/7.png",
+        "name":"销售报表",
+        "nname": "今日销售情况统计"
+      },{
+        "url": "/imgs/7.png",
+        "name": "库存报表",
+        "nname":"今日销售情况统计"
+      },{
+        "url": "/imgs/7.png",
+        "name": "采购报表",
+        "nname": "今日销售情况统计"
+      },{
+        "url": "/imgs/7.png",
+        "name": "收付款统计",
+        "nname": "今日销售情况统计"
+      },{
+        "url": "/imgs/7.png",
+        "name": "经营流水统计",
+        "nname": "今日销售情况统计"
+      }
+    ]
   },
 
   /**

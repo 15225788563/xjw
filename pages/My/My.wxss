@@ -1,1 +1,86 @@
 /* pages/My/My.wxss */
+.harder{
+  height: 140px;
+  background: #cccccc;
+  padding-top: 20px;
+  padding-left: 10px;
+}
+.harder .user{
+  display: flex;
+}
+.harder .user image{
+  width: 75rpx;
+  height: 75rpx;
+}
+.harder .user .user{
+  font-size: 12px;
+  font-family: "SimHei";
+  color:#000;
+}
+.harder .user .lv{
+  display: inline-block;
+  width: 100rpx;
+  text-align: center;
+  border-radius: 10px;
+  background: #f2f2f2;
+  font-size: 10px;
+  color:#000;
+}
+.harder .user text{
+  font-size: 10px;
+  margin-right: 5px;
+  color: #a9a9a9;
+}
+.wallet {
+  padding-top: 10px;
+  width: 660rpx;
+  border-radius: 10px;
+  margin: -90px auto 0 auto;
+  box-shadow: 0 5px 5px  #d3d2d2;
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-around;
+  background: #f2f2f2;
+}
+.wallet>view{
+    width: 40%;
+    margin-bottom: 20px;
+}
+.wallet image{
+  width: 23rpx;
+  height: 23rpx;
+}
+.wallet .walletname{
+  font-size: 10px;
+  color: #989898;
+  align-items: center;
+}
+.function {
+  margin-top: 20px;
+}
+.function .list{
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #f2f2f2;
+}
+.itemodd{
+  border-bottom: 1px solid #ccc;
+}
+.itemeven{
+  margin-bottom: 10px;
+}
+.function .list image{
+  width: 44rpx;
+  height: 44rpx;
+}
+.function .list>view{
+  width: 45%;
+  display: flex;
+  align-items: center;
+}
+.function .list>view>text{
+  font-size: 12px;
+  margin-left: 5px;
+}

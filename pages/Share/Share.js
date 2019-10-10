@@ -5,7 +5,68 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    bnrUrl:[
+      {
+        "url": "/imgs/banner01.jpg",
+      },
+      {
+        "url": "/imgs/banner02.jpg",
+      },
+      {
+        "url":"/imgs/banner03.jpg",
+      }
+    ],
+    navs:[
+      {
+        "id":"1",
+        "url":"/imgs/1.png",
+        "name":"筐子租赁"
+      },
+      {
+        "id": "2",
+        "url": "/imgs/1.png",
+        "name": "筐子归还"
+      },
+      {
+        "id": "3",
+        "url": "/imgs/1.png",
+        "name": "筐子查询"
+      },
+      {
+        "id": "4",
+        "url": "/imgs/1.png",
+        "name": "筐子共享"
+      },
+    ],
+    Orderlist:[
+      {
+        "Ordername":"50cm100个筐子",
+        "Ordertiem":"2019-6-11 10:00",
+        "Ordernumber":"15678566944645984",
+        "Orderrent":"300",
+        "Orderdeposit":"30",
+        "Orderduser":"何小月",
+        "Orderstate":"已完成",
+      },
+      {
+        "Ordername": "50cm100个筐子",
+        "Ordertiem": "2019-6-11 10:00",
+        "Ordernumber": "15678566944645984",
+        "Orderrent": "300",
+        "Orderdeposit": "30",
+        "Orderduser": "何小月",
+        "Orderstate": "待付款",
+      },
+      {
+        "Ordername": "50cm100个筐子",
+        "Ordertiem": "2019-6-11 10:00",
+        "Ordernumber": "15678566944645984",
+        "Orderrent": "300",
+        "Orderdeposit": "30",
+        "Orderduser": "何小月",
+        "Orderstate": "还筐失败",
+      },
+    ]
   },
 
   /**
