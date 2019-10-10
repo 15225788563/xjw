@@ -1,0 +1,61 @@
+<view class="connet">
+<!-- 头部 -->
+  <view class="harder" > 
+    <view class="Search">
+      <image src="{{search}}"/>
+      <input placeholder="查看产品库存" />
+    </view>
+    <view>
+      <image src="{{img}}" />
+    </view> 
+  </view>
+  <!-- 今日账单 -->
+  <view class="Finance">
+    <view>
+    <text>今日销售额
+    </text>
+    <text>0.00</text>
+    </view>
+    <view class="Finances">
+      <view>
+        <text>今日销量
+        </text>
+        <text>0.00</text>
+      </view>
+      <view>
+        <text>应收账款
+        </text>
+        <text>0.00</text>
+      </view>
+    </view>
+  </view>
+  <!-- 导航 -->
+  <view class="nav">
+    <view wx:for="{{nav}}" wx:key="key">
+      <view>
+        <image src='{{item.url}}' mode="widthFix"/>
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 助手 -->
+  <view class="navlst">
+    <text>[筐子助手] 在线答疑，让租借更简单</text>
+  </view>
+  <!-- 广告 -->
+  <view class="Advertisement">
+    <text>新人礼包，好礼送不停</text>
+  </view>
+  <!-- 联系人 -->
+  <view class="Contacts">
+    <view class="hemo">
+      <text>常用联系人</text>
+    </view>
+    <view class="list">
+      <view wx:for="{{contact}}" wx:key="key">
+        <image src="{{item.url}}" />
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+</view>

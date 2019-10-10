@@ -1,0 +1,106 @@
+/* pages/home/home.wxss */
+.harder{
+  display: flex;
+  justify-content: space-around;
+  align-items:baseline;
+  background: #ccc;
+  height: 100px;
+  padding-top: 10px;
+}
+.harder>.Search{
+  position: relative;
+}
+.harder>.Search>image{
+  position: absolute;
+  top: 5rpx;left: 45rpx;bottom: 0;right: 0;
+  width: 42rpx;
+  height: 42rpx;
+}
+.harder>view>image{
+  width: 41rpx;
+  height: 41rpx;
+}
+.harder>view>input{
+  background: #fff;
+  width: 585rpx;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding-left: 92rpx;
+  font-size: 10px;
+}
+.Finance{
+  width: 654rpx;
+  height: 100px;
+  margin: -55px auto;
+  padding-top: 10px;
+  border-radius: 10px;
+  text-align: center;
+  background: #f2f2f2;
+  box-shadow: 0 5px 5px  #d3d2d2;
+}
+.Finance>view:first-child>text{
+  font-size: 18px;
+}
+.Finance>.Finances{
+  display: flex;
+}
+.Finance>.Finances>view{
+  width: 50%;
+  color: #939393;
+}
+.Finance>.Finances>view:first-child{
+  border-right: 1px solid #000
+}
+.nav{
+  margin-top: 65px;
+  display: flex;
+  flex-wrap:wrap;
+}
+.nav>view{
+  width: 25%;
+  text-align: center;
+  margin: 5px 0;
+  font-size: 8px;
+  color: #939393;
+}
+.nav image{
+  width: 81rpx;
+  height: 81rpx;
+  display: block;
+  margin: 0 auto;
+}
+.navlst{
+  padding-left: 4%;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+.Advertisement{
+  height: 60px;
+  width: 100%;
+  border-radius: 10px;
+  background: #f2f2f2;
+  text-align: center;
+  line-height: 60px;
+  font-size: 12px;
+  box-shadow: 0 5px 5px  #d3d2d2;
+}
+  .Contacts{
+    margin-top: 20px;
+  }
+  .Contacts>.hemo{
+    margin-left: 4%;
+    border-left: 10px solid #d7d7d7;
+    padding-left: 2%;
+  }
+  .Contacts>.list{
+    display: flex;
+    justify-content: space-around;
+    font-size: 8px;
+    color: #d7d7d7
+  }
+  .Contacts>.list>view>image{
+    width: 80rpx;
+    height: 80rpx;
+    display: block;
+    margin: 10px auto 5px auto;
+  }

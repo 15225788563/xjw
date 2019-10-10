@@ -1,7 +1,36 @@
 {
   "pages": [
+    "pages/home/home",
+    "pages/Reportform/Report form",
+    "pages/Share/Share",
+    "pages/find/find",
+    "pages/My/My",
     "pages/index/index"
   ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath":"pages/home/home",
+        "text":"首页"
+      },
+      {
+        "pagePath":"pages/Reportform/Report form",
+        "text":"报表"
+      },
+      {
+        "pagePath":"pages/Share/Share",
+        "text":"共享"
+      },
+      {
+        "pagePath":"pages/find/find",
+        "text":"发现"
+      },
+      {
+        "pagePath":"pages/My/My",
+        "text":"我的"
+      }
+    ]
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
