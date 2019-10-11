@@ -7,7 +7,7 @@
     <input bindinput="userNameInput" size="mini" placeholder="请输入手机号" />
     <view class="Verification">
       <input placeholder="请输入验证码" />
-      <button size="mini">点击获取验证码</button>
+      <canvas class='canvas' style="width:{{cvs.width}};height:{{cvs.height}};" canvas-id="canvas" bindtap='onReady'></canvas>
     </view>
     <input bindinput="passWord" size="mini" password="true" placeholder="请输入密码" />
     <input size="mini" password="true" placeholder="请重复密码" />

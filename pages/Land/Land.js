@@ -1,4 +1,8 @@
 // pages/Land/Land.js
+const app = getApp()
+const utilMd4 = require('../../utils/MD5.js');
+const util = require('../../utils/util.js');
+const Mcaptcha = require('../../utils/mcaptcha.js');
 Page({
 
   /**
@@ -8,8 +12,46 @@ Page({
 
   },
 
+  /**
+     * 自定义函数 获取手机号
+     */
+  userNameInput: function (e) {
+    this.setData({
+      userName: e.detail.value
+    })
+  },
+  /**
+   * 自定义函数 获取密码
+   */
+  passWord: function (e) {
+    this.setData({
+      passWord: e.detail.value
+    })
+  },
+
   btn(){
-    console.log("返回首页")
+    let that = this;
+    let name = that.data.userName
+    let pass = that.data.passWord
+    let sysInfo = app.globalData.sysInfo;
+    var time = util.formatTime(new Date());
+
+    let b64 = utilMd4.hexMD4(time + app.globalData.key + name + pass).toLocaleUpperCase();
+    console.log(b64)
+    wx.request({
+      url: 'http://192.168.0.139:801/api/Home_Page/UserLogin?userName=' + name + '&passWord=' + pass+'&loginIp='+""+'&securityStr=' + b64,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      method: "GET",
+      success(res) {
+        console.log(res.data.modelList[0])
+        wx.setStorage({
+          key: 'modelList',
+          data: res.data.modelList[0],
+        })
+      }
+    })
   },
 
   /**

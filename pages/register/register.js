@@ -2,25 +2,35 @@
 const app = getApp()
 const utilMd4 = require('../../utils/MD5.js');
 const util = require('../../utils/util.js');  
+const Mcaptcha = require('../../utils/mcaptcha.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    passWord:0
   },
 
+  /**
+   * 自定义函数 获取手机号
+   */
   userNameInput: function (e) {
     this.setData({
       userName: e.detail.value
     })
   },
+  /**
+   * 自定义函数 获取密码
+   */
   passWord: function (e) {
     this.setData({
       passWord: e.detail.value
     })
   },
+
+  /**
+   * 自定义函数 点击传输
+   */
   register(){
     let that = this;
     let name = that.data.userName
@@ -40,6 +50,34 @@ Page({
         console.log(res.data)
       }
     })
+  },
+
+  /**
+   * 自定义函数 图形验证码
+   */
+  onReady: function () {
+    var that = this;
+    var num = that.getRanNum();
+    // console.log(num)
+    this.setData({
+      num: num
+    })
+    new Mcaptcha({
+      el: 'canvas',
+      width: 80,//对图形的宽高进行控制
+      height: 30,
+      code: num
+    });
+  },
+  getRanNum: function () {
+    var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+    var pwd = '';
+    for (var i = 0; i < 4; i++) {
+      if (Math.random() < 48) {
+        pwd += chars.charAt(Math.random() * 48 - 1);
+      }
+    }
+    return pwd;
   },
 
   /**

@@ -186,19 +186,11 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    let sysInfo = app.globalData.sysInfo;
-    var time = util.formatTime(new Date());
-    
-    let b64 = utilMd4.hexMD4(time + app.globalData.key + that.data.userName).toLocaleUpperCase();
-    console.log(b64)
-    wx.request({
-      url: 'http://192.168.0.139:801/api/Basket/GetBasketTypeList?securityStr=' + b64,
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
+    wx.getStorage({
+      key: 'modelList',
+      success: function(res) {
         console.log(res.data)
-      }
+      },
     })
   },
 
