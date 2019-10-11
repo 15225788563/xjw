@@ -1,38 +1,48 @@
 // pages/home/home.js
+const app = getApp()
+const utilMd5 = require('../../utils/MD5.js');  
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    hemo:"订单记录",
     search: "/imgs/13.png",
     img:"/imgs/3.png",
     nav:[
         {
+          "id":"1",
           "url":"/imgs/1.png",
           "name":"筐子管理"
         },
         {
+          "id": "2",
           "url": "/imgs/1.png",
           "name": "库存管理"
         },
         {
+          "id": "3",
           "url": "/imgs/1.png",
           "name": "应收应付"
         },
         {
+          "id": "4",
           "url": "/imgs/1.png",
           "name": "货物采购"
         },
         {
+          "id": "5",
           "url": "/imgs/1.png",
           "name": "货物销售"
         },
         {
+          "id": "6",
           "url": "/imgs/1.png",
           "name": "客户管理"
         },
         {
+          "id": "7",
           "url": "/imgs/1.png",
           "name": "发起需求"
         },
@@ -59,13 +69,118 @@ Page({
         "name": "王思-盐城"
       }
     ],
+    demandlist:[
+      {
+        "url":"/imgs/14.png",
+        "name":"王思思发布了一条需求",
+        "tiem":"2018/10:00-12:00",
+        "content":"需要五吨胡萝卜"
+      },
+      {
+        "url": "/imgs/14.png",
+        "name": "王思思发布了一条需求",
+        "tiem": "2018/10:00-12:00",
+        "content": "需要五吨胡萝卜"
+      },
+      {
+        "url": "/imgs/14.png",
+        "name": "王思思发布了一条需求",
+        "tiem": "2018/10:00-12:00",
+        "content": "需要五吨胡萝卜"
+      },
+      {
+        "url": "/imgs/14.png",
+        "name": "王思思发布了一条需求",
+        "tiem": "2018/10:00-12:00",
+        "content": "需要五吨胡萝卜"
+      },
+      {
+        "url": "/imgs/14.png",
+        "name": "王思思发布了一条需求",
+        "tiem": "2018/10:00-12:00",
+        "content": "需要五吨胡萝卜"
+      },
+      {
+        "url": "/imgs/14.png",
+        "name": "王思思发布了一条需求",
+        "tiem": "2018/10:00-12:00",
+        "content": "需要五吨胡萝卜"
+      },
+      {
+        "url": "/imgs/14.png",
+        "name": "王思思发布了一条需求",
+        "tiem": "2018/10:00-12:00",
+        "content": "需要五吨胡萝卜"
+      },
+      {
+        "url": "/imgs/14.png",
+        "name": "王思思发布了一条需求",
+        "tiem": "2018/10:00-12:00",
+        "content": "需要五吨胡萝卜"
+      },
+      {
+        "url": "/imgs/14.png",
+        "name": "王思思发布了一条需求",
+        "tiem": "2018/10:00-12:00",
+        "content": "需要五吨胡萝卜"
+      },
+      {
+        "url": "/imgs/14.png",
+        "name": "王思思发布了一条需求",
+        "tiem": "2018/10:00-12:00",
+        "content": "需要五吨胡萝卜"
+      }
+    ],
+    order:[
+      {
+        "ordernumber":"466154221111",
+        "ordername":"飘香大蒜苏北产地一吨起送",
+        "rmb":"126",
+        "number":"6",
+        "Total":"2563.79",
+      },
+      {
+        "ordernumber": "466154221111",
+        "ordername": "飘香大蒜苏北产地一吨起送",
+        "rmb": "126",
+        "number": "6",
+        "Total": "2563.79",
+      },
+      {
+        "ordernumber": "466154221111",
+        "ordername": "飘香大蒜苏北产地一吨起送",
+        "rmb": "126",
+        "number": "6",
+        "Total": "2563.79",
+      },
+    ],
+    key:null
+  },
+
+  /*
+   * 导航栏点击跳转页面
+   */
+  navbtn(e){
+
+    // 取值全局变量
+    let id = e.currentTarget.dataset.navid;
+    console.log();
+    
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this;
+    let sysInfo = app.globalData.sysInfo;
+    this.setData({
+      key:app.globalData.key
+    })
+    
+    let b64 = utilMd5.md5("201910111125"+that.data.key+"123");
+    console.log(b64)
   },
 
   /**

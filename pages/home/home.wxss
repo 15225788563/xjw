@@ -1,14 +1,20 @@
 /* pages/home/home.wxss */
-.connet{
+page{
   height: 100%;
   background: #f5f5f5;
+}
+.fixed{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
 }
 .harder{
   display: flex;
   align-items:flex-start;
   background: #ccc;
-  height: 100px;
-  padding-top: 30px;
+  height: 280rpx;
+  padding-top: 60rpx;
 }
 .harder>.Search{
   position: relative;
@@ -28,30 +34,29 @@
   background: #d2d7d4;
   color: #fff;
   width: 285rpx;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  border: 1rpx solid #ccc;
+  border-radius: 10rpx;
   padding-left: 56rpx;
-  font-size: 10px;
+  font-size: 12px;
   height: 46rpx;
   margin-right: 37rpx;
 }
-.harder>view>input::-webkit-input-placeholder{
+.phcolor{
   color:#fff;
 }
 
-
 .Finance{
   width: 690rpx;
-  height: 100px;
-  margin: -45px auto;
-  padding-top: 10px;
-  border-radius: 10px;
+  height: 204rpx;
+  margin: -139rpx auto;
+  padding-top: 10rpx;
+  border-radius: 10rpx;
   text-align: center;
   background: #fff;
-  box-shadow: 0 5px 5px  #d3d2d2;
+  box-shadow: 0 5rpx 5rpx  #d3d2d2;
 }
-.Finance>view:first-child>text{
-  font-size: 18px;
+.Finance>view:first{
+  font-size: 20rpx;
 }
 .Finance>.Finances{
   display: flex;
@@ -61,18 +66,18 @@
   color: #939393;
 }
 .Finance>.Finances>view:first-child{
-  border-right: 1px solid #000
+  border-right: 1rpx solid #000
 }
 .nav{
-  margin-top: 65px;
+  margin-top: 450rpx;
   display: flex;
   flex-wrap:wrap;
 }
 .nav>view{
   width: 20%;
   text-align: center;
-  margin: 5px 0;
-  font-size: 8px;
+  margin: 5rpx 0;
+  font-size: 17rpx;
   color: #000;
 }
 .nav image{
@@ -84,41 +89,119 @@
 .navlst{
   display: flex;
   align-items: center;
-  padding-left: 7%;
-  font-size: 13px;
-  margin-bottom: 5px;
+  padding-left: 30rpx;
+  font-size: 15rpx;
+  margin-bottom: 5rpx;
 }
 .navlst>image{
-  width: 35rpx;
-  height: 35rpx;
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 5rpx;
 }
 .Advertisement{
-  height: 60px;
+  height: 130rpx;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 10rpx;
   background: #dcdcdc;
   text-align: center;
-  line-height: 60px;
-  font-size: 12px;
-  box-shadow: 0 5px 5px  #d3d2d2;
+  line-height: 130rpx;
+  font-size: 14rpx;
+  box-shadow: 0 5rpx 5rpx  #d3d2d2;
 }
   .Contacts{
-    margin-top: 20px;
+    margin: 15rpx 0;
+    padding: 15rpx 30rpx 0 30rpx;
+    background: #fff;
+    height: 196rpx;
   }
-  .Contacts>.hemo{
-    margin-left: 7%;
-    border-left: 10px solid #09c15f;
-    padding-left: 2%;
-  }
+
   .Contacts>.list{
     display: flex;
     justify-content: space-around;
-    font-size: 8px;
-    color: #d7d7d7
+    font-size: 17rpx;
+    color: #000
   }
   .Contacts>.list>view>image{
-    width: 80rpx;
-    height: 80rpx;
+    width: 81rpx;
+    height: 81rpx;
     display: block;
-    margin: 10px auto 5px auto;
+    margin: 10rpx auto 5rpx auto;
+  }
+  .Contacts>.list>view>text{
+    text-align: center;
+  }
+
+  .hemo{
+    height: 24rpx;
+    font-size: 22rpx;
+    line-height: 24rpx;
+    border-left: 6rpx solid #09c15f;
+    padding-left: 2%;
+  }
+
+  .demand{
+    margin: 13rpx 0;
+    padding: 12rpx 30rpx 0 30rpx;
+    background: #fff;
+  }
+  .demand .list{
+    height: 80rpx;
+    width: 100%;
+    border-bottom: 3rpx solid #f5f5f5;
+    display: flex;
+    align-items: center;
+    line-height: 24rpx;
+  }
+  .demand .list image{
+    width: 60rpx;
+    height: 60rpx;
+  }
+  .demand .list text{
+    font-size: 20rpx;
+  }
+  .demand .list .txt{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  } 
+
+  .Order{
+    height: 180rpx;
+    margin: 15rpx 18rpx;
+    padding: 12rpx 12rpx 0 12rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    line-height: 24rpx;
+  } 
+  .Order .hemo{
+    background: #fff;
+  }
+  .Order .img image{
+    width: 250rpx;
+    height: 28rpx;
+  }
+  .Order .details{
+    text-align: right;
+  }
+  .Order .number{
+    font-size: 20rpx;
+  } 
+  .Order .name,.rmb{
+    font-size: 18rpx;
+  }
+  .Order .details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-top: -40rpx; */
+  }
+  .Order .details text{
+    font-size: 16rpx;
+    padding-left: 160rpx;
+  }
+  .Order>.hemo{
+    display: none;
+  }
+  .Order>.hemo:first-child{
+    display: block;
   }

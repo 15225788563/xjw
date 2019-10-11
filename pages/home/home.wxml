@@ -1,38 +1,40 @@
 <view class="connet">
-<!-- 头部 -->
-  <view class="harder" > 
-    <view class="Search">
-      <image src="{{search}}"/>
-      <input placeholder="查看产品库存" />
-    </view>
-    <view>
-      <image src="{{img}}" />
-    </view> 
-  </view>
-  <!-- 今日账单 -->
-  <view class="Finance">
-    <view>
-    <text>今日销售额
-    </text>
-    <text>0.00</text>
-    </view>
-    <view class="Finances">
-      <view>
-        <text>今日销量
-        </text>
-        <text>0.00</text>
+  <!-- 头部 -->
+  <view class="fixed">
+    <view class="harder" > 
+      <view class="Search">
+        <image src="{{search}}"/>
+        <input placeholder-class="phcolor" placeholder="查看产品库存" />
       </view>
       <view>
-        <text>应收账款
-        </text>
-        <text>0.00</text>
+        <image src="{{img}}" />
+      </view> 
+    </view>
+    <!-- 今日账单 -->
+    <view class="Finance">
+      <view>
+      <text class="first">今日销售额
+      </text>
+      <text>0.00</text>
+      </view>
+      <view class="Finances">
+        <view>
+          <text>今日销量
+          </text>
+          <text>0.00</text>
+        </view>
+        <view>
+          <text>应收账款
+          </text>
+          <text>0.00</text>
+        </view>
       </view>
     </view>
   </view>
   <!-- 导航 -->
   <view class="nav">
     <view wx:for="{{nav}}" wx:key="key">
-      <view>
+      <view bindtap="navbtn" data-navid="{{item.id}}">
         <image src='{{item.url}}' mode="widthFix"/>
         <text>{{item.name}}</text>
       </view>
@@ -58,4 +60,57 @@
       </view>
     </view>
   </view>
+  <!-- 最新需求 -->
+  <view class="demand">
+    <view class="hemo">
+      <text>最新需求</text>
+    </view>
+    <scroll-view scroll-y="true" style="height: 332rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" >
+      <block  wx:for="{{demandlist}}">
+        <view class="list">
+          <image src="{{item.url}}" />
+          <view class="txt">
+            <view>
+              <text>{{item.name}}
+              </text>
+              <text>{{item.content}}</text>
+            </view>
+            <view class="tiem">
+              <text>{{item.tiem}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  <!-- 订单 -->
+  <block wx:for="{{order}}">
+    <view class="Order">
+      <view class="hemo">
+        <text>订单记录</text>
+      </view>
+      <view>
+        <text class="number">订单编号:{{item.ordernumber}}</text>
+        <view>
+          <view class="txt">
+            <view>
+              <text class="name">{{item.ordername}}
+              </text><text class="rmb">￥{{item.rmb}}/吨</text>
+            </view>
+            <view class="details">
+              <view class="txt">
+                <text>X{{item.number}}
+                </text><text>合计:{{item.Total}}</text>
+              </view>
+              <view>
+                <view class="img">
+                  <image src="/imgs/15.png"/>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
 </view>
