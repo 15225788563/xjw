@@ -1,4 +1,4 @@
-<view class="connet">
+<view class="container">
   <!-- 头部 -->
   <view class="harder" > 
     <view class="Search">
@@ -12,7 +12,7 @@
   <!-- 轮播图 -->
   <view class="banner">
     <swiper class='u-wrp-bnr' indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true'>
-      <block wx:for="{{bnrUrl}}" wx:for-index="index">
+      <block wx:for="{{bnrUrl}}"  wx:key="key">
         <swiper-item>
           <image src='{{item.url}}' class='u-img-slide' mode='widthFix'></image>
         </swiper-item>
@@ -21,7 +21,7 @@
   </view>
   <!-- 导航 -->
   <view class="nav">
-    <view wx:for="{{navs}}">
+    <view wx:for="{{navs}}" wx:key="key">
       <view data-id="{{item.id}}">
         <image src="{{item.url}}"/>
         <text>{{item.name}}</text> 
@@ -30,7 +30,7 @@
   </view>
   <!-- 订单 -->
   <view class="Order">
-    <view wx:for="{{Orderlist}}">
+    <view wx:for="{{Orderlist}}" wx:key="key">
       <view class="list">
         <view class="Title">
           <text>{{item.Ordername}}</text> <text class="time">{{item.Ordertiem}}</text>

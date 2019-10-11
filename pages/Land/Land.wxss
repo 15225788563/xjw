@@ -1,0 +1,40 @@
+/* pages/Land/Land.wxss */
+Page{
+  background: #f1f4f2;
+}
+.harder{
+  padding-right: 200rpx;
+  font-size: 50rpx;
+  height: 150rpx;
+  background: #aaaaaa;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+}
+.harder image{
+    width: 51.2rpx;
+    height: 51.2rpx;
+}
+.block{
+  padding: 20rpx;
+  width: 650rpx;
+  margin: 100rpx auto 0 auto;
+  text-align: center;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 5rpx 5rpx  #d3d2d2;
+}
+.block input{
+  border: 1px solid #aaaaaa;
+  margin: 20rpx 0;
+  border-radius: 20rpx; 
+  background: #fff;
+}
+.block .btn{
+  display: flex;
+  justify-content: space-around;
+}
+.block .land{
+  background: #09c15f
+}

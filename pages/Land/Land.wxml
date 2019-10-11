@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="harder">
+    <view bindtap="btn"><image src="/imgs/16.png"/></view>
+    <text>登陆</text>
+  </view>
+  <view class="block">
+    <input size="mini" placeholder="请输入用户名" />
+    <input size="mini" password="true" placeholder="请输入密码" />
+    <view class="btn">
+      <button size="mini" class="land" >登陆</button><button size="mini" class="register" >注册</button>
+    </view>
+  </view>
+</view>

@@ -11,7 +11,7 @@ Page({
     hemo:"订单记录",
     search: "/imgs/13.png",
     img:"/imgs/3.png",
-    id:123,
+    userName:13183181292,
     nav:[
         {
           "id":"1",
@@ -156,19 +156,29 @@ Page({
         "Total": "2563.79",
       },
     ],
-    key:null
   },
 
   /*
-   * 导航栏点击跳转页面
+   * 自定义函数：导航栏点击跳转页面
    */
   navbtn(e){
-
-    // 取值全局变量
     let id = e.currentTarget.dataset.navid;
-    console.log();
+    console.log(id);
     
-    
+  },
+
+  /*
+   * 自定义函数：需求滚动到顶部
+   */
+  upper(){
+      
+  },
+
+  /*
+   * 自定义函数：需求滚动到底部
+   */
+  lower(){
+
   },
 
   /**
@@ -177,12 +187,10 @@ Page({
   onLoad: function (options) {
     let that = this;
     let sysInfo = app.globalData.sysInfo;
-    this.setData({
-      key:app.globalData.key
-    })
     var time = util.formatTime(new Date());
-    console.log(time)
-    let b64 = utilMd4.hexMD4(time + that.data.key).toLocaleUpperCase();
+    
+    let b64 = utilMd4.hexMD4(time + app.globalData.key + that.data.userName).toLocaleUpperCase();
+    console.log(b64)
     wx.request({
       url: 'http://192.168.0.139:801/api/Basket/GetBasketTypeList?securityStr=' + b64,
       header: {

@@ -1,4 +1,4 @@
-<view class="connet">
+<view class="container">
 <!-- 头部 -->
   <view class="harder">
     <view class="user">
@@ -15,7 +15,7 @@
   </view>
   <!-- 钱包 -->
   <view class="wallet">
-    <view wx:for="{{wallet}}">
+    <view wx:for="{{wallet}}" wx:key="key">
       <view>
         <view class="walletname"><text>{{item.walletname}}</text> <image src="{{item.walleturl}}" /></view>
         <text>{{item.walletkey}}</text>
@@ -24,7 +24,7 @@
   </view>
   <!-- 功能 -->
   <view class="function">
-      <view wx:for="{{function}}">
+      <view wx:for="{{function}}"  wx:key="key">
         <view class="list item{{index%2==0? 'odd':'even'}}">
           <view>
             <image src="{{item.url}}" /><text>{{item.name}}</text>

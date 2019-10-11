@@ -1,4 +1,4 @@
-// pages/find/find.js
+// pages/Land/Land.js
 Page({
 
   /**
@@ -6,6 +6,10 @@ Page({
    */
   data: {
 
+  },
+
+  btn(){
+    console.log("返回首页")
   },
 
   /**

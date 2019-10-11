@@ -1,10 +1,13 @@
 {
   "pages": [
+    "pages/register/register",
+    
     "pages/home/home",
     "pages/Reportform/Report form",
     "pages/Share/Share",
-    "pages/find/find",
     "pages/My/My",
+    
+    "pages/Land/Land",
     "pages/index/index"
   ],
   "tabBar": {
@@ -20,10 +23,6 @@
       {
         "pagePath":"pages/Share/Share",
         "text":"共享"
-      },
-      {
-        "pagePath":"pages/find/find",
-        "text":"发现"
       },
       {
         "pagePath":"pages/My/My",
