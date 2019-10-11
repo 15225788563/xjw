@@ -33,13 +33,13 @@ page{
 .harder>view>input{
   background: #d2d7d4;
   color: #fff;
-  width: 285rpx;
+  width: 350rpx;
   border: 1rpx solid #ccc;
-  border-radius: 10rpx;
+  border-radius: 20rpx;
   padding-left: 56rpx;
   font-size: 12px;
-  height: 46rpx;
-  margin-right: 37rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
 }
 .phcolor{
   color:#fff;
@@ -168,11 +168,14 @@ page{
   .Order{
     height: 180rpx;
     margin: 15rpx 18rpx;
-    padding: 12rpx 12rpx 0 12rpx;
+    padding: 12rpx 14rpx 0 14rpx;
     background: #fff;
     border-radius: 20rpx;
     line-height: 24rpx;
   } 
+  .Order .block{
+    padding-left: 24rpx;
+  }
   .Order .hemo{
     background: #fff;
   }
@@ -193,7 +196,6 @@ page{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* margin-top: -40rpx; */
   }
   .Order .details text{
     font-size: 16rpx;

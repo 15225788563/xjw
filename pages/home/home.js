@@ -1,6 +1,7 @@
 // pages/home/home.js
 const app = getApp()
-const utilMd5 = require('../../utils/MD5.js');  
+const utilMd4 = require('../../utils/MD5.js');  
+const util = require('../../utils/util.js');  
 Page({
 
   /**
@@ -10,6 +11,7 @@ Page({
     hemo:"订单记录",
     search: "/imgs/13.png",
     img:"/imgs/3.png",
+    id:123,
     nav:[
         {
           "id":"1",
@@ -178,9 +180,18 @@ Page({
     this.setData({
       key:app.globalData.key
     })
-    
-    let b64 = utilMd5.md5("201910111125"+that.data.key+"123");
-    console.log(b64)
+    var time = util.formatTime(new Date());
+    console.log(time)
+    let b64 = utilMd4.hexMD4(time + that.data.key).toLocaleUpperCase();
+    wx.request({
+      url: 'http://192.168.0.139:801/api/Basket/GetBasketTypeList?securityStr=' + b64,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log(res.data)
+      }
+    })
   },
 
   /**
