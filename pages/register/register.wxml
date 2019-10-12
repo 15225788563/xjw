@@ -1,18 +1,18 @@
 <view class="container">
   <view class="harder">
-    <view bindtap="hemo"><image src="/imgs/16.png"/></view>
+    <view bindtap="btn"><image src="/imgs/16.png"/></view>
     <text>注册</text>
   </view>
   <view class="block">
     <input bindinput="userNameInput" size="mini" placeholder="请输入手机号" />
     <view class="Verification">
-    <input bindinput="veri" placeholder="请输入图形验证码" />
+      <input placeholder="请输入验证码" />
       <canvas class='canvas' style="width:{{cvs.width}};height:{{cvs.height}};" canvas-id="canvas" bindtap='onReady'></canvas>
     </view>
     <input bindinput="passWord" size="mini" password="true" placeholder="请输入密码" />
-    <input bindinput="pass" size="mini" password="true" placeholder="请重复密码" />
+    <input size="mini" password="true" placeholder="请重复密码" />
     <view class="btn">
-      <button size="mini" class="land" bindtap="register" >注册</button>
+      <button size="mini" class="land" bindtap="register" >注册</button><button size="mini" class="register" >登陆</button>
     </view>
   </view>
 </view>

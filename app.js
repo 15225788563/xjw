@@ -36,5 +36,5 @@ App({
   globalData: {
     userInfo: null,
     key: "^wang7kuang2jian8zikebaiji$"
-  },
+  }
 })

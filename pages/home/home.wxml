@@ -49,17 +49,24 @@
     <text>新人礼包，好礼送不停</text>
   </view>
   <!-- 联系人 -->
-  <view class="Contacts">
-    <view class="hemo">
-      <text>常用联系人</text>
-    </view>
-    <view class="list">
-      <view wx:for="{{contact}}" wx:key="key">
-        <image src="{{item.url}}" />
-        <text>{{item.name}}-{{}}</text>
+    <view class="Contacts">
+      <view class="hemo">
+        <text>常用联系人</text>
       </view>
+      <block wx:if="{{userID}}">
+        <view class="list">
+          <view wx:for="{{contact}}" wx:key="key">
+            <image src="/imgs/6.png" />
+            <text>{{item}}</text>
+          </view>
+        </view>
+       </block>
+      <block  wx:if="{{!userID}}">
+         <button class="nologin" size="mini" bindtap="btn"> 查不到联系人,点击登录</button>
+      </block>
     </view>
-  </view>
+ 
+  
   <!-- 最新需求 -->
   <view class="demand">
     <view class="hemo">
@@ -68,15 +75,15 @@
     <scroll-view scroll-y="true" style="height: 332rpx;" bindscrolltoupper="upper" bindscrolltolower="lower">
       <block  wx:for="{{demandlist}}" wx:key="key">
         <view class="list">
-          <image src="/imgs/14.png" />
+          <image src="{{item.url}}" />
           <view class="txt">
             <view>
-              <text>{{item.ID}}
+              <text>{{item.name}}
               </text>
-              <text>需求{{item.Count}}吨{{item.ProduceID}}</text>
+              <text>{{item.content}}</text>
             </view>
             <view class="tiem">
-              <text>{{item.OrderBeforeID}}</text>
+              <text>{{item.tiem}}</text>
             </view>
           </view>
         </view>
@@ -84,23 +91,23 @@
     </scroll-view>
   </view>
   <!-- 订单 -->
-  <block wx:if="{{userID}}">
-    <view class="Order" wx:for="{{order}}" wx:key="key">
+  <block wx:for="{{order}}" wx:key="key">
+    <view class="Order">
       <view class="hemo">
         <text>订单记录</text>
       </view>
       <view class="block">
-        <text class="number">订单编号:{{item.OrderID}}</text>
+        <text class="number">订单编号:{{item.ordernumber}}</text>
         <view>
           <view class="txt">
             <view>
-              <text class="name">{{item.SumPrice}}
-              </text><text class="rmb">￥{{item.UnitPrice}}/吨</text>
+              <text class="name">{{item.ordername}}
+              </text><text class="rmb">￥{{item.rmb}}/吨</text>
             </view>
             <view class="details">
               <view class="txt">
-                <text>X{{item.Count}}
-                </text><text>合计:{{item.UnitPrice}}</text>
+                <text>X{{item.number}}
+                </text><text>合计:{{item.Total}}</text>
               </view>
               <view>
                 <view class="img">
@@ -111,16 +118,6 @@
           </view>
         </view>
       </view>
-    </view>
-  </block>
-  <block wx:if="{{!order&&userID}}">
-    <view class="orders">
-      <text>你好 你还没有交易过</text>
-    </view>
-  </block>
-  <block wx:if="{{!userID}}">
-    <view class="orderx">
-      <button bindtap="Lands">您还没有登陆 点击登陆</button>
     </view>
   </block>
 </view>
