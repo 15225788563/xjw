@@ -11,6 +11,10 @@ Page({
     hemo:"订单记录",
     search: "/imgs/13.png",
     img:"/imgs/3.png",
+    todayPrice:0.00,
+    todayMount: 0.00,
+    todayMoney:0.00,
+    userName:13183181292,
     lands:"",
     nav:[
         {
@@ -49,28 +53,7 @@ Page({
           "name": "发起需求"
         },
     ],
-    contact:[
-      {
-        "url": "/imgs/6.png",
-        "name": "李光洙-盐城"
-      },
-      {
-        "url": "/imgs/6.png",
-        "name": "张晶晶-盐城"
-      },
-      {
-        "url": "/imgs/6.png",
-        "name": "王思-盐城"
-      },
-      {
-        "url": "/imgs/6.png",
-        "name": "王思-盐城"
-      },
-      {
-        "url": "/imgs/6.png",
-        "name": "王思-盐城"
-      }
-    ],
+    contact:[],
   },
 
   /*
@@ -111,6 +94,7 @@ Page({
         _this.setData({
           userID:res.data.ID
         })
+        
         let sysInfo = app.globalData.sysInfo;
         let time = util.formatTime(new Date());
         let b64 = utilMd4.hexMD4(time + app.globalData.key + res.data.ID).toLocaleUpperCase();
@@ -126,6 +110,7 @@ Page({
             _this.setData({
               demandlist: res.data.modelList
             })
+
             // console.log(_this.data.demandlist)
           },
         }),
@@ -141,6 +126,38 @@ Page({
               order: res.data.modelList
             })
             // console.log(_this.data.order)
+          }
+        }),
+
+        //销售额
+        wx.request({
+          url: 'http://192.168.0.139:801/api/Home_Page/GetTodayPay?Id=' + _this.data.userID +'&securityStr='+b64,
+          
+          header: {
+            'content-type': 'application/json' // 默认值
+          },
+          success(res) {
+            console.log(res.data.modelList[0])
+            _this.setData({
+              qwe: res.data.modelList[0].qwe,
+              zxc: res.data.modelList[0].zxc,
+              asd: res.data.modelList[0].asd
+            })
+          }
+        })
+        //常用联系人
+        wx.request({
+          url: 'http://192.168.0.139:801/api/Home_Page/GetGetTopContacts?userId=' + res.data.ID + '&securityStr=' + b64,
+          header: {
+            'content-type': 'application/json' // 默认值
+          },
+          method: "GET",
+          success: function (res) {
+            //请求成功后的回调
+            _this.setData({
+              contact: res.data.modelList
+            })
+            console.log(_this.data.contact)
           }
         })
       },

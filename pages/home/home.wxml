@@ -11,25 +11,33 @@
       </view> 
     </view>
     <!-- 今日账单 -->
+    <wxs module="filters" src="../homes.wxs"></wxs>
+
     <view class="Finance">
+    
       <view>
       <text class="first">今日销售额
       </text>
-      <text>0.00</text>
-      </view>
+      <text>{{userID? filters.toFix(qwe) :filters.toFix(todayPrice)}}</text>
+      </view>    
       <view class="Finances">
+      
+      
         <view>
           <text>今日销量
           </text>
-          <text>0.00</text>
+          <text>{{userID?filters.toFix(zxc):filters.toFix(todayMount)}}</text>
         </view>
         <view>
           <text>应收账款
           </text>
-          <text>0.00</text>
+          <text>{{userID?filters.toFix(asd):filters.toFix(todayMoney)}}</text>
         </view>
+         
       </view>
-    </view>
+   </view>
+   
+ 
   </view>
   <!-- 导航 -->
   <view class="nav">
@@ -50,16 +58,21 @@
   </view>
   <!-- 联系人 -->
   <view class="Contacts">
-    <view class="hemo">
-      <text>常用联系人</text>
-    </view>
-    <view class="list">
-      <view wx:for="{{contact}}" wx:key="key">
-        <image src="{{item.url}}" />
-        <text>{{item.name}}-{{}}</text>
+      <view class="hemo">
+        <text>常用联系人</text>
       </view>
+      <block wx:if="{{userID}}">
+        <view class="list">
+          <view wx:for="{{contact}}" wx:key="key">
+            <image src="/imgs/6.png" />
+            <text>{{item}}</text>
+          </view>
+        </view>
+       </block>
+      <block  wx:if="{{!userID}}">
+         <button class="nologin" size="" bindtap="Lands"> 查不到联系人,点击登录</button>
+      </block>
     </view>
-  </view>
   <!-- 最新需求 -->
   <view class="demand">
     <view class="hemo">
@@ -119,8 +132,6 @@
     </view>
   </block>
   <block wx:if="{{!userID}}">
-    <view class="orderx">
-      <button bindtap="Lands">您还没有登陆 点击登陆</button>
-    </view>
+    
   </block>
 </view>
