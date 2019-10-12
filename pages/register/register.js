@@ -52,32 +52,10 @@ Page({
     })
   },
 
-  /**
-   * 自定义函数 图形验证码
-   */
-  onReady: function () {
-    var that = this;
-    var num = that.getRanNum();
-    // console.log(num)
-    this.setData({
-      num: num
+  hemo() {
+    wx.switchTab({
+      url: '../home/home',
     })
-    new Mcaptcha({
-      el: 'canvas',
-      width: 80,//对图形的宽高进行控制
-      height: 30,
-      code: num
-    });
-  },
-  getRanNum: function () {
-    var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
-    var pwd = '';
-    for (var i = 0; i < 4; i++) {
-      if (Math.random() < 48) {
-        pwd += chars.charAt(Math.random() * 48 - 1);
-      }
-    }
-    return pwd;
   },
 
   /**

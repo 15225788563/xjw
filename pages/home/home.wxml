@@ -56,7 +56,7 @@
     <view class="list">
       <view wx:for="{{contact}}" wx:key="key">
         <image src="{{item.url}}" />
-        <text>{{item.name}}</text>
+        <text>{{item.name}}-{{}}</text>
       </view>
     </view>
   </view>
@@ -68,15 +68,15 @@
     <scroll-view scroll-y="true" style="height: 332rpx;" bindscrolltoupper="upper" bindscrolltolower="lower">
       <block  wx:for="{{demandlist}}" wx:key="key">
         <view class="list">
-          <image src="{{item.url}}" />
+          <image src="/imgs/14.png" />
           <view class="txt">
             <view>
-              <text>{{item.name}}
+              <text>{{item.ID}}
               </text>
-              <text>{{item.content}}</text>
+              <text>需求{{item.Count}}吨{{item.ProduceID}}</text>
             </view>
             <view class="tiem">
-              <text>{{item.tiem}}</text>
+              <text>{{item.OrderBeforeID}}</text>
             </view>
           </view>
         </view>
@@ -84,23 +84,23 @@
     </scroll-view>
   </view>
   <!-- 订单 -->
-  <block wx:for="{{order}}" wx:key="key">
-    <view class="Order">
+  <block wx:if="{{userID}}">
+    <view class="Order" wx:for="{{order}}" wx:key="key">
       <view class="hemo">
         <text>订单记录</text>
       </view>
       <view class="block">
-        <text class="number">订单编号:{{item.ordernumber}}</text>
+        <text class="number">订单编号:{{item.OrderID}}</text>
         <view>
           <view class="txt">
             <view>
-              <text class="name">{{item.ordername}}
-              </text><text class="rmb">￥{{item.rmb}}/吨</text>
+              <text class="name">{{item.SumPrice}}
+              </text><text class="rmb">￥{{item.UnitPrice}}/吨</text>
             </view>
             <view class="details">
               <view class="txt">
-                <text>X{{item.number}}
-                </text><text>合计:{{item.Total}}</text>
+                <text>X{{item.Count}}
+                </text><text>合计:{{item.UnitPrice}}</text>
               </view>
               <view>
                 <view class="img">
@@ -111,6 +111,16 @@
           </view>
         </view>
       </view>
+    </view>
+  </block>
+  <block wx:if="{{!order&&userID}}">
+    <view class="orders">
+      <text>你好 你还没有交易过</text>
+    </view>
+  </block>
+  <block wx:if="{{!userID}}">
+    <view class="orderx">
+      <button bindtap="Lands">您还没有登陆 点击登陆</button>
     </view>
   </block>
 </view>

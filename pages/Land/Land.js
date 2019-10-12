@@ -29,13 +29,24 @@ Page({
     })
   },
 
+  hemo(){
+    wx.switchTab({
+      url: '../home/home',
+    })
+  },
+
+  register(){
+    wx.navigateTo({
+      url: '../register/register',
+    })
+  },
+
   btn(){
     let that = this;
     let name = that.data.userName
     let pass = that.data.passWord
     let sysInfo = app.globalData.sysInfo;
-    var time = util.formatTime(new Date());
-
+    let time = util.formatTime(new Date());
     let b64 = utilMd4.hexMD4(time + app.globalData.key + name + pass).toLocaleUpperCase();
     console.log(b64)
     wx.request({
@@ -45,11 +56,15 @@ Page({
       },
       method: "GET",
       success(res) {
-        console.log(res.data.modelList[0])
         wx.setStorage({
           key: 'modelList',
           data: res.data.modelList[0],
         })
+        setTimeout(function () {
+          wx.reLaunch({
+            url: '../home/home'
+          })
+        }, 500)
       }
     })
   },
