@@ -7,7 +7,6 @@
     "pages/My/My",
     "pages/register/register",
     "pages/Land/Land",
-
     "pages/index/index"
   ],
   "tabBar": {

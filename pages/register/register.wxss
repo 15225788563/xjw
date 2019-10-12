@@ -38,10 +38,14 @@ Page{
 .block .land{
   background: #09c15f
 }
-.block .Verification{
+.Verification{
   display: flex;
+  justify-content: space-around;
   align-items: center;
 }
-.block .Verification button{
-  height: 60rpx;
+
+canvas {
+    width: 90px;
+    height: 28px;
+    border-radius: 14px;
 }
