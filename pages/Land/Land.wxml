@@ -1,13 +1,13 @@
 <view class="container">
   <view class="harder">
-    <view bindtap=setGoodsSearch"><image src="/imgs/16.png"/></view>
+    <view bindtap="hemo"><image src="/imgs/16.png"/></view>
     <text>登陆</text>
   </view>
   <view class="block">
     <input bindinput="userNameInput" size="mini" placeholder="请输入用户名" />
     <input bindinput="passWord" size="mini" password="true" placeholder="请输入密码" />
     <view class="btn">
-      <button size="mini" class="land" bindtap="btn" >登陆</button><button size="mini" class="register" >注册</button>
+      <button size="mini" class="land" bindtap="btn" >登陆</button><button size="mini" bindtap="register" >注册</button>
     </view>
   </view>
 </view>

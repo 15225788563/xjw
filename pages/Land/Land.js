@@ -2,7 +2,6 @@
 const app = getApp()
 const utilMd4 = require('../../utils/MD5.js');
 const util = require('../../utils/util.js');
-const Mcaptcha = require('../../utils/mcaptcha.js');
 Page({
 
   /**
@@ -11,13 +10,7 @@ Page({
   data: {
 
   },
-method:{
-  setGoodsSearch: function () {
-    wx.navigateTo({
-      url: 'pages/home/home',
-    })
-  },
-},
+
   /**
      * 自定义函数 获取手机号
      */
@@ -33,7 +26,18 @@ method:{
     this.setData({
       passWord: e.detail.value
     })
-   
+  },
+
+  hemo(){
+    wx.switchTab({
+      url: '../home/home',
+    })
+  },
+
+  register(){
+    wx.navigateTo({
+      url: '../register/register',
+    })
   },
 
   btn(){
@@ -41,7 +45,7 @@ method:{
     let name = that.data.userName
     let pass = that.data.passWord
     let sysInfo = app.globalData.sysInfo;
-    var time = util.formatTime(new Date());
+    let time = util.formatTime(new Date());
     let b64 = utilMd4.hexMD4(time + app.globalData.key + name + pass).toLocaleUpperCase();
     console.log(b64)
     wx.request({
@@ -51,19 +55,15 @@ method:{
       },
       method: "GET",
       success(res) {
-        let that=this
-        console.log(res.data.modelList[0])
         wx.setStorage({
           key: 'modelList',
           data: res.data.modelList[0],
         })
-        setInterval(function(){
-          wx.switchTab({
-            url: '../home/home',
-          });
-
-        },1500)
-        
+        setTimeout(function () {
+          wx.reLaunch({
+            url: '../home/home'
+          })
+        }, 500)
       }
     })
   },
@@ -72,7 +72,6 @@ method:{
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
 
   },
 
@@ -80,7 +79,7 @@ method:{
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-   
+
   },
 
   /**

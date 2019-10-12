@@ -138,11 +138,7 @@ page{
     border-left: 6rpx solid #09c15f;
     padding-left: 2%;
   }
-.nologin{
-  margin: 50rpx 100rpx;
-  color: #f00;
-  border: none;
-}
+
   .demand{
     margin: 13rpx 0;
     padding: 12rpx 30rpx 0 30rpx;
@@ -159,6 +155,7 @@ page{
   .demand .list image{
     width: 60rpx;
     height: 60rpx;
+    margin: 0 10rpx;
   }
   .demand .list text{
     font-size: 20rpx;
@@ -205,9 +202,15 @@ page{
     font-size: 16rpx;
     padding-left: 160rpx;
   }
-  .Order>.hemo{
-    display: none;
+
+  .Order .Land{
+    text-align: center;
   }
-  .Order>.hemo:first-child{
-    display: block;
-  }
+
+  .orders,.orderx{
+    height: 180rpx;
+    margin: 15rpx 18rpx;
+    padding: 12rpx 14rpx 0 14rpx;
+    background: #fff;
+    border-radius: 20rpx;
+  } 

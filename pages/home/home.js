@@ -1,8 +1,7 @@
 // pages/home/home.js
 const app = getApp()
 const utilMd4 = require('../../utils/MD5.js');  
-const util = require('../../utils/util.js');
-const Mcaptcha = require('../../utils/mcaptcha.js');  
+const util = require('../../utils/util.js');  
 Page({
 
   /**
@@ -12,7 +11,7 @@ Page({
     hemo:"订单记录",
     search: "/imgs/13.png",
     img:"/imgs/3.png",
-    userName:13183181292,
+    lands:"",
     nav:[
         {
           "id":"1",
@@ -51,91 +50,26 @@ Page({
         },
     ],
     contact:[
-    ],
-    demandlist:[
       {
-        "url":"/imgs/14.png",
-        "name":"王思思发布了一条需求",
-        "tiem":"2018/10:00-12:00",
-        "content":"需要五吨胡萝卜"
+        "url": "/imgs/6.png",
+        "name": "李光洙-盐城"
       },
       {
-        "url": "/imgs/14.png",
-        "name": "王思思发布了一条需求",
-        "tiem": "2018/10:00-12:00",
-        "content": "需要五吨胡萝卜"
+        "url": "/imgs/6.png",
+        "name": "张晶晶-盐城"
       },
       {
-        "url": "/imgs/14.png",
-        "name": "王思思发布了一条需求",
-        "tiem": "2018/10:00-12:00",
-        "content": "需要五吨胡萝卜"
+        "url": "/imgs/6.png",
+        "name": "王思-盐城"
       },
       {
-        "url": "/imgs/14.png",
-        "name": "王思思发布了一条需求",
-        "tiem": "2018/10:00-12:00",
-        "content": "需要五吨胡萝卜"
+        "url": "/imgs/6.png",
+        "name": "王思-盐城"
       },
       {
-        "url": "/imgs/14.png",
-        "name": "王思思发布了一条需求",
-        "tiem": "2018/10:00-12:00",
-        "content": "需要五吨胡萝卜"
-      },
-      {
-        "url": "/imgs/14.png",
-        "name": "王思思发布了一条需求",
-        "tiem": "2018/10:00-12:00",
-        "content": "需要五吨胡萝卜"
-      },
-      {
-        "url": "/imgs/14.png",
-        "name": "王思思发布了一条需求",
-        "tiem": "2018/10:00-12:00",
-        "content": "需要五吨胡萝卜"
-      },
-      {
-        "url": "/imgs/14.png",
-        "name": "王思思发布了一条需求",
-        "tiem": "2018/10:00-12:00",
-        "content": "需要五吨胡萝卜"
-      },
-      {
-        "url": "/imgs/14.png",
-        "name": "王思思发布了一条需求",
-        "tiem": "2018/10:00-12:00",
-        "content": "需要五吨胡萝卜"
-      },
-      {
-        "url": "/imgs/14.png",
-        "name": "王思思发布了一条需求",
-        "tiem": "2018/10:00-12:00",
-        "content": "需要五吨胡萝卜"
+        "url": "/imgs/6.png",
+        "name": "王思-盐城"
       }
-    ],
-    order:[
-      {
-        "ordernumber":"466154221111",
-        "ordername":"飘香大蒜苏北产地一吨起送",
-        "rmb":"126",
-        "number":"6",
-        "Total":"2563.79",
-      },
-      {
-        "ordernumber": "466154221111",
-        "ordername": "飘香大蒜苏北产地一吨起送",
-        "rmb": "126",
-        "number": "6",
-        "Total": "2563.79",
-      },
-      {
-        "ordernumber": "466154221111",
-        "ordername": "飘香大蒜苏北产地一吨起送",
-        "rmb": "126",
-        "number": "6",
-        "Total": "2563.79",
-      },
     ],
   },
 
@@ -145,13 +79,13 @@ Page({
   navbtn(e){
     let id = e.currentTarget.dataset.navid;
     console.log(id);
+    
   },
- btn(){
-   wx.navigateTo({
-     url: '../Land/Land'
-   })
- },
-
+  Lands(){
+    wx.navigateTo({
+      url: '../Land/Land',
+    })
+  },
   /*
    * 自定义函数：需求滚动到顶部
    */
@@ -170,30 +104,43 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this;
+    var _this = this
     wx.getStorage({
       key: 'modelList',
-      success: function (res) {
-        console.log(res.data.ID)
-        that.setData({
+      success: function(res) {
+        _this.setData({
           userID:res.data.ID
         })
         let sysInfo = app.globalData.sysInfo;
-        var time = util.formatTime(new Date());
+        let time = util.formatTime(new Date());
         let b64 = utilMd4.hexMD4(time + app.globalData.key + res.data.ID).toLocaleUpperCase();
         console.log(b64)
+        // 最新需求
         wx.request({
-          url: 'http://192.168.0.139:801/api/Home_Page/GetGetTopContacts?userId=' + res.data.ID + '&securityStr=' + b64,
+          url: 'http://192.168.0.139:801/api/Home_Page/GetDemanddetails?detailId=' + res.data.ID+'&securityStr=' + b64,
           header: {
             'content-type': 'application/json' // 默认值
           },
           method: "GET",
-          success: function (res) {
-            //请求成功后的回调
-            that.setData({
-              contact: res.data.modelList
+          success(res) {
+            _this.setData({
+              demandlist: res.data.modelList
             })
-            console.log(that.data.contact)
+            // console.log(_this.data.demandlist)
+          },
+        }),
+          // 订单记录
+        wx.request({
+          url: 'http://192.168.0.139:801/api/Home_Page/GetOrderDetailById?Id=' + res.data.ID + '&securityStr=' + b64,
+          header: {
+            'content-type': 'application/json' // 默认值
+          },
+          method: "GET",
+          success(res) {
+            _this.setData({
+              order: res.data.modelList
+            })
+            // console.log(_this.data.order)
           }
         })
       },
@@ -204,7 +151,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
 
   },
 
