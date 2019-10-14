@@ -15,6 +15,9 @@ Page({
   onLoad: function () {
     var that = this;
     // 查看是否授权
+    // if (res.authSetting['scope.userInfo']){
+
+    // }
     wx.getSetting({
       success: function (res) {
         console.log(res)
@@ -23,7 +26,7 @@ Page({
             success: function (res) {
               //从数据库获取用户信息
               that.queryUsreInfo();
-              用户已经授权过
+              // 用户已经授权过
               wx.switchTab({
                 url: '../home/home'
               })
