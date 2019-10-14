@@ -1,16 +1,21 @@
 <view class="container">
   <view class="harder">
-    <view bindtap="hemo"><image src="/imgs/16.png"/></view>
     <text>注册</text>
   </view>
   <view class="block">
-    <input bindinput="userNameInput" size="mini" placeholder="请输入手机号" />
-    <view class="Verification">
-    <input bindinput="veri" placeholder="请输入短信验证码" />
-    <button>点击获取验证码</button>
-    </view>
+    <view class='changeInfoName'>
+     <input placeholder='请输入手机号' bindinput='getPhoneValue' value='{{phone}}'/> 
+  </view>
+  <view class='changeInfoName'>
+     <input placeholder='请输验证码' bindinput='getCodeValue' value='{{code}}' style='width:70%;'/> 
+     <button class='codeBtn' bindtap='getVerificationCode' disabled='{{disabled}}' >{{codename}}</button>
+  </view>
+  <view class="changeInfoName">
     <input bindinput="passWord" size="mini" password="true" placeholder="请输入密码" />
-    <input bindinput="pass" size="mini" password="true" placeholder="请重复密码" />
+  </view>
+    <view class="changeInfoName">
+      <input bindinput="pass" size="mini" password="true" placeholder="请重复密码" />
+    </view>
     <view class="btn">
       <button size="mini" class="land" bindtap="register" >注册</button>
     </view>

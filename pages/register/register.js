@@ -10,7 +10,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    phone: '',//手机号
+    code: '',//验证码
+    iscode: null,//用于存放验证码接口里获取到的code
+    codename: '获取验证码',
+    passWord:'',
+    pass:''
   },
 
   
@@ -18,11 +23,10 @@ Page({
   /**
    * 自定义函数 获取手机号
    */
-  userNameInput: function (e) {
-    let that = this
-      that.setData({
-        userName: e.detail.value
-      })
+  getPhoneValue: function (e) {
+    this.setData({
+      phone: e.detail.value
+    })
   },
   /**
    * 自定义函数 获取密码
@@ -37,39 +41,115 @@ Page({
       pass: e.detail.value
     })
   },
-  veri: function (e) {
+  getCodeValue: function (e) {
     this.setData({
-      veri: e.detail.value
+      code: e.detail.value
     })
   },
-
-  /**
-   * 自定义函数 点击传输
-   */
-  register(){
+  getCode: function () {
+    let a = this.data.phone;
     let that = this;
-    let name = that.data.userName
-    let pass = that.data.passWord
-    let pas = that.data.pass
-    let veri = that.data.veri
-    let num = that.data.num
-    if (!(/^1[3456789]\d{9}$/).test(name)){
-      console.log("手机号码格式不对")
-    }else if(pass !== pas){
-      console.log("两次密码不同 请核对")
-    } else if (veri.toLocaleUpperCase() != num.toLocaleUpperCase()){ 
-      console.log("验证码错误 请重新输入验证码")
-    }else{
-      let sysInfo = app.globalData.sysInfo;
-      let time = util.formatTime(new Date());
-      let b64 = utilMd4.hexMD4(time + app.globalData.key + name + pass).toLocaleUpperCase();
+    let myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
+    if (this.data.phone == "") {
+      wx.showToast({
+        title: '手机号不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    } else if (!myreg.test(this.data.phone)) {
+      wx.showToast({
+        title: '请输入正确的手机号',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    } else {
+      wx.request({
+        data: {},
+        'url': 接口地址,
+        success(res) {
+          console.log(res.data.data)
+          that.setData({
+            iscode: res.data.data
+          })
+          var num = 61;
+          var timer = setInterval(function () {
+            num--;
+            if (num <= 0) {
+              clearInterval(timer);
+              that.setData({
+                codename: '重新发送',
+                disabled: false
+              })
+
+            } else {
+              that.setData({
+                codename: num + "s"
+              })
+            }
+          }, 1000)
+        }
+      })
+    }
+  },
+  //获取验证码
+  getVerificationCode() {
+    this.getCode();
+    var that = this
+    that.setData({
+      disabled: true
+    })
+  },
+  //提交表单信息
+  register: function () {
+    let that = this;
+    let sysInfo = app.globalData.sysInfo;
+    let time = util.formatTime(new Date());
+    let myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
+    if (this.data.phone == "") {
+      wx.showToast({
+        title: '手机号不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    } else if (!myreg.test(this.data.phone)) {
+      wx.showToast({
+        title: '请输入正确的手机号',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    }
+    if (this.data.code == "") {
+      wx.showToast({
+        title: '验证码不能为空',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    } else if (this.data.code != this.data.iscode) {
+      wx.showToast({
+        title: '验证码错误',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    } else if(this.data.passWord != this.data.pass){
+      wx.showToast({
+        title: '重复密码错误',
+        icon: 'none',
+        duration: 1000
+      })
+    } else{
+    let b64 = utilMd4.hexMD4(time  + that.data.phone + that.data.passWord + app.globalData.openid).toLocaleUpperCase();
       console.log(b64)
       wx.request({
-        url: 'http://192.168.0.139:801/api/Home_Page/AddUser?userName=' + name + '&passWord=' + pass + '&securityStr=' + b64,
+        url: app.globalData.url + 'api/Home_Page/AddUserByWx?userName=' + phone + '&passWord=' + passWord + '&wxCode=' + app.globalData.openid+'&securityStr'+b64,
         header: {
-          'content-type': 'application/json' // 默认值
+          'content-type': 'application/json'
         },
-        method: "POST",
         success(res) {
           console.log(res.data)
         }
@@ -77,11 +157,6 @@ Page({
     }
   },
 
-  hemo() {
-    wx.switchTab({
-      url: '../home/home',
-    })
-  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -95,29 +170,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var that = this;
-    var num = that.getRanNum();
-    // console.log(num)
-    this.setData({
-      num: num
-    })
-    new Mcaptcha({
-      el: 'canvas',
-      width: 80,//对图形的宽高进行控制
-      height: 30,
-      code: num
-    });
-  },
 
-  getRanNum: function () {
-    var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
-    var pwd = '';
-    for (var i = 0; i < 4; i++) {
-      if (Math.random() < 48) {
-        pwd += chars.charAt(Math.random() * 48 - 1);
-      }
-    }
-    return pwd;
   },
 
   /**

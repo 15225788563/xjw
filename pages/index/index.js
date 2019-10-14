@@ -15,9 +15,6 @@ Page({
   onLoad: function () {
     var that = this;
     // 查看是否授权
-    // if (res.authSetting['scope.userInfo']){
-
-    // }
     wx.getSetting({
       success: function (res) {
         console.log(res)
@@ -25,10 +22,21 @@ Page({
           wx.getUserInfo({
             success: function (res) {
               //从数据库获取用户信息
-              that.queryUsreInfo();
+              // that.queryUsreInfo();
               // 用户已经授权过
-              wx.switchTab({
-                url: '../home/home'
+              wx.getStorage({
+                key: 'modelList',
+                success: function(res) {
+                  if (res.data.modelList){
+                    wx.reLaunch({
+                      url: '../home/home'
+                    })
+                  }else{
+                    wx.reLaunch({
+                      url: '../register/register'
+                    })
+                  }
+                },
               })
             }
           });
@@ -56,7 +64,7 @@ Page({
         },
         method: "GET",
         success(res) {
-          // console.log(res.data.modelList)
+          console.log(res.data.modelList)
           if(res.data.modelList){
             wx.setStorage({
               key: 'modelList',
