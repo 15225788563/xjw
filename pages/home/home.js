@@ -91,17 +91,19 @@ Page({
     wx.getStorage({
       key: 'modelList',
       success: function(res) {
+        console.log(res.data.ID)
+
         _this.setData({
-          userID:res.data.ID
+          userID: res.data.ID
         })
         
         let sysInfo = app.globalData.sysInfo;
         let time = util.formatTime(new Date());
-        let b64 = utilMd4.hexMD4(time + app.globalData.key + res.data.ID).toLocaleUpperCase();
-        console.log(b64)
+        let b64 = utilMd4.hexMD4(time + app.globalData.key + _this.data.userID).toLocaleUpperCase();
+        // console.log(b64)
         // 最新需求
         wx.request({
-          url: 'http://192.168.0.139:801/api/Home_Page/GetDemanddetails?detailId=' + res.data.ID+'&securityStr=' + b64,
+          url: app.globalData.url+'api/Home_Page/GetDemanddetails?detailId=' + _this.data.userID+'&securityStr=' + b64,
           header: {
             'content-type': 'application/json' // 默认值
           },
@@ -116,7 +118,7 @@ Page({
         }),
           // 订单记录
         wx.request({
-          url: 'http://192.168.0.139:801/api/Home_Page/GetOrderDetailById?Id=' + res.data.ID + '&securityStr=' + b64,
+          url: app.globalData.url +'api/Home_Page/GetOrderDetailById?Id=' + _this.data.userID + '&securityStr=' + b64,
           header: {
             'content-type': 'application/json' // 默认值
           },
@@ -131,23 +133,24 @@ Page({
 
         //销售额
         wx.request({
-          url: 'http://192.168.0.139:801/api/Home_Page/GetTodayPay?Id=' + _this.data.userID +'&securityStr='+b64,
+          url: app.globalData.url +'api/Home_Page/GetTodayPay?Id=' + _this.data.userID +'&securityStr='+b64,
           
           header: {
             'content-type': 'application/json' // 默认值
           },
           success(res) {
-            console.log(res.data.modelList[0])
+            
             _this.setData({
-              qwe: res.data.modelList[0].qwe,
-              zxc: res.data.modelList[0].zxc,
-              asd: res.data.modelList[0].asd
+              ShouldGet: res.data.modelList[0].ShouldGet,
+              TodayBuy: res.data.modelList[0].TodayBuy,
+              TodaySell: res.data.modelList[0].TodaySell
             })
+            console.log(res.data.modelList[0])
           }
         })
         //常用联系人
         wx.request({
-          url: 'http://192.168.0.139:801/api/Home_Page/GetGetTopContacts?userId=' + res.data.ID + '&securityStr=' + b64,
+          url: app.globalData.url +'api/Home_Page/GetGetTopContacts?userId=' + _this.data.userID + '&securityStr=' + b64,
           header: {
             'content-type': 'application/json' // 默认值
           },
@@ -157,7 +160,7 @@ Page({
             _this.setData({
               contact: res.data.modelList
             })
-            console.log(_this.data.contact)
+            // console.log(_this.data.contact)
           }
         })
       },

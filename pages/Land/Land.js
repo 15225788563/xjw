@@ -8,7 +8,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-
   },
 
   /**
@@ -42,7 +41,7 @@ Page({
 
   btn(){
     let that = this;
-    let name = that.data.userName
+    let name = that.data.id
     let pass = that.data.passWord
     let sysInfo = app.globalData.sysInfo;
     let time = util.formatTime(new Date());
@@ -72,7 +71,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options.id)
+    this.setData({
+      id: options.id
+    })
   },
 
   /**

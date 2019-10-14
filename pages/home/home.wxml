@@ -18,20 +18,20 @@
       <view>
       <text class="first">今日销售额
       </text>
-      <text>{{userID? filters.toFix(qwe) :filters.toFix(todayPrice)}}</text>
+      <text>{{TodaySell}}</text>
       </view>    
       <view class="Finances">
       
       
         <view>
-          <text>今日销量
+          <text>今日采购额
           </text>
-          <text>{{userID?filters.toFix(zxc):filters.toFix(todayMount)}}</text>
+          <text>{{TodayBuy}}</text>
         </view>
         <view>
           <text>应收账款
           </text>
-          <text>{{userID?filters.toFix(asd):filters.toFix(todayMoney)}}</text>
+          <text>{{ShouldGet}}</text>
         </view>
          
       </view>
@@ -97,8 +97,8 @@
     </scroll-view>
   </view>
   <!-- 订单 -->
-  <block wx:if="{{userID}}">
-    <view class="Order" wx:for="{{order}}" wx:key="key">
+  <block wx:for="{{order}}" wx:key="key">
+    <view class="Order">
       <view class="hemo">
         <text>订单记录</text>
       </view>
@@ -125,13 +125,5 @@
         </view>
       </view>
     </view>
-  </block>
-  <block wx:if="{{!order&&userID}}">
-    <view class="orders">
-      <text>你好 你还没有交易过</text>
-    </view>
-  </block>
-  <block wx:if="{{!userID}}">
-    
   </block>
 </view>

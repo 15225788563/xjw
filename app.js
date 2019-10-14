@@ -7,9 +7,21 @@ App({
     wx.setStorageSync('logs', logs)
 
     // 登录
+    var that = this
     wx.login({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        // console.log(res);
+        var code = res.code
+        var appid = 'wx1cb90d08d6d3c0a0'
+        var secret = '73a14f7f80de0fe5a66b034f630b1766'
+        wx.request({
+          url: 'https://api.weixin.qq.com/sns/jscode2session?appid='+appid+'&secret='+secret+'&js_code='+code+'&grant_type=authorization_code',
+          success: function (res) {
+            // console.log(res.data);
+            that.globalData.openid = res.data.openid;
+            that.globalData.sessionkey = res.data.session_key
+          }
+        })
       }
     })
     // 获取用户信息
@@ -35,6 +47,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    key: "^wang7kuang2jian8zikebaiji$"
+    key: "^wang7kuang2jian8zikebaiji$",
+    url:"http://192.168.0.139:801/"
   },
 })

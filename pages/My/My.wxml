@@ -3,7 +3,7 @@
   <view class="harder">
     <view class="user">
       <view>
-        <image src="/imgs/10.png" />
+        <image src="{{userInfo.avatarUrl}}" />
       </view>
       <view>
         <text class="user">何小月 ></text>

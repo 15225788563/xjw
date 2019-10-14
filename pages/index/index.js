@@ -1,54 +1,128 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const utilMd4 = require('../../utils/MD5.js');
+const util = require('../../utils/util.js');
 
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
+    hnd:true,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+
+  onLoad: function () {
+    var that = this;
+    // 查看是否授权
+    wx.getSetting({
+      success: function (res) {
+        console.log(res)
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: function (res) {
+              //从数据库获取用户信息
+              that.queryUsreInfo();
+              用户已经授权过
+              wx.switchTab({
+                url: '../home/home'
+              })
+            }
+          });
+        }
+      }
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+
+  bindGetUserInfo: function (e) {
+    if (e.detail.userInfo) {
+      //用户按了允许授权按钮
+      var that = this;
+      console.log(e.detail.userInfo)
+      wx.sett
+      //授权成功后，传输openid判断
+      let that = this;
+      let sysInfo = app.globalData.sysInfo;
+      let time = util.formatTime(new Date());
+      let b64 = utilMd4.hexMD4(time + app.globalData.key + app.globalData.openid).toLocaleUpperCase();
+      console.log(b64)
+      wx.request({
+        url: app.globalData.url + "api/Home_Page/GetUserInfoByWxCode?wxCode=" + app.globalData.openid + "&securityStr=" + b64,
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        method: "GET",
+        success(res) {
+          // console.log(res.data.modelList)
+          if(res.data.modelList){
+            wx.setStorage({
+              key: 'modelList',
+              data: res.data.modelList[0],
+            })
+            setTimeout(function () {
+              wx.reLaunch({
+                url: '../home/home'
+              })
+            }, 500)
+          }else{
+            wx.reLaunch({
+              url: '../register/register'
+            })
+          }
+        }
       })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
+      
     } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
+      //用户按了拒绝按钮
+      wx.showModal({
+        title: '警告',
+        content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
+        showCancel: false,
+        confirmText: '返回授权',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击了“返回授权”')
+          }
         }
       })
     }
   },
+
   getUserInfo: function(e) {
-    console.log(e)
+    // console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+    // console.log(userInfo)
+  },
+
+
+  queryUsreInfo: function () { 
+    let that = this;
+    let sysInfo = app.globalData.sysInfo;
+    let time = util.formatTime(new Date());
+    let b64 = utilMd4.hexMD4(time + app.globalData.key + app.globalData.openid).toLocaleUpperCase();
+    console.log(b64)
+    wx.request({
+      url: app.globalData.url + "api/Home_Page/GetUserInfoByWxCode?wxCode=" + app.globalData.openid + "&securityStr=" + b64,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      method: "GET",
+      success(res) {
+        // console.log(res.data.modelList)
+        wx.setStorage({
+          key: 'modelList',
+          data: res.data.modelList[0],
+        })
+        setTimeout(function () {
+          wx.reLaunch({
+            url: '../home/home'
+          })
+        }, 500)
+      }
+    })
+  },
 })

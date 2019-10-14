@@ -20,15 +20,13 @@ Page{
   padding: 20rpx;
   width: 650rpx;
   margin: 100rpx auto 0 auto;
-  text-align: center;
   background: #fff;
   border-radius: 20rpx;
   box-shadow: 0 5rpx 5rpx  #d3d2d2;
 }
 .block input{
-  border: 1px solid #aaaaaa;
+  border-bottom: 1px solid #aaaaaa;
   margin: 20rpx 0;
-  border-radius: 20rpx; 
   background: #fff;
 }
 .block .btn{
@@ -44,8 +42,7 @@ Page{
   align-items: center;
 }
 
-canvas {
+.Verification button{
     width: 90px;
     height: 28px;
-    border-radius: 14px;
 }

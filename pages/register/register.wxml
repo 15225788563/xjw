@@ -6,8 +6,8 @@
   <view class="block">
     <input bindinput="userNameInput" size="mini" placeholder="请输入手机号" />
     <view class="Verification">
-    <input bindinput="veri" placeholder="请输入图形验证码" />
-      <canvas class='canvas' style="width:{{cvs.width}};height:{{cvs.height}};" canvas-id="canvas" bindtap='onReady'></canvas>
+    <input bindinput="veri" placeholder="请输入短信验证码" />
+    <button>点击获取验证码</button>
     </view>
     <input bindinput="passWord" size="mini" password="true" placeholder="请输入密码" />
     <input bindinput="pass" size="mini" password="true" placeholder="请重复密码" />
