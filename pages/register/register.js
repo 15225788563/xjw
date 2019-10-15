@@ -49,6 +49,8 @@ Page({
   getCode: function () {
     let a = this.data.phone;
     let that = this;
+    let sysInfo = app.globalData.sysInfo;
+    let time = util.formatTime(new Date());
     let myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
     if (this.data.phone == "") {
       wx.showToast({
@@ -65,10 +67,12 @@ Page({
       })
       return false;
     } else {
+      let b64 = utilMd4.hexMD4(time + that.data.phone).toLocaleUpperCase();
       wx.request({
         data: {},
-        'url': 接口地址,
+        'url': app.globalData.url + 'api/Home_Page/SendVerCodeSms?phoneNumber=' + that.data.phone +'&SecurityStr='+b64,
         success(res) {
+          console.log(that.data.phone)
           console.log(res.data.data)
           that.setData({
             iscode: res.data.data
@@ -82,7 +86,6 @@ Page({
                 codename: '重新发送',
                 disabled: false
               })
-
             } else {
               that.setData({
                 codename: num + "s"
@@ -146,10 +149,14 @@ Page({
     let b64 = utilMd4.hexMD4(time  + that.data.phone + that.data.passWord + app.globalData.openid).toLocaleUpperCase();
       console.log(b64)
       wx.request({
-        url: app.globalData.url + 'api/Home_Page/AddUserByWx?userName=' + phone + '&passWord=' + passWord + '&wxCode=' + app.globalData.openid+'&securityStr'+b64,
+        url: app.globalData.url + 'api/Home_Page/AddUserByWx?userName=' + that.data.phone + '&passWord=' + that.data.passWord + '&wxCode=' + app.globalData.openid+'&securityStr='+b64,
         header: {
           'content-type': 'application/json'
         },
+        data:{
+          cpde:that.data.code
+        },
+        method:"POST",
         success(res) {
           console.log(res.data)
         }
