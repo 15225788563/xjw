@@ -55,6 +55,21 @@ Page({
         icon: 'none',
         duration: 1000
       })
+      var num = 61;
+      var timer = setInterval(function () {
+        num--;
+        if (num <= 0) {
+          clearInterval(timer);
+          that.setData({
+            codename: '重新发送',
+            disabled: false
+          })
+        } else {
+          that.setData({
+            codename: num + "s"
+          })
+        }
+      }, 1000)
       return false;
     } else if (!myreg.test(this.data.phone)) {
       wx.showToast({
@@ -62,6 +77,21 @@ Page({
         icon: 'none',
         duration: 1000
       })
+      var num = 61;
+      var timer = setInterval(function () {
+        num--;
+        if (num <= 0) {
+          clearInterval(timer);
+          that.setData({
+            codename: '重新发送',
+            disabled: false
+          })
+        } else {
+          that.setData({
+            codename: num + "s"
+          })
+        }
+      }, 1000)
       return false;
     } else {
       // let sysInfo = app.globalData.sysInfo;
@@ -71,7 +101,7 @@ Page({
       wx.request({
         'url': app.globalData.url + 'api/Home_Page/SendVerCodeSms?phoneNumber=' + phone + '&SecurityStr=' + b64,
         success(res) {
-          console.log(res.data)
+          // console.log(res.data)
           // that.setData({
           //   iscode: res.data.data
           // })
@@ -140,7 +170,7 @@ Page({
       })
     } else{
     let b64 = utilMd4.hexMD4(time  + that.data.phone + that.data.passWord + app.globalData.openid).toLocaleUpperCase();
-      console.log(b64)
+      // console.log(b64)
       wx.request({
         url: app.globalData.url + 'api/Home_Page/AddUserByWx?userName=' + that.data.phone + '&passWord=' + that.data.passWord + '&wxCode=' + app.globalData.openid+'&securityStr='+b64,
         header: {
@@ -151,7 +181,7 @@ Page({
         },
         method:"POST",
         success(res) {
-          console.log(res.data)
+          // console.log(res.data)
         }
       })
     }
