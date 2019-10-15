@@ -1,9 +1,7 @@
 // pages/register/register.js
 const app = getApp()
-const utilMd4 = require('../../utils/MD5.js');
 const util = require('../../utils/util.js');  
-const Mcaptcha = require('../../utils/mcaptcha.js');
-
+const utilMd4 = require('../../utils/MD5.js');
 Page({
 
   /**
@@ -46,11 +44,10 @@ Page({
       code: e.detail.value
     })
   },
-  getCode: function () {
-    let a = this.data.phone;
+
+  //获取验证码
+  getVerificationCode() {
     let that = this;
-    let sysInfo = app.globalData.sysInfo;
-    let time = util.formatTime(new Date());
     let myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
     if (this.data.phone == "") {
       wx.showToast({
@@ -67,16 +64,17 @@ Page({
       })
       return false;
     } else {
-      let b64 = utilMd4.hexMD4(time + that.data.phone).toLocaleUpperCase();
+      // let sysInfo = app.globalData.sysInfo;
+      let time = util.formatTime(new Date());
+      let phone = that.data.phone
+      let b64 = utilMd4.hexMD4(time + app.globalData.key + phone).toLocaleUpperCase();
       wx.request({
-        data: {},
-        'url': app.globalData.url + 'api/Home_Page/SendVerCodeSms?phoneNumber=' + that.data.phone +'&SecurityStr='+b64,
+        'url': app.globalData.url + 'api/Home_Page/SendVerCodeSms?phoneNumber=' + phone + '&SecurityStr=' + b64,
         success(res) {
-          console.log(that.data.phone)
-          console.log(res.data.data)
-          that.setData({
-            iscode: res.data.data
-          })
+          console.log(res.data)
+          // that.setData({
+          //   iscode: res.data.data
+          // })
           var num = 61;
           var timer = setInterval(function () {
             num--;
@@ -95,11 +93,6 @@ Page({
         }
       })
     }
-  },
-  //获取验证码
-  getVerificationCode() {
-    this.getCode();
-    var that = this
     that.setData({
       disabled: true
     })

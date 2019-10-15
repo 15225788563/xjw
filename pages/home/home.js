@@ -11,10 +11,6 @@ Page({
     hemo:"订单记录",
     search: "/imgs/13.png",
     img:"/imgs/3.png",
-    todayPrice:0.00,
-    todayMount: 0.00,
-    todayMoney:0.00,
-    userName:13183181292,
     lands:"",
     nav:[
         {

@@ -48,7 +48,7 @@ Page({
     let b64 = utilMd4.hexMD4(time + app.globalData.key + name + pass).toLocaleUpperCase();
     console.log(b64)
     wx.request({
-      url: 'http://192.168.0.139:801/api/Home_Page/UserLogin?userName=' + name + '&passWord=' + pass+'&loginIp='+""+'&securityStr=' + b64,
+      url: app.globalData.url +'api/Home_Page/UserLogin?userName=' + name + '&passWord=' + pass+'&loginIp='+""+'&securityStr=' + b64,
       header: {
         'content-type': 'application/json' // 默认值
       },
