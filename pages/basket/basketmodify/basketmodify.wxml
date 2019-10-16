@@ -18,13 +18,13 @@
     </view>
     <block wx:for="{{list}}" wx:key="key">
       <view class="list">
-        <view class='{{num==item.id?"active":"listname"}}' data-num='{{item.id}}' catchtap="changeOil">
+        <view class='{{num==index?"active":"listname"}}' data-num='{{index}}' catchtap="changeOil">
           <image src="/imgs/1.png" />
-          <text>{{item.ordername}}</text>
+          <text>{{item.Capacity}}cm筐子</text>
         </view>
         <view class="listmoney" >
-          <text class="txt">租金：{{item.orderrent}}</text>
-          <text class="txt">押金：{{item.orderdeposit}}</text>
+          <text class="txt">租金：{{item.RentPrice}}</text>
+          <text class="txt">押金：{{item.DepositPrice}}</text>
         </view>
       </view>
     </block>

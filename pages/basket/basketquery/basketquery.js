@@ -1,4 +1,7 @@
 // pages/basket/basketquery/basketquery.js
+const app = getApp()
+const util = require('../../../utils/util.js');
+const utilMd4 = require('../../../utils/MD5.js');
 Page({
 
   /**
@@ -6,35 +9,6 @@ Page({
    */
   data: {
     num: 4,
-    Orderlist:[
-      { 
-        orderid:4586125874,
-        orderstate: "等待商家付款",
-        orderStatuscode:1,
-        ordername:"50cm筐子",
-        orderdeposit:30,
-        orderrent:1,
-        ordernumber:100
-      },
-      {
-        orderid: 4586125874,
-        orderstate: "等待商家取筐",
-        orderStatuscode: 2,
-        ordername: "25cm筐子",
-        orderdeposit: 30,
-        orderrent: 0.5,
-        ordernumber: 200
-      },
-      {
-        orderid: 4586125874,
-        orderstate: "已完成",
-        orderStatuscode: 3,
-        ordername: "100cm筐子",
-        orderdeposit: 30,
-        orderrent: 2,
-        ordernumber: 50
-      }
-    ]
   },
 
   /**
@@ -62,9 +36,55 @@ Page({
    * 自定义函数--导航栏切换样式
    */
   changeOil: function (e) {
-    console.log(e.target.dataset.num);
+    var that = this
+    // console.log(e.target.dataset.num);
     this.setData({
       num: e.target.dataset.num
+    })
+    switch(e.target.dataset.num){
+      case '4':
+        that.query("")
+        break;
+      case '1':
+        that.query(0)
+        break; 
+      case '2':
+        that.query(2)
+        break;
+      case '3':
+        that.query(3)
+        break;
+    }
+  },
+
+  query:function(e){
+    let key = e;
+    let count = 10;
+    // console.log(key)
+    let that = this
+    let sysInfo = app.globalData.sysInfo;
+    let time = util.formatTime(new Date());
+    wx.getStorage({
+      key: 'modelList',
+      success: function(res) {
+        // console.log(res.data)
+        let userid = res.data.ID
+        let name = res.data.UserName
+        let b64 = utilMd4.hexMD4(time + app.globalData.key + userid + name + 0 + count + key).toLocaleUpperCase();
+        
+        wx.request({
+          url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + 0 + '&count=' + count +'&type='+key+'&securityStr='+b64,
+          header: {
+            'content-type': 'application/json'
+          },
+          success(res) {
+            // console.log(res.data.modelList)
+            that.setData({
+              Orderlist: res.data.modelList
+            })
+          }
+        })
+      },
     })
   },
 
@@ -72,7 +92,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
+    let sysInfo = app.globalData.sysInfo;
+    let time = util.formatTime(new Date());
+    let b64 = utilMd4.hexMD4(time+app.globalData.key+0+10).toLocaleUpperCase();
+    wx.request({
+      url: app.globalData.url + 'api/Basket_/GetBasketOrderStatus?start=0&count=10&securityStr=' + b64,
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        // console.log(res.data.modelList)
+      }
+    })
 
+    that.query("")
   },
 
   /**

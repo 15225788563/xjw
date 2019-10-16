@@ -111,7 +111,7 @@ Page({
     wx.getStorage({
       key: 'modelList',
       success: function(res) {
-        // console.log(res.data.ID)
+        console.log(res.data.ID)
 
         _this.setData({
           userID: res.data.ID

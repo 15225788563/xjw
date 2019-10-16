@@ -1,4 +1,7 @@
 // pages/basket/basketmodify/basketmodify.js
+const app = getApp()
+const util = require('../../../utils/util.js');
+const utilMd4 = require('../../../utils/MD5.js');
 Page({
 
   /**
@@ -8,39 +11,20 @@ Page({
     status:0,
     number:1,
     Days:1,
-    num:1,
-    list: [
-      {
-        id:1,
-        ordername: "25cm筐子",
-        orderdeposit: 30,
-        orderrent: 0.5,
-      },
-      {
-        id:2,
-        ordername: "50cm筐子",
-        orderdeposit: 30,
-        orderrent: 1,
-      },
-      {
-        id:3,
-        ordername: "100cm筐子",
-        orderdeposit: 30,
-        orderrent: 2,
-      }
-    ],
+    num:0,
   },
 
   /**
    * 自定义函数--切换选中
    */
   changeOil:function(e){
-    console.log(e.currentTarget.dataset.num)
-    var key = e.currentTarget.dataset.num-1
+    var key = e.currentTarget.dataset.num
+    // console.log(key)
     this.setData({
       num: e.currentTarget.dataset.num,
-      deposit:this.data.list[key].orderdeposit,
-      rent: this.data.list[key].orderrent,
+      deposit: this.data.list[key].RentPrice,
+      rent: this.data.list[key].DepositPrice,
+      bastet:this.data.list[key]
     })
   },
 
@@ -114,9 +98,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      deposit: this.data.list[0].orderdeposit,
-      rent: this.data.list[0].orderrent,
+    let that = this
+    let sysInfo = app.globalData.sysInfo;
+    let time = util.formatTime(new Date());
+    let b64 = utilMd4.hexMD4(time + app.globalData.key + 0).toLocaleUpperCase();
+    wx.request({
+      url: app.globalData.url + 'api/Basket_/GetBasketTypeList?start='+0+'&count='+''+'&securityStr=' + b64,
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        // console.log(res.data)
+        that.setData({
+          list: res.data.modelList,
+          deposit: res.data.modelList[0].RentPrice,
+          rent: res.data.modelList[0].DepositPrice, 
+          bastet: res.data.modelList[0]
+        })
+      }
     })
   },
 

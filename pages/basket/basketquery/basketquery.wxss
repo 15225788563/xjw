@@ -6,6 +6,7 @@ Page{
   width: 100%;
   position:fixed;
   top: 0;
+  z-index: 999;
 }
 .harder{
   padding: 0 30rpx;
@@ -73,6 +74,21 @@ Page{
 .Order>.list>.listbody>.order{
   display: flex;
   align-items: center;
+}
+.Order>.list>.listbody>.Waitingbasket{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Order>.list>.listbody>.Waitingbasket>.block{
+  font-size: 22rpx;
+  color: #696768;
+}
+.Order>.list>.listbody>.Totals{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 .Order>.list>.listbody>.Total{
   font-size: 22rpx;
