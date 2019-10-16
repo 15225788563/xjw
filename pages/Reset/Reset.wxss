@@ -1,0 +1,62 @@
+
+Page{
+  background: #f1f4f2;
+}
+.harder{
+  font-size: 50rpx;
+  height: 150rpx;
+  background: #09c15f;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+}
+.block{
+  padding: 20rpx;
+  width: 650rpx;
+  margin: 100rpx auto 0 auto;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 5rpx 10rpx  #d3d2d2;
+}
+.block input{
+  margin: 20rpx 0;
+  background: #fff;
+  font-size: 26rpx;
+}
+.block .btn{
+  display: flex;
+  justify-content: space-around;
+}
+.block .land{
+  width: 100%;
+  background: #09c15f;
+  color: #fff
+}
+
+.changeInfoName{
+  position: relative;
+  height: 80rpx;
+  width: 100%;
+  background: #fff;
+  margin-bottom: 20rpx;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #aaaaaa;
+  display: flex;
+  align-items: center;
+}
+.codeBtn::after{
+  border:none;
+}
+.codeBtn{
+  position: absolute;
+  background: #fff;
+  border-radius: 0;
+  right: 0;
+  top: 0;
+  color: #09c15f;
+  width: 30%;
+  font-size: 26rpx;
+  height: 60rpx;
+}

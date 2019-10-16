@@ -1,6 +1,6 @@
-// pages/register/register.js
+// pages/Reset/Reset.js
 const app = getApp()
-const util = require('../../utils/util.js');  
+const util = require('../../utils/util.js');
 const utilMd4 = require('../../utils/MD5.js');
 Page({
 
@@ -12,15 +12,10 @@ Page({
     code: '',//验证码
     iscode: null,//用于存放验证码接口里获取到的code
     codename: '获取验证码',
-    passWord:'',
-    pass:''
+    passWord: '',
+    pass: ''
   },
 
-  
-
-  /**
-   * 自定义函数 获取手机号
-   */
   getPhoneValue: function (e) {
     this.setData({
       phone: e.detail.value
@@ -99,7 +94,7 @@ Page({
       disabled: true
     })
   },
-  //提交表单信息
+
   register: function () {
     let that = this;
     let sysInfo = app.globalData.sysInfo;
@@ -134,24 +129,24 @@ Page({
         duration: 1000
       })
       return false;
-    } else if(this.data.passWord != this.data.pass){
+    } else if (this.data.passWord != this.data.pass) {
       wx.showToast({
         title: '重复密码错误',
         icon: 'none',
         duration: 1000
       })
-    } else{
-    let b64 = utilMd4.hexMD4(time  + that.data.phone + that.data.passWord + app.globalData.openid).toLocaleUpperCase();
+    } else {
+      let b64 = utilMd4.hexMD4(time + that.data.phone + that.data.passWord).toLocaleUpperCase();
       // console.log(b64)
       wx.request({
-        url: app.globalData.url + 'api/Home_Page/AddUserByWx?userName=' + that.data.phone + '&passWord=' + that.data.passWord + '&wxCode=' + app.globalData.openid+'&securityStr='+b64,
+        url: app.globalData.url + 'api/Home_Page/UpdatePw?userName=' + that.data.phone + '&passWord=' + that.data.passWord + '&securityStr=' + b64,
         header: {
           'content-type': 'application/json'
         },
-        data:{
-          cpde:that.data.code
+        data: {
+          cpde: that.data.code
         },
-        method:"POST",
+        method: "POST",
         success(res) {
           // console.log(res.data)
         }
@@ -159,14 +154,12 @@ Page({
     }
   },
 
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
   },
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -1,6 +1,6 @@
 {
   "pages": [
-  
+    "pages/Reset/Reset",
     "pages/index/index",
     "pages/home/home",
     "pages/Reportform/Report form",
@@ -19,6 +19,7 @@
     "pages/basket/return/return",
     "pages/basket/order/order",
     "pages/register/register",
+    
     "pages/Land/Land"
   ],
   "tabBar": {
