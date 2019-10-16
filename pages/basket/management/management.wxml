@@ -1,0 +1,31 @@
+<view class="Management">
+   <view class="header">
+      <text class="left">返回</text>
+      <text class="cent">筐子详情</text>
+   </view>
+   <view class="Details">
+      <block wx:for="{{lists}}">
+      <view class="list">
+        <view class="top">
+          <view class="return">归还人：{{item.returned}}</view>
+          <view class="retime">归还时间：{{item.retime}}</view>  
+        </view>
+        <view class="center">
+         <view class="center_l">筐子编号： </view>
+         <view class="text" wx:for="{{nums}}">
+           <text>{{item.number}}</text>
+            <text>{{item.number1}}</text>
+            <text>{{item.number2}}</text>
+         </view>
+        </view>  
+        <view class="bottom">
+          <view class="paytime">支付时间：{{item.paytime}}</view>
+          <view class="numb">共{{item.num}}个筐子</view>
+          <view class="total">
+          押金共计：<text>{{item.money}}</text>
+          </view>
+        </view>
+      </view>
+     </block>
+   </view>
+</view>

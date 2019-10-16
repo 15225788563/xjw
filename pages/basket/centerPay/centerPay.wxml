@@ -1,0 +1,23 @@
+  
+<view class="header">
+ <view class="headerChild">
+ <view class="hraderl"><image src="/imgs/1.png"></image><text class="back">返回</text> </view>
+ <view class="hraderz">完成支付</view>
+ <view class="hraderr"></view>
+ </view>
+ </view>
+
+ <view class="success">支付成功</view> 
+ <icon type="success" size="40"  class="dui"></icon>
+
+ <view class="body">
+ <view>订单号：12544844466</view>
+ <view>付款金额：1580元</view>
+ <view>交易时间：2019.6.14</view>
+ <view>交易状态：成功</view>
+ </view>
+
+
+ <button class="cha" >查看订单</button>
+
+ <button class="backs">返回主页</button>

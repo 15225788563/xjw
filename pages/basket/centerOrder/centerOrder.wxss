@@ -1,0 +1,228 @@
+   
+.header{
+  width: 100%;
+  height: 129rpx;
+  background: #33da82;
+  display: flex;
+  position: relative;
+   
+  
+}
+.headerChild{
+  width:670rpx ;
+  height:46rpx ;
+   position: absolute;
+  top: 61rpx;
+  left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.hraderl{
+ width:112rpx ;
+ height:46rpx ;
+   
+}
+.hraderl image{
+  width: 46rpx;
+  height: 46rpx;
+}
+ 
+.back{
+font-size: 25rpx;
+text-align: center;
+position: relative;
+left:10rpx ;
+top:-12rpx ;
+}
+.hraderz{
+ width:146rpx ;
+ height:46rpx ;
+  display: flex;
+ justify-content:center;
+ align-items: center;
+ font-size: 32rpx;
+ font-weight: bold;
+ 
+}
+
+.hraderr{
+ width:41rpx ;
+ height:46rpx ;
+ 
+}
+.hraderr image{
+  width:40rpx ;
+  height: 40rpx;
+  display: flex;
+ justify-content:center;
+ align-items: center;
+}
+
+
+
+
+.binkman{
+  width: 100%;
+  height: 276rpx;
+  background: white;
+  margin: auto;
+  
+  position: relative;
+ 
+
+}
+ 
+.kuangzi{
+  width: 100%;
+  height:184rpx;
+   
+  border-bottom:1rpx solid #dcdcdc ;
+  position: absolute;
+  top: -20rpx;
+}
+.tu image{
+  width:132rpx ;
+  height: 136rpx;
+  position: absolute;
+  top:37rpx ;
+  left: 18rpx;
+}
+.cm{
+  font-size: 24rpx;
+  position: absolute;
+  top:63rpx ;
+  left:169rpx ;
+  font-weight: bold;
+}
+.yajin{
+  font-size: 19rpx;
+  position: absolute;
+  left:169rpx ;
+  top: 110rpx;
+
+}
+.fen{
+  margin-left: 27rpx;
+}
+.zhujin{
+  font-size: 19rpx;
+  position: absolute;
+  left:169rpx ;
+  top: 136rpx;
+}
+.daprice{
+  font-size: 19rpx;
+  position: absolute;
+  left:619rpx ;
+  top: 136rpx;
+}
+ .totle{
+  font-size: 24rpx;
+  position: absolute;
+  top:182rpx ;
+  left: 524rpx;
+ }
+
+ .pei{
+   width: 693rpx;
+   height: 112rpx;
+    position: absolute;
+   top: 165rpx;
+   left: 27rpx;
+  
+ }
+ .pei text{
+font-size: 24rpx;
+
+
+ }
+ .kehu{
+   margin-left: 465rpx;
+ }
+ .jidan{
+   font-size: 19rpx;
+   color:#c1c1c1;
+   
+ }
+
+ .little{
+   width: 100%;
+   height: 65rpx;
+   background: #f5f5f5; 
+   position: relative;
+   margin: auto;
+   display: flex;
+   align-items: center;
+ }
+
+ .little text{
+   
+   font-size: 22rpx;
+ }
+ .tex{
+   margin-left: 500rpx;
+ }
+ .wan{
+   color: #f73430;
+ }
+
+
+
+
+ .totlepricel{
+  width:96rpx ;
+  height: 128rpx;
+ }
+ .totleprice{
+  width:690rpx;
+  height: 128rpx;
+  position: relative;
+  top: 17rpx;
+  left: 30rpx;
+  font-size: 23rpx;
+  display: flex;
+  justify-content: space-between;
+ } 
+ .totlepricer{
+  width:104rpx ;
+  height: 128rpx;
+  }
+ .san{
+   position: relative;
+   left: 54rpx;
+ }
+ .wu{
+   position: relative;
+   left: 54rpx;
+ }
+  
+  .shifu{
+   width:652rpx ;
+  height: 76rpx;
+   position: relative;
+   left: 30rpx;
+   font-size: 22rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  }
+  .qian{
+   position: relative;
+   left: 41rpx;
+   color: #f72d2b;
+  }
+  .button{
+    width:467rpx ;
+    height:75rpx ;
+    background: #33da82;
+    color:white;
+    font-size:29rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10rpx;
+    margin-top: 216rpx;
+  
+  }

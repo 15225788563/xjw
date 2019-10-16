@@ -1,0 +1,18 @@
+<view class="return">
+   <view class="header">
+      <text class="left"><image class="background" src="../../imgs/1.png" style="width:50rpx;height:50rpx;"></image> 返回</text>
+      <text class="cent">归还筐子</text>
+   </view>
+   <view class="rebasket" wx:for='{{rebasket}}'>
+      <view class="name">还筐人：{{item.name}}</view>
+      <view class="numTime">
+        <view>还筐数量：{{item.num}}</view>
+        <view>还筐时间：{{item.time}}</view>
+      </view>
+      <view class="Details">
+        <view class="det">还筐详情</view>
+        <view class="money">实退：{{item.money}}</view>
+      </view>
+   </view>
+   
+</view>

@@ -1,0 +1,128 @@
+.order{
+  padding: 0;margin: 0;
+  height: 100%;
+  background-color: rgb(235, 232, 232);
+}
+.header{
+  background-color: #09c15f;
+  height: 128rpx;
+  padding-top:25rpx; 
+}
+.left image{
+  position: absolute;
+  top: 10rpx;
+  left: 10rpx;
+}
+.header .left{
+  position: relative;
+  height: 150rpx;
+  line-height: 150rpx;
+  margin: 0 100rpx;
+}
+.header .cent{
+  margin-left: 25rpx;
+  font-weight: bold;
+  font-size: 42rpx;
+}
+.main{
+  border: 1px solid #fff;
+  width: 90%;
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin: auto;
+}
+.main .mony{
+  margin:23rpx; 
+}
+.mony text{
+  color: #f00;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.real{
+  border-top: 1px solid #ccc;
+}
+.real .name{
+  border-left: 15rpx solid #09c15f;
+  padding-left:12rpx; 
+  margin: 25rpx;
+}
+.realtop{
+  font-size: 25rpx;
+  color: #999;
+  margin-left: 28rpx;
+  line-height: 45rpx;
+  margin-bottom: 10rpx;
+}
+.realtop text{
+  float: right;
+  margin-right: 15rpx;
+}
+.Details{
+  height: auto;
+}
+.list{
+  width: 95%;
+  height: 350rpx;
+  background-color: #fff;
+  margin: 15rpx auto;
+  border-radius: 15rpx;
+}
+.list .top{
+  padding: 24rpx 28rpx;
+  display: flex;
+  font-size: 26rpx;
+  font-weight: bold;
+}
+.return{
+  flex: 1;
+}
+.center{
+  margin-left: 28rpx;
+  font-size: 24rpx;
+  height: 200rpx;
+  width: 100%;
+  display: flex;
+}
+.center .text{
+  font-size: 22rpx;
+  margin: 10rpx 50rpx 10rpx 20rpx;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  color: #999;
+}
+.text view{
+  margin: 15rpx;
+  flex: 1;
+}
+.bottom{
+  border-top:1rpx solid rgb(235, 232, 232); 
+  font-size: 24rpx;
+  display: flex;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 0 28rpx;
+}
+.bottom .numb{
+  margin:0 20rpx 0 375rpx;
+  font-size: 20rpx;
+}
+.bottom .total{
+  font-size: 20rpx;
+}
+.total {
+  font-size: 26rpx;
+  font-weight: bold;
+}
+.botton {
+  text-align: center;
+  margin: 55rpx;
+}
+.botton button{
+  width: 70%;
+  height: 80rpx;
+  font-size: 30rpx;
+  line-height: 80rpx;
+}
