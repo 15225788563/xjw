@@ -55,21 +55,7 @@ Page({
         icon: 'none',
         duration: 1000
       })
-      var num = 61;
-      var timer = setInterval(function () {
-        num--;
-        if (num <= 0) {
-          clearInterval(timer);
-          that.setData({
-            codename: '重新发送',
-            disabled: false
-          })
-        } else {
-          that.setData({
-            codename: num + "s"
-          })
-        }
-      }, 1000)
+      disabled: false
       return false;
     } else if (!myreg.test(this.data.phone)) {
       wx.showToast({
@@ -77,21 +63,7 @@ Page({
         icon: 'none',
         duration: 1000
       })
-      var num = 61;
-      var timer = setInterval(function () {
-        num--;
-        if (num <= 0) {
-          clearInterval(timer);
-          that.setData({
-            codename: '重新发送',
-            disabled: false
-          })
-        } else {
-          that.setData({
-            codename: num + "s"
-          })
-        }
-      }, 1000)
+      disabled: false
       return false;
     } else {
       // let sysInfo = app.globalData.sysInfo;

@@ -1,0 +1,44 @@
+<!-- 筐子详情 -->
+<view class="container">
+  <view class="fixed">
+    <view class="harder">
+      <view class="harders" bindtap="Return">
+      <image src="/imgs/1.png" /><text class="txt">返回</text>
+      </view>
+      <text>筐子详情</text>
+    </view>
+  </view>
+  <view class="body">
+    <block wx:for="{{list}}" wx:key="key">
+      <view class="list">
+        <view class="listharder">
+          <text>还筐人:{{item.name}}</text>
+          <text>{{item.Reserve}}</text>
+        </view>
+        <view class="listbody">
+          <view class="Basketnumber">
+            <text>筐子编号：</text>
+          </view>
+          <view class="block">
+            <block wx:for="{{item.number}}" wx:key="key" wx:for-item="i">
+              <view>{{i.number}}</view>
+            </block>
+          </view>
+        </view>
+        <view class="listfooter">
+          <text>支付时间:{{item.payment}}</text>
+          <text>共200个筐子 押金共计:<text class="rmb">￥{{item.basketnumber*30}}</text></text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="footer">
+    <view class="whole" >
+      <text catchtap="whole">查看全部∨</text>
+    </view>
+    <view class="Refresh">
+      <image src="/imgs/1.png" />
+      <text>下拉刷新</text>
+    </view>
+  </view>
+</view>

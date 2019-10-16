@@ -53,7 +53,7 @@ page{
   border-radius: 10rpx;
   text-align: center;
   background: #fff;
-  box-shadow: 0 5rpx 5rpx  #d3d2d2;
+  box-shadow: 0 5rpx 10rpx  #d3d2d2;
 }
 .Finance>view:first{
   font-size: 20rpx;
@@ -106,7 +106,7 @@ page{
   text-align: center;
   line-height: 130rpx;
   font-size: 14rpx;
-  box-shadow: 0 5rpx 5rpx  #d3d2d2;
+  box-shadow: 0 5rpx 10rpx  #d3d2d2;
 }
   .Contacts{
     margin: 15rpx 0;

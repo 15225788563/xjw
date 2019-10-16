@@ -1,0 +1,70 @@
+<!-- 订单查询 -->
+<view class="container">
+  <view class="Fixedhead">
+    <view class="harder">
+      <view class="harders" bindtap="Return">
+      <image src="/imgs/1.png" /><text class="txt">返回</text>
+      </view>
+      <text>订单查询</text>
+      <image src="/imgs/17.png" />
+    </view>
+    <view class="nav">
+        <text class='{{num==4?"active":""}}' data-num='4' catchtap="changeOil">全部</text>
+        <text class='{{num==1?"active":""}}' data-num='1' catchtap="changeOil">待付款</text>
+        <text class='{{num==2?"active":""}}' data-num='2' catchtap="changeOil">待取筐</text>
+        <text class='{{num==3?"active":""}}' data-num='3' catchtap="changeOil">已完成</text>
+    </view>
+  </view>
+  <view class="Order">
+    <block wx:for="{{Orderlist}}" wx:key="key">
+      <view class="list">
+        <view class="listharder">
+          <text>订单编号：{{item.orderid}}</text>
+          <text class="state">{{item.orderstate}}</text>
+        </view>
+        <view class="listbody">
+          <view class="order">
+            <image src="/imgs/1.png" />
+            <view class="txtblock">
+              <view>
+                <text class="name">{{item.ordername}}
+                </text>
+                <view class="money">
+                  <text class="txt">押金：{{item.orderdeposit}}×1
+                  </text>
+                  <text class="txt">租金：{{item.orderrent}}×1
+                  </text>
+                </view>
+              </view>
+              <text class="txt">×{{item.ordernumber}}</text>
+            </view>
+          </view>
+          <view class="Total">
+            <text>共{{item.ordernumber}}件</text>
+            <text>合计:{{item.ordernumber*item.orderdeposit+item.ordernumber*item.orderrent}}</text>
+          </view>
+        </view>
+        <view class="listfooter">
+          <block wx:if="{{item.orderStatuscode==1}}">
+            <text>订单详情</text>
+            <view>
+              <button size="mini" class="active">支付</button>
+              <button size="mini" catchtap="modify">修改</button>
+              <button size="mini">取消</button>
+            </view>
+          </block>
+          <block wx:if="{{item.orderStatuscode==2}}">
+            <text>订单详情</text>
+            <view>
+              <button size="mini" class="active">确认收货</button>
+              <button size="mini">取消</button>
+            </view>
+          </block>
+          <block wx:if="{{item.orderStatuscode==3}}">
+            <text catchtap="details">筐子详情</text>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

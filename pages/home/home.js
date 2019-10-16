@@ -57,7 +57,31 @@ Page({
    */
   navbtn(e){
     let id = e.currentTarget.dataset.navid;
-    console.log(id);
+    switch(id){
+      case '1':
+        console.log('筐子管理')
+        wx.reLaunch({
+          url: "../basket/baskethome/baskethome"
+        })
+        break;
+      case '2':
+        console.log(id)
+        break;
+      case '3':
+        console.log(id)
+        break;
+      case '4':
+        console.log(id)
+        break;
+      case '5':
+        console.log(id)
+        break;
+      case '6':
+        console.log(id)
+        break;
+      case '7':
+        console.log(id)
+    }
     
   },
   Lands(){
@@ -87,7 +111,7 @@ Page({
     wx.getStorage({
       key: 'modelList',
       success: function(res) {
-        console.log(res.data.ID)
+        // console.log(res.data.ID)
 
         _this.setData({
           userID: res.data.ID
@@ -141,7 +165,7 @@ Page({
               TodayBuy: res.data.modelList[0].TodayBuy,
               TodaySell: res.data.modelList[0].TodaySell
             })
-            console.log(res.data.modelList[0])
+            // console.log(res.data.modelList[0])
           }
         })
         //常用联系人

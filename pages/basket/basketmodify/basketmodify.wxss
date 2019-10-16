@@ -1,0 +1,154 @@
+/* pages/basket/basketmodify/basketmodify.wxss */
+.harder{
+  padding: 0 300rpx 0 30rpx;
+  height: 128rpx;
+  background: #33da82;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20rpx;
+}
+.harder .harders{
+  display: flex;
+  align-items: center;
+}
+.harder .harders .txt{
+  margin-left: 10rpx;
+  font-size: 28rpx;
+}
+.harder image{
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.hemo{
+  border-left: 6rpx solid #09c15f;
+  padding-left: 2%;
+}
+
+.body{
+  padding: 15rpx 30rpx 0 30rpx;
+}
+
+.body>.name{
+  font-size: 28rpx;
+  line-height: 28rpx;
+  margin: 10rpx 0 20rpx 0;
+}
+.body image{
+  width: 42rpx;
+  height: 42rpx;
+}
+.body .list{
+  height: 77rpx;
+  border-top: 2px solid #f4f4f4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.body .listname{
+  display: flex;
+  align-items: center;
+  justify-content: space-around; 
+  width: 185rpx;
+  height: 53rpx;
+  border: 1px solid #fff;
+  font-size: 24rpx;
+}
+.body .listmoney{
+  font-size: 24rpx;
+}
+.active{
+  display: flex;
+  align-items: center;
+  justify-content: space-around; 
+  width: 185rpx;
+  height: 53rpx;
+  border: 1px solid #33da82;
+  color: #33da82;
+  font-size: 24rpx;
+}
+
+/*主容器*/  
+.stepper {  
+    width:90px;  
+    height: 26px;  
+    /*给主容器设一个边框*/  
+    border: 1rpx solid #fff;  
+    background: #e5e5e5;
+    display: flex;
+}  
+  
+/*加号和减号*/  
+.stepper text {  
+    width: 48rpx;  
+    line-height: 42rpx;  
+    text-align: center;  
+    color: #aaaaaa;
+}  
+  
+/*数值*/  
+.stepper input {  
+    background: #aaaaaa;
+    width: 80rpx;  
+    height: 50rpx;  
+    text-align: center;  
+    font-size: 24rpx;  
+    color: #000000;
+}  
+.stepper .disabled{  
+    color: #ccc;  
+}
+.placeholder{
+  background: #aaaaaa
+}
+.focus{
+  background: #33da82;
+}
+
+.number,.Days{
+  width: 100%;
+  height: 86rpx;
+  border-top: 2px solid #f4f4f4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary{
+  height: 142rpx;
+  border-top: 2px solid #f4f4f4;
+}
+
+.Remarks{
+  height: 230rpx;
+  border-top: 2px solid #f4f4f4;
+    margin-bottom: 110rpx;
+}
+.Remarks view{
+  height: 65rpx;
+}
+
+.btn{
+  width: 100%;
+  border-top: 2px solid #f4f4f4;
+}
+.btn button{
+  width: 475rpx;
+  height: 75rpx;
+  display: flex;
+  justify-content: center;
+  background: #33da82;
+  color: #fff;
+  font-size: 36rpx;
+  margin-top: 40rpx;
+}
+
+textarea{
+  white-space: normal;
+  width: 100%;
+  height: 100%;
+  padding: 15rpx;
+  background: #f5f5f5;
+  border-radius: 20rpx;
+}

@@ -49,15 +49,15 @@ Page({
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
       var that = this;
-      console.log(e.detail.userInfo)
+      // console.log(e.detail.userInfo)
       wx.sett
       //授权成功后，传输openid判断
       let that = this;
       let sysInfo = app.globalData.sysInfo;
       let time = util.formatTime(new Date());
       let b64 = utilMd4.hexMD4(time + app.globalData.key + app.globalData.openid).toLocaleUpperCase();
-      console.log(b64)
-      console.log(app.globalData.openid)
+      // console.log(b64)
+      // console.log(app.globalData.openid)
       wx.request({
         url: app.globalData.url + "api/Home_Page/GetUserInfoByWxCode?wxCode=" + app.globalData.openid + "&securityStr=" + b64,
         header: {
@@ -65,7 +65,7 @@ Page({
         },
         method: "GET",
         success(res) {
-          console.log(res.data.modelList)
+          // console.log(res.data.modelList)
           if(res.data.modelList){
             console.log("已注册 调到登录页")
             wx.setStorage({
@@ -128,6 +128,7 @@ Page({
       success(res) {
         // console.log(res.data.modelList)
        if(res.data.modelList){
+         console.log("已注册 调到登录页")
          wx.setStorage({
            key: 'modelList',
            data: res.data.modelList[0],
@@ -138,6 +139,7 @@ Page({
            })
          }, 500)
        }else{
+         console.log("还未注册 调到注册页")
          wx.reLaunch({
            url: '../register/register'
          })

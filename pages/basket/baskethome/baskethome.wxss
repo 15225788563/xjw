@@ -1,0 +1,95 @@
+/* pages/Share/Share.wxss */
+Page{
+  background: #f5f5f5;
+}
+.harder{
+  padding: 0 30rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items:flex-start;
+  background: #34db83;
+  height: 283rpx;
+  padding-top: 60rpx;
+}
+.harder>.Search{
+  position: relative;
+}
+.harder>.Search>image{
+  position: absolute;
+  top: 5.5rpx;left: 15rpx;bottom: 0;right: 0;
+  width: 42rpx;
+  height: 42rpx;
+}
+.harder>view>image{
+  width: 45rpx;
+  height: 45rpx;
+}
+.harder>view>input{
+  background: #fff;
+  width: 572rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 10rpx;
+  padding-left: 60rpx;
+  font-size: 10rpx;
+  height: 46rpx;
+}
+
+.nav{
+  height: 180rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30rpx;
+}
+.nav image{
+  width: 81rpx;
+  height: 81rpx;
+  display: block;
+
+}
+.nav text{
+  font-size: 20rpx;
+}
+
+.Order .list{
+  padding: 10rpx 30rpx;
+  height: 195rpx;
+  background: #fff;
+  margin-bottom: 10rpx;
+  line-height: 30rpx;
+}
+.Order .orders{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Order .orderx{
+  width: 100%;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+.Order .Ordername{
+  font-size: 24rpx;
+}
+.Order .txxt{
+  font-family: 'SimSun';
+  font-size: 20rpx;
+}
+.hemo{
+  height: 24rpx;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  border-left: 6rpx solid #09c15f;
+  padding-left: 2%;
+  margin-bottom: 6rpx;
+}
+.btn{
+  width: 120rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  font-size: 17rpx;
+  background: #33da82;
+  border-radius: 20rpx;
+  margin-right: 0rpx;
+}

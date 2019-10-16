@@ -1,0 +1,127 @@
+/* pages/basket/basketquery/basketquery.wxss */
+Page{
+  background:#f5f5f5;
+}
+.Fixedhead{
+  width: 100%;
+  position:fixed;
+  top: 0;
+}
+.harder{
+  padding: 0 30rpx;
+  height: 128rpx;
+  background: #33da82;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20rpx;
+}
+.harder .harders{
+  display: flex;
+  align-items: center;
+}
+.harder .harders .txt{
+  margin-left: 10rpx;
+  font-size: 28rpx;
+}
+.harder image{
+  width: 38rpx;
+  height: 38rpx;
+}
+.nav{
+  padding: 0 30rpx;
+  height: 71rpx;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav .active{
+  color: #33da82;
+  border-bottom: 6rpx solid #33da82;
+}
+.nav text{
+  font-size: 28rpx;
+}
+.Order{
+  margin-top: 240rpx;
+  padding: 0 30rpx;
+}
+.Order .list{
+  height: 386rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  margin-bottom: 12rpx;
+  
+}
+.Order .list .listharder{
+  padding: 0 21rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3rpx solid #dcdcdc;
+}
+.Order .list .listharder .state{
+  color:#f00;
+}
+.listbody{
+  padding: 40rpx 21rpx 0 21rpx;
+  border-bottom: 3rpx solid #dcdcdc;
+}
+.Order>.list>.listbody>.order{
+  display: flex;
+  align-items: center;
+}
+.Order>.list>.listbody>.Total{
+  font-size: 22rpx;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.Order>.list>.listbody>.Total>text{
+  margin-left: 30rpx;
+}
+.Order .list .listbody image{
+  width: 134rpx;
+  height: 134rpx;
+  margin-right: 15rpx;
+}
+.Order .list .listbody .txtblock{
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.Order .list .listbody .txtblock .money{
+  margin-top: 10rpx;
+  line-height: 20rpx;
+}
+.Order .list .listbody .txtblock .txt{
+  font-size: 20rpx;
+  color: #4b4b4b;
+}
+.Order .list .listfooter{
+  padding: 0 21rpx;
+  height: 86rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Order .list .listfooter text{
+  color: #33da82;
+}
+
+.Order .list .listfooter button{
+  width: 98rpx;
+  height: 50rpx;
+  font-size: 20rpx;
+  margin-left: 10rpx;
+}
+
+.Order .list .listfooter .active{
+  background: #33da82;
+  color: #fff;
+}

@@ -6,9 +6,12 @@
     "pages/Reportform/Report form",
     "pages/Share/Share",
     "pages/My/My",
+    "pages/basket/baskethome/baskethome",
+    "pages/basket/basketcomplete/basketcomplete",
+    "pages/basket/basketmodify/basketmodify",
+    "pages/basket/basketquery/basketquery",
     "pages/register/register",
     "pages/Land/Land"
-
   ],
   "tabBar": {
     "list": [

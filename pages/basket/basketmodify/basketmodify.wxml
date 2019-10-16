@@ -1,0 +1,71 @@
+<!-- 修改订单 -->
+<view class="container">
+  <view class="harder">
+    <view class="harders" bindtap="Return">
+    <image src="/imgs/1.png" /><text class="txt">返回</text>
+    </view>
+    <text>订单修改</text>
+  </view>
+  <view class="body">
+    <view class="hemo">
+      <text>基础信息</text>
+    </view>
+    <view class="name">
+      <text>客户：{{}}
+      </text>
+      <text>筐子规格
+      </text>
+    </view>
+    <block wx:for="{{list}}" wx:key="key">
+      <view class="list">
+        <view class='{{num==item.id?"active":"listname"}}' data-num='{{item.id}}' catchtap="changeOil">
+          <image src="/imgs/1.png" />
+          <text>{{item.ordername}}</text>
+        </view>
+        <view class="listmoney" >
+          <text class="txt">租金：{{item.orderrent}}</text>
+          <text class="txt">押金：{{item.orderdeposit}}</text>
+        </view>
+      </view>
+    </block>
+    <view class="number">
+      <text>租借数量</text>
+      <view class="stepper">  
+        <!-- 减号 -->  
+        <text class="disabled" bindtap="delnumber" data-index="{{index}}">-</text>  
+        <!-- 数值 -->  
+        <input type="number" class="num==1?'focus':''" data-num="{{num}}" bindchange="bindManual" value="{{number}}" bindfocus="{{focus}}"/>  
+        <!-- 加号 -->  
+        <text class="disabled" bindtap="addnumber">+</text>  
+      </view>  
+    </view>
+    <view class="Days">
+      <text>租借天数</text>
+      <view class="stepper">  
+        <!-- 减号 -->  
+        <text class="disabled" bindtap="delDays" data-index="{{index}}">-</text>  
+        <!-- 数值 -->  
+        <input type="number" bindchange="bindManual" value="{{Days}}" bindfocus="{{focus}}"/>
+        <!-- 加号 -->  
+        <text class="disabled" bindtap="addDays">+</text>  
+      </view>  
+    </view>
+    <view class="summary">
+      <text>押金：{{deposit*number}}元
+      </text>
+      <text>租金：{{rent*number}}元/天
+      </text>
+      <text>订单日期：2019.10.15
+      </text>
+    </view>
+    <view class="Remarks">
+      <view>
+      <text>备注/留言</text>
+      </view>
+      <textarea placeholder="筐子需要50个鸡蛋"></textarea>
+    </view>
+    <view class="btn">
+      <button size="mini">提交订单</button>
+    </view>
+  </view>
+</view>

@@ -4,8 +4,8 @@
   justify-content: space-around;
   align-items:flex-start;
   background: #ccc;
-  height: 100px;
-  padding-top: 10px;
+  height: 161rpx;
+  padding-top: 46rpx;
 }
 .harder>.Search{
   position: relative;
@@ -22,28 +22,28 @@
 }
 .harder>view>input{
   background: #fff;
-  width: 585rpx;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  width: 584rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 10rpx;
   padding-left: 92rpx;
-  font-size: 10px;
+  font-size: 10rpx;
   height: 46rpx;
 }
 .u-wrp-bnr {
-  margin: -60px auto 0 auto;
+  margin: -62rpx auto 0 auto;
   width: 655rpx;
-  height: 340rpx;
+  height: 172rpx;
   display: block;
   position: relative;
   background: #f0f0f0;
-  box-shadow: 0 5px 5px  #e5e5e5;
+  box-shadow: 0 5rpx 5rpx  #e5e5e5;
 }
 .u-img-slide {
   width: 100%;
   height: inherit;
 }
 .nav{
-  margin-top: 20px;
+  margin-top: 20rpx;
   display: flex;
   justify-content: space-around;
 }
@@ -54,23 +54,25 @@
 
 }
 .nav text{
-  font-size: 10px;
+  font-size: 20rpx;
   color: #666666;
 }
 
 .Order .list{
-  height: 170px;
+  height: 170rpx;
   background: #f2f2f2;
-  margin-bottom: 10px;
+  margin-bottom: 10rpx;
+  line-height: 20rpx;
 }
 .Order .list .Title{
   display: flex;
   align-items:center;
   justify-content: space-around;
-  padding: 15px 0;
+  padding: 10rpx 0;
+  font-size: 28rpx;
 }
 .Order .list .Title .time{
-  font-size: 12px;
+  font-size: 20rpx;
 }
 .Order .list .lists{
   display: flex;
@@ -78,12 +80,15 @@
   justify-content: space-around;
 }
 .Order .list .lists text{
-  font-size: 13px;
+  font-size: 20rpx;
 }
 .Order .list .lists .head{
   font-family: "SimSun";
 }
 .Order .list .lists button{
-  border-radius: 50px;
+  width: 140rpx;
+  height: 47rpx;
+  line-height: 47rpx;
+  border-radius: 50rpx;
   background: #bcbcbc;
 }
