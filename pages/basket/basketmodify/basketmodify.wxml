@@ -34,7 +34,7 @@
         <!-- 减号 -->  
         <text class="disabled" bindtap="delnumber" data-index="{{index}}">-</text>  
         <!-- 数值 -->  
-        <input type="number" class="num==1?'focus':''" data-num="{{num}}" bindchange="bindManual" value="{{number}}" bindfocus="{{focus}}"/>  
+        <input type="number" value="{{number}}" bindinput='number'/>  
         <!-- 加号 -->  
         <text class="disabled" bindtap="addnumber">+</text>  
       </view>  
@@ -45,7 +45,7 @@
         <!-- 减号 -->  
         <text class="disabled" bindtap="delDays" data-index="{{index}}">-</text>  
         <!-- 数值 -->  
-        <input type="number" bindchange="bindManual" value="{{Days}}" bindfocus="{{focus}}"/>
+        <input type="number" value="{{Days}}" bindinput='Days'/>
         <!-- 加号 -->  
         <text class="disabled" bindtap="addDays">+</text>  
       </view>  

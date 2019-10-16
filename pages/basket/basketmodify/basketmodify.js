@@ -92,11 +92,17 @@ Page({
     })
   },
 
-  focus:function(e){
-    
+  number:function(e){
+    var val = e.detail.value;
+    this.setData({
+      number:val
+    })
   },
-  bindManual:function(e){
-
+  Days: function (e) {
+    var val = e.detail.value;
+    this.setData({
+      Days:val
+    })
   },
 
   /**
