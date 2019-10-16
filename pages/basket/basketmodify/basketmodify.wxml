@@ -1,10 +1,10 @@
-<!-- 修改订单 -->
+<!-- 订单 -->
 <view class="container">
   <view class="harder">
     <view class="harders" bindtap="Return">
     <image src="/imgs/1.png" /><text class="txt">返回</text>
     </view>
-    <text>订单修改</text>
+    <text>订单</text>
   </view>
   <view class="body">
     <view class="hemo">
@@ -65,7 +65,7 @@
       <textarea placeholder="筐子需要50个鸡蛋"></textarea>
     </view>
     <view class="btn">
-      <button size="mini">提交订单</button>
+      <button catchtap="centerOrder" size="mini">提交订单</button>
     </view>
   </view>
 </view>

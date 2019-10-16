@@ -104,6 +104,11 @@ Page({
       Days:val
     })
   },
+  centerOrder:function(e){
+    wx.reLaunch({
+      url: "../../basket/centerOrder/centerOrder"
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

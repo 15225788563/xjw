@@ -70,10 +70,14 @@ Page({
     let id = e.currentTarget.dataset.navid;
     switch(id){
       case '1':
-        console.log(id)
+        wx.reLaunch({
+          url: "../../basket/basketmodify/basketmodify"
+        })
         break;
       case '2':
-        console.log(id)
+        wx.reLaunch({
+          url: "../../basket/return/return"
+        })
         break;
       case '3':
         wx.reLaunch({

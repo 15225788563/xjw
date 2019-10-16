@@ -1,7 +1,7 @@
   
  <view class="header">
  <view class="headerChild">
- <view class="hraderl"><image src="/imgs/1.png"></image><text class="back">返回</text> </view>
+ <view bindtap="Return" class="hraderl"><image src="/imgs/1.png"></image><text class="back">返回</text> </view>
  <view class="hraderz">确认订单</view>
  <view class="hraderr"> </view>
  </view>
@@ -45,4 +45,4 @@
  </view>
 
  <view class="shifu"><view>实付款</view><view class="qian">￥1580.00</view></view>
- <button class="button">立即支付</button>
+ <button class="button" catchtap="payOrder" >立即支付</button>

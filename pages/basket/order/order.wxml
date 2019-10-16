@@ -40,6 +40,6 @@
      </block>
    </view>
    <view class="botton">
-      <button type="primary" size="mini">确认收款</button>
+      <button type="primary" catchtap="confirm" size="mini">确认收款</button>
     </view>
 </view>

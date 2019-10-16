@@ -1,7 +1,7 @@
   
 <view class="header">
  <view class="headerChild">
- <view class="hraderl"><image src="/imgs/1.png"></image><text class="back">返回</text> </view>
+ <view bindtap="Return" class="hraderl"><image src="/imgs/1.png"></image><text class="back">返回</text> </view>
  <view class="hraderz">支付订单</view>
  <view class="hraderr"></view>
  </view>
@@ -34,4 +34,4 @@
     </radio-group>
     </form>
 
-    <button class="button">确认支付  ￥1530</button>
+    <button class="button" catchtap="centerPay">确认支付  ￥1530</button>

@@ -1,7 +1,7 @@
   
 <view class="header">
  <view class="headerChild">
- <view class="hraderl"><image src="/imgs/1.png"></image><text class="back">返回</text> </view>
+ <view bindtap="Return" class="hraderl"><image src="/imgs/1.png"></image><text class="back">返回</text> </view>
  <view class="hraderz">完成支付</view>
  <view class="hraderr"></view>
  </view>
@@ -18,6 +18,6 @@
  </view>
 
 
- <button class="cha" >查看订单</button>
+ <button class="cha" catchtap="" >查看订单</button>
 
- <button class="backs">返回主页</button>
+ <button class="backs" catchtap="home" >返回主页</button>

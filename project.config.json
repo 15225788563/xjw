@@ -23,7 +23,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
 	"appid": "wx1cb90d08d6d3c0a0",
-	"projectname": "miniprogram-1",
+	"projectname": "demo",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

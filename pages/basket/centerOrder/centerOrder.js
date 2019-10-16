@@ -8,6 +8,18 @@ Page({
 
   },
 
+  Return:function(e){
+    wx.reLaunch({
+      url: "../../basket/basketmodify/basketmodify"
+    })
+  },
+
+  payOrder:function(e){
+    wx.reLaunch({
+      url: "../../basket/payOrder/payOrder"
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
