@@ -73,10 +73,10 @@ Page({
       wx.request({
         'url': app.globalData.url + 'api/Home_Page/SendVerCodeSms?phoneNumber=' + phone + '&SecurityStr=' + b64,
         success(res) {
-          console.log(res.data)
-          that.setData({
-            iscode: res.data.data
-          })
+          console.log(res)
+          // that.setData({
+          //   iscode: res.data.data
+          // })
           var num = 61;
           var timer = setInterval(function () {
             num--;
@@ -127,13 +127,6 @@ Page({
         duration: 1000
       })
       return false;
-    } else if (this.data.code != this.data.iscode) {
-      wx.showToast({
-        title: '验证码错误',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
     } else if(this.data.passWord != this.data.pass){
       wx.showToast({
         title: '重复密码错误',
@@ -141,19 +134,22 @@ Page({
         duration: 1000
       })
     } else{
-    let b64 = utilMd4.hexMD4(time  + that.data.phone + that.data.passWord + app.globalData.openid).toLocaleUpperCase();
-      // console.log(b64)
+      let b64 = utilMd4.hexMD4(time + app.globalData.key + that.data.phone + that.data.passWord + app.globalData.openid).toLocaleUpperCase();
+      console.log(b64)
+      console.log(that.data.code)
+      // console.log(that.data.passWord)
+      // console.log(app.globalData.openid)
       wx.request({
         url: app.globalData.url + 'api/Home_Page/AddUserByWx?userName=' + that.data.phone + '&passWord=' + that.data.passWord + '&wxCode=' + app.globalData.openid+'&securityStr='+b64,
         header: {
           'content-type': 'application/json'
         },
         data:{
-          cpde:that.data.code
+          'code':that.data.code
         },
         method:"POST",
         success(res) {
-          // console.log(res.data)
+          console.log(res.data)
         }
       })
     }

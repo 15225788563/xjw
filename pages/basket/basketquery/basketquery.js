@@ -78,7 +78,7 @@ Page({
             'content-type': 'application/json'
           },
           success(res) {
-            // console.log(res.data.modelList)
+            console.log(res.data.modelList)
             that.setData({
               Orderlist: res.data.modelList
             })
