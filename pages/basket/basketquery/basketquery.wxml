@@ -75,7 +75,7 @@
             <text>订单详情</text>
           </block>
           <block wx:else>
-            <text>筐子详情</text>
+            <text catchtap="">筐子详情</text>
           </block>
           <block wx:if="{{item.OrderStatus==0}}">
             <view>

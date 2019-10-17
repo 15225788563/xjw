@@ -9,6 +9,9 @@ Page({
    */
   data: {
     num: 4,
+    start:0,
+    count:10,
+    Orderlist:[]
   },
 
   /**
@@ -50,12 +53,21 @@ Page({
         that.query("")
         break;
       case '1':
+        that.setData({
+          Orderlist: []
+        })
         that.query(0)
         break; 
       case '2':
+        that.setData({
+          Orderlist: []
+        })
         that.query(2)
         break;
       case '3':
+        that.setData({
+          Orderlist: []
+        })
         that.query(3)
         break;
     }
@@ -63,8 +75,12 @@ Page({
 
   query:function(e){
     let key = e;
-    let count = 10;
-    console.log(key)
+    let start = this.data.start;
+    if (key==2||key==3){
+      var count = 40
+    }else{
+      var count = 10;
+    }
     let that = this
     let sysInfo = app.globalData.sysInfo;
     let time = util.formatTime(new Date());
@@ -74,19 +90,22 @@ Page({
         // console.log(res.data)
         let userid = res.data.ID
         let name = res.data.UserName
-        let b64 = utilMd4.hexMD4(time + app.globalData.key + userid + name + 0 + count + key).toLocaleUpperCase();
+        let b64 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + count + key).toLocaleUpperCase();
         
         wx.request({
-          url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + 0 + '&count=' + count +'&type='+key+'&securityStr='+b64,
+          url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + count +'&type='+key+'&securityStr='+b64,
           header: {
             'content-type': 'application/json'
           },
           success(res) {
-            console.log(res.data.modelList)
-            that.setData({
-              Orderlist: res.data.modelList
-            })
-          }
+              // console.log(res.data.modelList)
+              var arr1 = that.data.Orderlist;
+              var arr2 = res.data.modelList;
+              arr1 = arr1.concat(arr2);
+              that.setData({
+                Orderlist: arr1
+              })
+          }, 
         })
       },
     })
@@ -163,7 +182,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    let that = this;
+    that.setData({
+      count: 10,
+      start: that.data.start + that.data.count
+    })
 
+    that.query("")
   },
 
   /**
