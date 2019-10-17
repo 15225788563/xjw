@@ -16,6 +16,15 @@ Page({
     pass: ''
   },
 
+  /**
+   * 自定义函数--返回
+   */
+  Return: function (e) {
+    wx.reLaunch({
+      url: "../My/My"
+    })
+  },
+
   getPhoneValue: function (e) {
     this.setData({
       phone: e.detail.value

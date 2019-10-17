@@ -1,6 +1,10 @@
 <view class="container">
   <view class="harder">
-    <text>重置密码</text>
+    <view class="harders" bindtap="Return">
+      <image src="/imgs/1.png" /><text class="txt">返回</text>
+      </view>
+        <text>修改密码</text>
+      <image src="/imgs/17.png" />
   </view>
   <view class="block">
     <view class='changeInfoName'>
@@ -17,7 +21,7 @@
       <input bindinput="pass" size="mini" password="true" placeholder="请重复新密码" />
     </view>
     <view class="btn">
-      <button size="mini" class="land" bindtap="register" >注册</button>
+      <button size="mini" class="land" bindtap="register" >确定重置</button>
     </view>
   </view>
 </view>

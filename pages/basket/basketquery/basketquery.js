@@ -27,9 +27,13 @@ Page({
   },
 
   modify:function(e){
-    wx.reLaunch({
-      url: "../../basket/basketmodify/basketmodify"
-    })
+    // console.log(e.currentTarget.dataset.orderid)
+    let orderid = e.currentTarget.dataset.orderid
+    setTimeout(function () {
+      wx.reLaunch({
+        url: "../../basket/basketmodify/basketmodify?orderid="+orderid
+      })  
+    }, 500)
   },
 
   /**
@@ -60,7 +64,7 @@ Page({
   query:function(e){
     let key = e;
     let count = 10;
-    // console.log(key)
+    console.log(key)
     let that = this
     let sysInfo = app.globalData.sysInfo;
     let time = util.formatTime(new Date());
@@ -96,6 +100,7 @@ Page({
     let sysInfo = app.globalData.sysInfo;
     let time = util.formatTime(new Date());
     let b64 = utilMd4.hexMD4(time+app.globalData.key+0+10).toLocaleUpperCase();
+    let b65 = utilMd4.hexMD4(time + app.globalData.key + 0 + 10).toLocaleUpperCase();
     wx.request({
       url: app.globalData.url + 'api/Basket_/GetBasketOrderStatus?start=0&count=10&securityStr=' + b64,
       header: {
@@ -103,6 +108,16 @@ Page({
       },
       success(res) {
         // console.log(res.data.modelList)
+      }
+    })
+    wx.request({
+      url: app.globalData.url + 'api/Basket_/GetBasketTypeList?start=0&count=10&securityStr=' + b65,
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        console.log(res.data.modelList)
+        basket: res.data.modelList
       }
     })
 

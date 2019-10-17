@@ -140,9 +140,11 @@ Page({
          }, 500)
        }else{
          console.log("还未注册 调到注册页")
-         wx.reLaunch({
-           url: '../register/register'
-         })
+         setTimeout(function () {
+          wx.reLaunch({
+            url: '../register/register'
+          })
+         }, 500)
        }
       }
     })

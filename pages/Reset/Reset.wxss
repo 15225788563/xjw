@@ -3,13 +3,25 @@ Page{
   background: #f1f4f2;
 }
 .harder{
-  font-size: 50rpx;
-  height: 150rpx;
-  background: #09c15f;
+  padding: 0 30rpx;
+  height: 128rpx;
+  background: #33da82;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  color: #fff;
+  padding-top: 20rpx;
+}
+.harder .harders{
+  display: flex;
+  align-items: center;
+}
+.harder .harders .txt{
+  margin-left: 10rpx;
+  font-size: 28rpx;
+}
+.harder image{
+  width: 38rpx;
+  height: 38rpx;
 }
 .block{
   padding: 20rpx;

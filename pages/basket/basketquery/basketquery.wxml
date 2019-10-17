@@ -16,9 +16,8 @@
     </view>
   </view>
   <view class="Order">
-    <block wx:for="{{Orderlist}}" wx:key="key">
-      
-      <view class="list">
+    <block wx:for="{{Orderlist}}"wx:key="key">
+      <view class="list" data-BasketType="{{item.BasketType}}">
         <view class="listharder">
           <text>订单编号：{{item.OrderId}}</text>
           <block wx:if="{{item.OrderStatus==0}}">
@@ -37,13 +36,11 @@
               <image src="/imgs/1.png" />
               <view class="txtblock">
                 <view>
-                  <text class="name">{{item.UserName}}
-                  </text>
+                  <text class="name">{{item.BasketType==2?88:item.BasketType==3?3:item.BasketType==6?1:''}}cm筐子</text>
                   <view class="money">
-                    <text class="txt">押金：{{item.PayDeposit}}×1
+                    <text class="txt">押金：{{item.BasketType==2?10:item.BasketType==3?25:item.BasketType==6?11111:''}}×1
                     </text>
-                    <text class="txt">租金：{{item.PayRent}}×1
-                    </text>
+                    <text class="txt">租金：{{item.BasketType==2?20:item.BasketType==3?0.15:item.BasketType==6?11111:''}}×1</text>
                   </view>
                 </view>
                 <text class="txt">×{{item.SumCount}}</text>
@@ -57,7 +54,7 @@
           <block wx:else>
             <view class="Waitingbasket">
               <view class="block">
-                <text>规格：{{}}
+                <text>规格：{{item.BasketType==2?"8888":item.BasketType==3?"50*50*40":item.BasketType==6?"50*40*40*80":''}}
                 </text>
                 <text>数量：{{item.SumCount}}
                 </text>
@@ -83,7 +80,7 @@
           <block wx:if="{{item.OrderStatus==0}}">
             <view>
               <button size="mini" class="active">支付</button>
-              <button size="mini" catchtap="modify">修改</button>
+              <button size="mini" data-orderid="{{item.OrderId}}" catchtap="modify">修改</button>
               <button size="mini">取消</button>
             </view>
           </block>
@@ -93,12 +90,9 @@
               <button size="mini" catchtap="modify">取消</button>
             </view>
           </block>
-          <block wx:if="{{item.OrderStatus==3}}">
-          
-          </block>
+          <block wx:if="{{item.OrderStatus==3}}"></block>
         </view>
       </view>
-
     </block>
   </view>
 </view>

@@ -98,25 +98,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options.orderid)
+    this.setData({
+      orderid: options.orderid
+    })
     let that = this
     let sysInfo = app.globalData.sysInfo;
     let time = util.formatTime(new Date());
     let b64 = utilMd4.hexMD4(time + app.globalData.key + 0).toLocaleUpperCase();
-    wx.request({
-      url: app.globalData.url + 'api/Basket_/GetBasketTypeList?start='+0+'&count='+''+'&securityStr=' + b64,
-      header: {
-        'content-type': 'application/json'
-      },
-      success(res) {
-        // console.log(res.data)
-        that.setData({
-          list: res.data.modelList,
-          deposit: res.data.modelList[0].RentPrice,
-          rent: res.data.modelList[0].DepositPrice, 
-          bastet: res.data.modelList[0]
-        })
-      }
-    })
+      wx.request({
+        url: app.globalData.url + 'api/Basket_/GetBasketTypeList?start=' + 0 + '&count=' + '' + '&securityStr=' + b64,
+        header: {
+          'content-type': 'application/json'
+        },
+        success(res) {
+          // console.log(res.data)
+          that.setData({
+            list: res.data.modelList,
+            deposit: res.data.modelList[0].RentPrice,
+            rent: res.data.modelList[0].DepositPrice,
+            bastet: res.data.modelList[0]
+          })
+        }
+      })
   },
 
   /**

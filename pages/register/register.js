@@ -69,6 +69,7 @@ Page({
       // let sysInfo = app.globalData.sysInfo;
       let time = util.formatTime(new Date());
       let phone = that.data.phone
+
       let b64 = utilMd4.hexMD4(time + app.globalData.key + phone).toLocaleUpperCase();
       wx.request({
         'url': app.globalData.url + 'api/Home_Page/SendVerCodeSms?phoneNumber=' + phone + '&SecurityStr=' + b64,
@@ -104,6 +105,7 @@ Page({
     let that = this;
     let sysInfo = app.globalData.sysInfo;
     let time = util.formatTime(new Date());
+    let verCode = that.data.code
     let myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
     if (this.data.phone == "") {
       wx.showToast({
@@ -134,18 +136,16 @@ Page({
         duration: 1000
       })
     } else{
-      let b64 = utilMd4.hexMD4(time + app.globalData.key + that.data.phone + that.data.passWord + app.globalData.openid).toLocaleUpperCase();
+      let b64 = utilMd4.hexMD4(time + app.globalData.key + that.data.phone + that.data.passWord + app.globalData.openid + verCode).toLocaleUpperCase();
       console.log(b64)
+      console.log(that.data.phone)
+      console.log(that.data.passWord)
+      console.log(app.globalData.openid)
       console.log(that.data.code)
-      // console.log(that.data.passWord)
-      // console.log(app.globalData.openid)
       wx.request({
-        url: app.globalData.url + 'api/Home_Page/AddUserByWx?userName=' + that.data.phone + '&passWord=' + that.data.passWord + '&wxCode=' + app.globalData.openid+'&securityStr='+b64,
+        url: app.globalData.url + 'api/Home_Page/AddUserByWx?userName=' + that.data.phone + '&passWord=' + that.data.passWord + '&wxCode=' + app.globalData.openid + '&verCode=' + verCode+'&securityStr='+b64,
         header: {
           'content-type': 'application/json'
-        },
-        data:{
-          'code':that.data.code
         },
         method:"POST",
         success(res) {

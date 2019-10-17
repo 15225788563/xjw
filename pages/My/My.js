@@ -29,47 +29,86 @@ Page({
     ],
     function:[
       {
+        'id':"1",
         "url":"/imgs/11.png",
         "name":"我的积分",
         "img":"/imgs/12.png",
       },
       {
+        'id': "2",
         "url": "/imgs/11.png",
         "name": "密码修改",
         "img": "/imgs/12.png",
       },
       {
+        'id': "3",
         "url": "/imgs/11.png",
         "name": "子账户管理",
         "img": "/imgs/12.png",
       },
       {
+        'id': "4",
         "url": "/imgs/11.png",
         "name": "档口管理",
         "img": "/imgs/12.png",
       },
       {
+        'id': "5",
         "url": "/imgs/11.png",
         "name": "会员信息",
         "img": "/imgs/12.png",
       },
       {
+        'id': "6",
         "url": "/imgs/11.png",
         "name": "操作日记",
         "img": "/imgs/12.png",
       },
       {
+        'id': "7",
         "url": "/imgs/11.png",
         "name": "微信推送(绑定微信)",
         "img": "/imgs/12.png",
       },
       {
+        'id': "8",
         "url": "/imgs/11.png",
         "name": "智能提醒(选择提醒选项)",
         "img": "/imgs/12.png",
       }
-      
     ],
+  },
+
+  navbtn(e){
+    let id = e.currentTarget.dataset.navid;
+    switch (id) {
+      case '1':
+        console.log(id)
+        break;
+      case '2':
+        console.log("修改密码")
+        wx.reLaunch({
+          url:"../Reset/Reset"
+        })
+        break;
+      case '3':
+        console.log(id)
+        break;
+      case '4':
+        console.log(id)
+        break;
+      case '5':
+        console.log(id)
+        break;
+      case '6':
+        console.log(id)
+        break;
+      case '7':
+        console.log(id)
+        break;
+      case '8':
+        console.log(id)
+    }
   },
 
   /**
