@@ -40,7 +40,7 @@
             <text class="txxt">订单状态：{{item.Orderstate}}
             </text> 
           </view>
-          <button class="btn">查看详情</button>
+          <button class="btn" data-="">查看详情</button>
         </view>
       </view>
     </view>

@@ -11,7 +11,10 @@ Page({
     num: 4,
     start:0,
     count:10,
-    Orderlist:[]
+    Orderlist:[],
+    // basket:[],
+    baskettype:[],
+    footer:false
   },
 
   /**
@@ -24,8 +27,10 @@ Page({
   },
 
   details:function(e){
+    // console.log(e.currentTarget.dataset.orderid)
+    let orderid = e.currentTarget.dataset.orderid
     wx.reLaunch({
-      url: "../../basket/basketcomplete/basketcomplete"
+      url: "../../basket/basketcomplete/basketcomplete?orderid="+orderid
     })
   },
 
@@ -99,12 +104,20 @@ Page({
           },
           success(res) {
               console.log(res.data.modelList)
-              var arr1 = that.data.Orderlist;
-              var arr2 = res.data.modelList;
-              arr1 = arr1.concat(arr2);
-              that.setData({
-                Orderlist: arr1
-              })
+              if(res.data.modelList){
+                var arr1 = that.data.Orderlist;
+                var arr2 = res.data.modelList;
+                arr1 = arr1.concat(arr2);
+                that.setData({
+                  Orderlist: arr1
+                })
+              }else{
+                console.log("我是有底线的")
+                that.setData({
+                  footer:true,
+                  start:0
+                })
+              }
           }, 
         })
       },
@@ -115,6 +128,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 订单状态
     let that = this
     let sysInfo = app.globalData.sysInfo;
     let time = util.formatTime(new Date());
@@ -129,6 +143,8 @@ Page({
         // console.log(res.data.modelList)
       }
     })
+
+    // 框子类型
     wx.request({
       url: app.globalData.url + 'api/Basket_/GetBasketTypeList?start=0&count=10&securityStr=' + b65,
       header: {
@@ -136,25 +152,27 @@ Page({
       },
       success(res) {
         console.log(res.data.modelList)
-        basket: res.data.modelList
+        that.setData({
+          baskettype: res.data.modelList
+        })
       }
     })
 
     that.query("")
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

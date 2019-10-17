@@ -1,92 +1,14 @@
 // pages/basket/basketcomplete/basketcomplete.js
+const app = getApp()
+const util = require('../../../utils/util.js');
+const utilMd4 = require('../../../utils/MD5.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[
-      {
-        name:"何小月",
-        Reserve:"2019.08.14",
-        number: [
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-        ],
-        payment:"2019.10.15",
-        basketnumber:200,
-      },
-      {
-        name: "何小月",
-        Reserve: "2019.08.14",
-        number: [
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-        ],
-        payment: "2019.10.15",
-        basketnumber: 300,
-      },
-      {
-        name: "何小月",
-        Reserve: "2019.08.14",
-        number: [
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-        ],
-        payment: "2019.10.15",
-        basketnumber: 400,
-      },
-      {
-        name: "何小月",
-        Reserve: "2019.08.14",
-        number: [
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-          { number: "2019007" },
-        ],
-        payment: "2019.10.15",
-        basketnumber: 500,
-      },
-    ]
+    list:[]
   },
 
   Return:function(e){
@@ -103,7 +25,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this
+    let orderid = options.orderid;
+    let sysInfo = app.globalData.sysInfo;
+    let time = util.formatTime(new Date());
+    let b64 = utilMd4.hexMD4(time + app.globalData.key+orderid).toLocaleUpperCase();
+    wx.request({
+      url: app.globalData.url + 'api/Basket_/GetReturnDetails?orderId='+orderid+'&securityStr='+b64,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        // console.log(res.data.modelList)
+        for(var i in res.data.modelList){
+          res.data.modelList[i].basketIDs = res.data.modelList[i].basketIDs.split(",");
+        }
+        let modelList = res.data.modelList;
+        console.log(modelList)
+        that.setData({
+          list: modelList
+        })
+      }
+    })
   },
 
   /**

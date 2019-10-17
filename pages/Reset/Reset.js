@@ -16,15 +16,15 @@ Page({
     pass: ''
   },
 
-  /**
-   * 自定义函数--返回
-   */
-  Return: function (e) {
+  Return(){
     wx.reLaunch({
-      url: "../My/My"
+      url: '../My/My',
     })
   },
 
+  /**
+   * 自定义函数 获取手机号
+   */
   getPhoneValue: function (e) {
     this.setData({
       phone: e.detail.value
@@ -73,14 +73,15 @@ Page({
       // let sysInfo = app.globalData.sysInfo;
       let time = util.formatTime(new Date());
       let phone = that.data.phone
+
       let b64 = utilMd4.hexMD4(time + app.globalData.key + phone).toLocaleUpperCase();
       wx.request({
         'url': app.globalData.url + 'api/Home_Page/SendVerCodeSms?phoneNumber=' + phone + '&SecurityStr=' + b64,
         success(res) {
-          console.log(res.data)
-          that.setData({
-            iscode: res.data.data
-          })
+          console.log(res)
+          // that.setData({
+          //   iscode: res.data.data
+          // })
           var num = 61;
           var timer = setInterval(function () {
             num--;
@@ -103,11 +104,12 @@ Page({
       disabled: true
     })
   },
-
+  //提交表单信息
   register: function () {
     let that = this;
     let sysInfo = app.globalData.sysInfo;
     let time = util.formatTime(new Date());
+    let verCode = that.data.code
     let myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
     if (this.data.phone == "") {
       wx.showToast({
@@ -138,20 +140,24 @@ Page({
         duration: 1000
       })
     } else {
-      let b64 = utilMd4.hexMD4(time + that.data.phone + that.data.passWord).toLocaleUpperCase();
-      // console.log(b64)
+      let b64 = utilMd4.hexMD4(time + app.globalData.key + that.data.phone + verCode + that.data.passWord).toLocaleUpperCase();
+      console.log(b64)
+      console.log(that.data.phone)
+      console.log(that.data.code)
+      console.log(that.data.passWord)
       wx.request({
-        url: app.globalData.url + 'api/Home_Page/UpdatePw?userName=' + that.data.phone + '&passWord=' + that.data.passWord + '&securityStr=' + b64,
+        url: app.globalData.url + 'api/Home_Page/UpdatePw?userName=' + that.data.phone + '&verCode=' + verCode+'&newPassWord=' + that.data.passWord + '&securityStr=' + b64,
         header: {
           'content-type': 'application/json'
         },
         method: "POST",
         success(res) {
-          // console.log(res.data)
+          console.log(res.data)
         }
       })
     }
   },
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -159,6 +165,7 @@ Page({
   onLoad: function (options) {
 
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -48,6 +48,6 @@ App({
   globalData: {
     userInfo: null,
     key: "^wang7kuang2jian8zikebaiji$",
-    url:"http://192.168.0.139:801/"
+    url:"http://49.234.123.71/"
   },
 })

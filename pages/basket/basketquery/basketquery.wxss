@@ -47,6 +47,7 @@ Page{
 .Order{
   margin-top: 240rpx;
   padding: 0 30rpx;
+  margin-bottom:120rpx; 
 }
 .Order .list{
   height: 386rpx;
@@ -140,4 +141,9 @@ Page{
 .Order .list .listfooter .active{
   background: #33da82;
   color: #fff;
+}
+
+.footer{
+  text-align: center;
+  width: 100%;
 }

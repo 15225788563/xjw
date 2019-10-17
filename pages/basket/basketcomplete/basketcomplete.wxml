@@ -12,22 +12,22 @@
     <block wx:for="{{list}}" wx:key="key">
       <view class="list">
         <view class="listharder">
-          <text>还筐人:{{item.name}}</text>
-          <text>{{item.Reserve}}</text>
+          <text>还筐人:{{item.backUserNickName}}</text>
+          <text>归还时间{{item.backDate}}</text>
         </view>
         <view class="listbody">
           <view class="Basketnumber">
             <text>筐子编号：</text>
           </view>
           <view class="block">
-            <block wx:for="{{item.number}}" wx:key="key" wx:for-item="i">
-              <view>{{i.number}}</view>
+            <block wx:for="{{item.basketIDs}}" wx:key="key" wx:for-item="i">
+              <view>{{i}}</view>
             </block>
           </view>
         </view>
         <view class="listfooter">
-          <text>支付时间:{{item.payment}}</text>
-          <text>共200个筐子 押金共计:<text class="rmb">￥{{item.basketnumber*30}}</text></text>
+          <text>支付时间:{{item.backDate}}</text>
+          <text>共{{item.basketCounts}}个筐子 押金共计:<text class="rmb">￥{{item.sumPrice}}</text></text>
         </view>
       </view>
     </block>
