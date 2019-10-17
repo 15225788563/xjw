@@ -98,7 +98,7 @@ Page({
             'content-type': 'application/json'
           },
           success(res) {
-              // console.log(res.data.modelList)
+              console.log(res.data.modelList)
               var arr1 = that.data.Orderlist;
               var arr2 = res.data.modelList;
               arr1 = arr1.concat(arr2);

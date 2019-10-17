@@ -131,13 +131,6 @@ Page({
         duration: 1000
       })
       return false;
-    } else if (this.data.code != this.data.iscode) {
-      wx.showToast({
-        title: '验证码错误',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
     } else if (this.data.passWord != this.data.pass) {
       wx.showToast({
         title: '重复密码错误',
@@ -151,9 +144,6 @@ Page({
         url: app.globalData.url + 'api/Home_Page/UpdatePw?userName=' + that.data.phone + '&passWord=' + that.data.passWord + '&securityStr=' + b64,
         header: {
           'content-type': 'application/json'
-        },
-        data: {
-          cpde: that.data.code
         },
         method: "POST",
         success(res) {
