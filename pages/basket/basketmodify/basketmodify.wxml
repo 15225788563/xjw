@@ -65,7 +65,12 @@
       <textarea placeholder="筐子需要50个鸡蛋"></textarea>
     </view>
     <view class="btn">
-      <button catchtap="centerOrder" size="mini">提交订单</button>
+      <block wx:if="{{orderid}}">
+        <button  size="mini">提交修改</button>
+      </block>
+      <block wx:else>
+        <button catchtap="centerOrder" size="mini">提交订单</button>
+      </block>
     </view>
   </view>
 </view>
