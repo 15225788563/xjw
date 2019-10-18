@@ -2,32 +2,32 @@
 <view class="container">
   <view class="fixed">
     <view class="harder">
-      <view class="harders" bindtap="Return">
+      <view class="harders" bindtap="Return" navigateBack>
       <image src="/imgs/1.png" /><text class="txt">返回</text>
       </view>
       <text>筐子详情</text>
     </view>
   </view>
   <view class="body">
-    <block wx:for="{{list}}" wx:key="key">
+    <block wx:for="{{list}}" wx:key="key"wx:if="index<3">
       <view class="list">
         <view class="listharder">
-          <text>还筐人:{{item.backUserNickName}}</text>
-          <text>归还时间{{item.backDate}}</text>
+          <text>还筐人:{{item.backUserName}}</text>
+          <text>归还时间：{{item.backDate}}</text>
         </view>
         <view class="listbody">
           <view class="Basketnumber">
             <text>筐子编号：</text>
           </view>
           <view class="block">
-            <block wx:for="{{item.basketIDs}}" wx:key="key" wx:for-item="i">
+            <block wx:for="{{item.basketID}}" wx:key="key" wx:for-item="i">
               <view>{{i}}</view>
             </block>
           </view>
         </view>
         <view class="listfooter">
-          <text>支付时间:{{item.backDate}}</text>
-          <text>共{{item.basketCounts}}个筐子 押金共计:<text class="rmb">￥{{item.sumPrice}}</text></text>
+          <text>支付时间:{{item.payment}}</text>
+          <text>共{{item.backCounts}}个筐子 押金共计:<text class="rmb">￥{{item.backCounts*30}}</text></text>
         </view>
       </view>
     </block>
@@ -36,7 +36,7 @@
     <view class="whole" >
       <text catchtap="whole">查看全部∨</text>
     </view>
-    <view class="Refresh">
+    <view class="Refresh" catchtap="refresh" >
       <image src="/imgs/1.png" />
       <text>下拉刷新</text>
     </view>

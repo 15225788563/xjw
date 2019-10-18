@@ -1,4 +1,4 @@
-// pages/basket/orderContent/orderContent.js
+// pages/basket/addbacketOrder/addbacketOrder.js
 Page({
 
   /**
@@ -8,11 +8,28 @@ Page({
 
   },
 
+  centerPay:function(e){
+    wx.redirectTo({
+      url: "../../basket/centerPay/centerPay",
+    }) 
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    let payLent = options.payLent
+    let paydeposit = options.paydeposit
+    let sum = options.sum
+    let orderid = options.orderid
 
+    this.setData({
+      payLent: payLent,
+      paydeposit: paydeposit,
+      sum: sum,
+      orderid: orderid
+    })
   },
 
   /**

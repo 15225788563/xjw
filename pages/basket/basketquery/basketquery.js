@@ -142,7 +142,7 @@ Page({
         that.setData({
           Orderlist: [],
           start: 0,
-          count: 100
+          count: 10
         })
         wx.getStorage({
           key: 'modelList',
@@ -183,7 +183,7 @@ Page({
         that.setData({
           Orderlist: [],
           start: 0,
-          count:100
+          count:10
         })
         wx.getStorage({
           key: 'modelList',

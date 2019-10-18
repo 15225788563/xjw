@@ -69,12 +69,12 @@ Page({
       // let sysInfo = app.globalData.sysInfo;
       let time = util.formatTime(new Date());
       let phone = that.data.phone
-      console.log(phone)
+
       let b64 = utilMd4.hexMD4(time + app.globalData.key + phone).toLocaleUpperCase();
       wx.request({
         'url': app.globalData.url + 'api/Home_Page/SendVerCodeSms?phoneNumber=' + phone + '&SecurityStr=' + b64,
         success(res) {
-          console.log(res.data)
+          console.log(res)
           // that.setData({
           //   iscode: res.data.data
           // })

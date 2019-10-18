@@ -42,12 +42,18 @@ Page({
       },
     ],
     Orderlist: [],
-    baskettype:[]
+    baskettype: []
   },
 
-  btn:function(e){
+  Return(){
+    wx.reLaunch({
+      url: '../../home/home',
+    });
+  },
+
+  btn: function (e) {
     let id = e.currentTarget.dataset.navid;
-    switch(id){
+    switch (id) {
       case '1':
         wx.reLaunch({
           url: "../../basket/basketmodify/basketmodify"
@@ -68,20 +74,20 @@ Page({
     }
   },
 
-  orderdetails(e){
+  orderdetails(e) {
     let OrderStatus = e.currentTarget.dataset.orderstatus;
     console.log(OrderStatus)
     let orderid = e.currentTarget.dataset.orderid
     console.log(orderid);
-    if (OrderStatus==0){
+    if (OrderStatus == 0) {
       wx.reLaunch({
         url: '../../basket/orderIndex/orderIndex?order=' + orderid,
       })
-    } else if (OrderStatus==2){
+    } else if (OrderStatus == 2) {
       wx.reLaunch({
         url: '../../basket/orderContent/orderContent?order=' + orderid,
       })
-    } else if (OrderStatus == 3){
+    } else if (OrderStatus == 3) {
       wx.reLaunch({
         url: "../../basket/basketcomplete/basketcomplete?orderid=" + orderid
       })
@@ -115,10 +121,10 @@ Page({
     })
     wx.getStorage({
       key: 'modelList',
-      success: function(res) {
+      success: function (res) {
         console.log(res.data.ID)
-        let userid=res.data.ID;
-        let username= res.data.UserName
+        let userid = res.data.ID;
+        let username = res.data.UserName
         let b66 = utilMd4.hexMD4(time + app.globalData.key + userid + username + 0 + 3).toLocaleUpperCase();
         wx.request({
           url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + username + '&start=0&count=3&type=&securityStr=' + b66,
@@ -126,7 +132,7 @@ Page({
             'content-type': 'application/json'
           },
           success(res) {
-            
+
             that.setData({
               Orderlist: res.data.modelList
             })
@@ -136,7 +142,7 @@ Page({
         })
       },
     })
-    
+
   },
 
   puth() {

@@ -2,6 +2,9 @@
 <view class="container">
   <!-- 头部 -->
   <view class="harder" > 
+    <view class="harders" bindtap="Return">
+      <image src="/imgs/1.png" /><text class="txt">返回</text>
+    </view>
     <view class="Search">
       <image src="/imgs/2.png"/>
       <input placeholder="查看产品库存" />

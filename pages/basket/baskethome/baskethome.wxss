@@ -11,6 +11,10 @@ Page{
   height: 283rpx;
   padding-top: 60rpx;
 }
+.harde>harders{
+  display: flex;
+  align-content: center;
+}
 .harder>.Search{
   position: relative;
 }
@@ -26,7 +30,7 @@ Page{
 }
 .harder>view>input{
   background: #fff;
-  width: 572rpx;
+  width: 400rpx;
   border: 1rpx solid #ccc;
   border-radius: 10rpx;
   padding-left: 60rpx;

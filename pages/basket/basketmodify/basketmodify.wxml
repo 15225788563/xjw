@@ -62,11 +62,11 @@
       <view>
       <text>备注/留言</text>
       </view>
-      <textarea placeholder="筐子需要50个鸡蛋"></textarea>
+      <textarea placeholder="筐子需要50个鸡蛋" bindblur='bindTextAreaBlur'></textarea>
     </view>
-    <view class="btn">
+  <view class="btn">
       <block wx:if="{{orderid}}">
-        <button  size="mini">提交修改</button>
+        <button  size="mini" catchtap="changeOrder">提交修改</button>
       </block>
       <block wx:else>
         <button catchtap="centerOrder" size="mini">提交订单</button>

@@ -6,22 +6,25 @@
 .header{
   background-color: #09c15f;
   height: 128rpx;
-  padding-top:25rpx; 
+  padding-top:25rpx;
+  position: relative; 
 }
-.left image{
-  position: absolute;
-  top: 10rpx;
-  left: 10rpx;
-}
+
 .header .left{
   position: relative;
   height: 150rpx;
   line-height: 150rpx;
   margin: 0 100rpx;
 }
+.left image{
+  position: absolute;
+  top: 58rpx;
+  left: -50rpx;
+}
 .header .cent{
-  margin-left: 25rpx;
-  font-weight: bold;
+  position: absolute;
+  left: 295rpx;
+  top: 68rpx;
   font-size: 42rpx;
 }
 .main{
@@ -58,44 +61,58 @@
   float: right;
   margin-right: 15rpx;
 }
-.Details{
-  height: auto;
+.body{
+  margin-top: 30rpx;
+  padding: 0 30rpx;
 }
-.list{
-  width: 95%;
-  height: 350rpx;
-  background-color: #fff;
-  margin: 15rpx auto;
-  border-radius: 15rpx;
+
+.body .list{
+  height: 335rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx 30rpx 0 25rpx;
+  margin-bottom: 10rpx;
 }
-.list .top{
-  padding: 24rpx 28rpx;
+.body .list .listharder{
   display: flex;
   font-size: 26rpx;
-  font-weight: bold;
+  justify-content: space-between;
 }
-.return{
-  flex: 1;
-}
-.center{
-  margin-left: 28rpx;
-  font-size: 24rpx;
-  height: 200rpx;
+.body .list .listbody{
+  margin-top: 10rpx;
   width: 100%;
+  height: 210rpx;
   display: flex;
-}
-.center .text{
-  font-size: 22rpx;
-  margin: 10rpx 50rpx 10rpx 20rpx;
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
-  color: #999;
+  border-bottom: 2px solid #eeeeee;
 }
-.text view{
-  margin: 15rpx;
-  flex: 1;
+.body .list .listbody .Basketnumber{
+  font-size: 27rpx;
+  width: 157rpx;
+}
+.body .list .listbody .block {
+flex: 1;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+
+}
+
+.body .list .listbody .block view{
+  color: #ccc;
+  font-size: 25rpx;
+  width: 33.3%;
+}
+
+.body .listfooter{
+  height: 57rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 23rpx;
+}
+.body .listfooter .rmb{
+  font-size: 28rpx;
 }
 .bottom{
   border-top:1rpx solid rgb(235, 232, 232); 
@@ -125,4 +142,52 @@
   height: 80rpx;
   font-size: 30rpx;
   line-height: 80rpx;
+}
+.rebasket{
+  border: 1px solid #fff;
+  border-radius: 15rpx;
+  width: 90%;
+  background-color: #fff;
+  margin: 15rpx auto;
+  position: relative;
+}
+.rebasket .name{
+  border-left: 15rpx solid #09c15f;
+  padding-left:12rpx; 
+  margin: 25rpx;
+}
+.rebasket .rename{
+   position: absolute;
+   right: 10rpx;
+   top: 25rpx;
+   font-size: 30rpx;
+}
+.rebasket .numTime{
+  border-top: 1px solid #ccc;
+  height: 135rpx;
+  line-height: 35rpx;
+  font-size: 24rpx;
+  color: #ccc;
+  padding: 10rpx 55rpx;
+  border-bottom: 1px solid #ccc;
+}
+.Details{
+  display: flex;
+}
+.Details .det{
+  font-size: 24rpx;
+  width: 100rpx;
+  color: #09c15f;
+  padding-left : 55rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  position: relative;
+}
+.Details .money{
+  font-size: 28rpx;
+  line-height: 85rpx;
+  display: inline;
+  position: absolute;
+  right: 50rpx;
+  color: #f00;
 }

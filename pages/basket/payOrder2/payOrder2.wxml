@@ -1,7 +1,7 @@
   
 <view class="header">
  <view class="headerChild">
- <view bindtap="Return" class="hraderl"><image src="/imgs/1.png"></image><text class="back">返回</text> </view>
+ <view bindtap="Return" class="hraderl"><image src="/imgs/1.png"></image><text class="back" bindtap="back">返回</text> </view>
  <view class="hraderz">支付订单</view>
  <view class="hraderr"></view>
  </view>

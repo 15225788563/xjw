@@ -1,0 +1,178 @@
+  page{
+  background: #f5f5f5;
+}
+.header{
+  width: 100%;
+  height: 129rpx;
+  background: #33da82;
+  display: flex;
+  position: relative;
+   
+  
+}
+.headerChild{
+  width:670rpx ;
+  height:46rpx ;
+   position: absolute;
+  top: 61rpx;
+  left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.hraderl{
+ width:112rpx ;
+ height:46rpx ;
+   
+}
+.hraderl image{
+  width: 46rpx;
+  height: 46rpx;
+}
+ 
+.back{
+font-size: 25rpx;
+text-align: center;
+position: relative;
+left:10rpx ;
+top:-12rpx ;
+}
+.hraderz{
+ width:146rpx ;
+ height:46rpx ;
+  display: flex;
+ justify-content:center;
+ align-items: center;
+ font-size: 32rpx;
+ font-weight: bold;
+ 
+}
+
+.hraderr{
+ width:41rpx ;
+ height:46rpx ;
+ 
+}
+
+.payAll{
+  width: 100%;
+  height:197rpx;
+  background: white; 
+  position: relative;
+}
+
+.headerzi{
+  font-size: 20rpx;
+  color: #aaaaaa;
+
+}
+.zi1{
+  position: absolute;
+  top: 22rpx;
+  left: 30rpx;
+}
+.zi2{
+  position: absolute;
+  top:56rpx;
+  left: 30rpx;
+}
+.zi3{
+  position: absolute;
+  top: 96rpx;
+  left: 30rpx;
+}
+
+.ying{
+  position: absolute;
+  top: 145rpx;
+  left: 30rpx;
+  font-weight: bold;
+}
+
+.money{
+  position: absolute;
+  left: 585rpx;
+  color: #f82e2a;
+}
+
+.body{
+  width: 100%;
+  height: 408rpx;
+  background: white;
+  margin-top: 22rpx;
+}
+.body>view{
+  width: 100%;
+  height: 102rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+  position: relative;
+}
+
+.weix image{
+  width: 31rpx;
+  height: 31rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 43rpx;
+}
+.zibao image{
+  width: 31rpx;
+  height: 31rpx;
+   position: absolute;
+  top: 20rpx;
+  left: 43rpx;
+}
+.qita image{
+  width: 31rpx;
+  height: 31rpx;
+   position: absolute;
+  top: 20rpx;
+  left: 43rpx;
+}
+
+.yonghu{
+  font-size: 27rpx;
+  font-weight: bold;
+  position: absolute;
+  top: 14rpx;
+  left: 88rpx;
+}
+
+.tuijian{
+  font-size: 18rpx;
+  color: #b2b2b2;
+  position: absolute;
+  top: 58rpx;
+  left:88rpx ;
+}
+.radio1{
+  position: relative;
+  left: 680rpx;
+  top: -273rpx;
+}
+.radio2{
+  position: relative;
+  left: 622rpx;
+  top: -176rpx;
+}
+.radio3{
+  position: relative;
+  left: 564rpx;
+  top: -74rpx;
+}
+
+.button{
+  width: 470rpx;
+  height: 76rpx;
+  background: #33da82;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 164rpx;
+
+}
+ 
+
+ 

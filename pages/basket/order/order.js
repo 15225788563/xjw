@@ -1,105 +1,128 @@
 // basket/order/order.js
+const app = getApp()
+const utilMd4 = require('../../../utils/MD5.js');
+const util = require('../../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    reals: [
-      {
-       real:"￥241", name: "何小月", num: 18, time: "2019-10-14 14:20", money: "￥241"
-      },
-    ],
-    lists: [
-      {
-        returned: "何小月",
-        retime: "2019-10-14",
-        payer: "菜农农",
-        num: 18,
-        money: "￥300"
-      },
-      {
-        returned: "何小月",
-        retime: "2019-10-14",
-        payer: "菜农农",
-        num: 18,
-        money: "￥300"
-      },
-      {
-        returned: "何小月",
-        retime: "2019-10-14",
-        payer: "菜农农",
-        num: 18,
-        money: "￥300"
-      }
-    ],
-    nums: [
-      { number: "20191018", number1: "20191018", number2: "20191018",},
-      { number: "20191018", number1: "20191018", number2: "20191018", },
-      { number: "20191018", number1: "20191018", number2: "20191018", }
-    ]
-  },
-
-  confirm:function(e){
-    wx.reLaunch({
-      url: "../../basket/payOrder/payOrder"
-    })
+    list:[]
     
+  
+  },
+  receivables: function (e) {
+    wx.reLaunch({
+      url: "../../basket/receivables/receivables?basketID=" + this.data.basketID + "&depostiAble=" + this.data.depositBasketID + "&orderDate=" + this.data.OrderDate + "&backOrderID=" + this.data.backOrderID
+    })
+  },
+  sao: function(e) {
+    wx.reLaunch({
+      url: "../../basket/sao/sao"
+    })
+   
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    var _this = this
+    _this.setData({
+      backOrderID: options.backOrderID,
+      basketID: options.basketID
+    })
+    wx.getStorage({
+      key: 'modelList',
+      success: function(res) {
+        _this.setData({
+          userid: res.data.ID,
+          username: res.data.UserName
+        })
+        let sysInfo = app.globalData.sysInfo;
+        let time = util.formatTime(new Date());
+        let b63 = utilMd4.hexMD4(time + app.globalData.key + _this.data.backOrderID + _this.data.userid + _this.data.basketID).toLocaleUpperCase();
+        // console.log(b64)
+        // 归还列表
+        wx.request({
+          url: app.globalData.url + 'api/Basket_/GetBackDetail?backOrderId=' + _this.data.backOrderID + '&userId=' + _this.data.userid + '&basketId=' + _this.data.basketID+'&securityStr=' + b63,
+          header: {
+            'content-type': 'application/json' // 默认值
+          },
+          method: "GET",
+          success(res) {
+            console.log(res.data.modelList)
+            _this.setData({
+              RentName: res.data.modelList[0].RentName,
+              backDate: res.data.modelList[0].backDate,
+              backCounts: res.data.modelList[0].backCounts,
+              diffAmount: res.data.modelList[0].diffAmount,
+              deposit: res.data.modelList[0].deposit,
+              depositBasketID: res.data.modelList[0].depositBasketID,
+              // list: res.data.modelList,
+            })
+            let list=res.data.modelList
+            for (var i in list){
+              list[i].basketID = list[i].basketID.split(",")
+            }
+            _this.setData({
+              list:list
+            })
+            console.log(_this.data.list)
+          },
+        })
+      },
+    })
+  
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

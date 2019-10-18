@@ -267,6 +267,3 @@ top:238rpx ;
     .shiq{
       margin-top: 45rpx
     }
-.body{
-  font-size: 20rpx;
-}

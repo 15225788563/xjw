@@ -6,15 +6,16 @@
  <view class="hraderr"></view>
  </view>
  </view>
+ 
 
  <view class="payAll">
- <view class="headerzi zi1">订单号：{{orderid}}</view>
- <!-- <view class="headerzi zi2" wx-if="{{!orderid}}">支付租金：{{payLent}}元</view> -->
- <view class="headerzi zi2"  >支付租金：{{rent*SumCount1*RentDays1}}元</view>
+ <view class="headerzi zi1">订单号：156851335334897</view>
+ <view class="headerzi zi2" >支付租金：{{payLent}}元</view>
+ 
 
- <!-- <view class="headerzi zi3">支付押金：{{paydeposit}}元</view> -->
- <view class="headerzi zi3">支付押金：{{deposit*SumCount1}}元</view>
- <view class="ying"><text>应付合计：</text><text class="money">￥{{rent*SumCount1*RentDays1+deposit*SumCount1}}</text></view>
+ <view class="headerzi zi3">支付押金：{{paydeposit}}元</view>
+  
+ <view class="ying"><text>应付合计：</text><text class="money">￥{{sum}}</text></view>
 
  </view>
 
@@ -33,7 +34,7 @@
        <radio  class="radio1" value="0" /> 
        <radio  class="radio2"  value="1"/> 
        <radio  class="radio3"  value="2"/> 
-      
+
     </radio-group>
     </form>
 

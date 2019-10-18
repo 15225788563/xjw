@@ -5,25 +5,54 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    value: 0,
   },
 
-  Return:function(e){
+  Return: function (e) {
     wx.reLaunch({
       url: "../../basket/centerOrder/centerOrder"
     })
   },
 
-  centerPay:function(e){
-    wx.reLaunch({
-      url: "../../basket/centerPay/centerPay"
+  centerPay: function (e) {
+    wx.redirectTo({
+      url: "../../basket/centerPay/centerPay",
+    }) 
+  },
+
+  radioCheckedChange: function (e) {
+    this.setData({
+      value: e.detail.value
     })
+    console.log(this.data.value)
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    let payLent = options.payLent
+    let paydeposit = options.paydeposit
+    let sum = options.sum
+    let rent=options.rent
+    let deposit = options.deposit
+    let SumCount1 = options.SumCount1
+    let RentDays1 = options.RentDays1
+    let orderid = options.orderid
+    this.setData({
+      payLent: payLent,
+      paydeposit: paydeposit,
+      sum: sum,
+      rent: rent,
+      deposit: deposit,
+      SumCount1: SumCount1,
+      RentDays1: RentDays1,
+      orderid: orderid
+
+    })
+
 
   },
 

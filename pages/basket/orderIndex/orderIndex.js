@@ -21,18 +21,50 @@ Page({
     })
   },
 
+
+  pays: function (e) {
+    this.puth()
+    wx.redirectTo({
+      url: '../../basket/payOrder2/payOrder2?PayRent=' + this.list.PayRent,
+    })
+  },
+
+
+
+  changeOrder: function (e) {
+    wx.redirectTo({
+      url: '../../basket/basketmodify/basketmodify',
+    })
+  },
+
+ 
+
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {  
+  onLoad: function (options) {
     let that = this;
     let orderid = options.order
     let sysInfo = app.globalData.sysInfo;
     let time = util.formatTime(new Date());
+
+    wx.getStorage({
+      key: 'rent',
+      success: function (res) {
+        console.log(res)
+      },
+    })
+    wx.getStorage({
+      key: 'detail',
+      success: function (res) {
+        console.log(res)
+      },
+    })
     wx.getStorage({
       key: 'baskettype',
       success: function (res) {
-        console.log(res.data)
+        //console.log(res.data)
         that.setData({
           baskettype: res.data
         })
@@ -42,7 +74,7 @@ Page({
     wx.getStorage({
       key: 'modelList',
       success: function (res) {
-        console.log(res)
+        //console.log(res)
         that.setData({
           userList: res.data,
           userid: res.data.ID
@@ -54,7 +86,7 @@ Page({
             'content-type': 'application/json'
           },
           success(res) {
-            console.log(res.data.modelList[0])
+            //console.log(res.data.modelList[0])
             that.setData({
               Orderlist: res.data.modelList
             })
@@ -79,7 +111,7 @@ Page({
         }
       }
     }
-    console.log(order)
+    //console.log(order)
     that.setData({
       Orderlist: order,
       list: that.data.Orderlist[0]

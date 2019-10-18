@@ -1,4 +1,4 @@
-// pages/basket/orderContent/orderContent.js
+// pages/basket/payOrder2/payOrder2.js
 Page({
 
   /**
@@ -7,12 +7,16 @@ Page({
   data: {
 
   },
-
+  back: function (e) {
+    wx.redirectTo({
+      url: '../../basket/orderIndex/orderIndex',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+     console.log(options)
   },
 
   /**

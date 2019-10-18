@@ -1,0 +1,124 @@
+ page{
+  background: #f5f5f5;
+}
+.header{
+  width: 100%;
+  height: 129rpx;
+  background: #33da82;
+  display: flex;
+  position: relative;
+   
+  
+}
+.headerChild{
+  width:670rpx ;
+  height:46rpx ;
+   position: absolute;
+  top: 61rpx;
+  left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.hraderl{
+ width:112rpx ;
+ height:46rpx ;
+   
+}
+.hraderl image{
+  width: 46rpx;
+  height: 46rpx;
+}
+ 
+.back{
+font-size: 25rpx;
+text-align: center;
+position: relative;
+left:10rpx ;
+top:-12rpx ;
+}
+.hraderz{
+ width:146rpx ;
+ height:46rpx ;
+  display: flex;
+ justify-content:center;
+ align-items: center;
+ font-size: 32rpx;
+ font-weight: bold;
+ 
+}
+
+.hraderr{
+ width:41rpx ;
+ height:46rpx ;
+ 
+}
+.hraderr image{
+  width:40rpx ;
+  height: 40rpx;
+  display: flex;
+ justify-content:center;
+ align-items: center;
+}
+.success{
+  font-size: 40rpx;
+   
+  position: relative;
+  left: 297rpx;
+  top: 133rpx;
+  font-weight: bold;
+}
+.quan image{
+  width:90rpx ;
+  height:90rpx ;
+  position: relative;
+  left: 297rpx;
+  top: 133rpx;
+}
+.dui{
+  position: relative;
+  left: 330rpx;
+  top:207rpx ;
+}
+.body{
+   width:295rpx ;
+  height:154rpx ;
+   
+  position: relative;
+  top: 252rpx;
+   
+  margin: auto
+
+}
+
+.body view{
+  font-size: 26rpx;
+  color: #c6c8c5;
+}
+.cha{
+    width:473rpx ;
+  height:76rpx ;
+  position: relative;
+  top: 414rpx;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #33da82;
+  color: white;
+}
+
+.backs{
+   width:473rpx ;
+  height:76rpx ;
+   position: relative;
+  top: 456rpx;
+  margin: auto;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+   background: #33da82;
+    color: white;
+}
+ 

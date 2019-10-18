@@ -1,18 +1,31 @@
 <view class="return">
    <view class="header">
-      <text class="left"><image class="background" src="/imgs/1.png" style="width:50rpx;height:50rpx;"></image> 返回</text>
-      <text catchtap="sao" class="cent">获取二维码</text>
-   </view>
-   <view class="rebasket" wx:for='{{rebasket}}'>
-      <view class="name">还筐人：{{item.name}}</view>
+      <view  class="left">
+        <image src="/imgs/1.png" style="width:41rpx;height:41rpx;" catchtap="baskethome"></image>
+        <text catchtap="baskethome">返回</text>
+        <text catchtap="sao" class="cent">获取二维码</text>
+    </view>  
+     <view wx:if="{{status!=0}}" class="rebasket" wx:for='{{basket}}' key="key">
+      <view class="rename">还筐人：{{item.backUserNickName}}</view>
       <view class="numTime">
-        <view>还筐数量：{{item.num}}</view>
-        <view>还筐时间：{{item.time}}</view>
+        <view>还筐数量：{{item.backCounts}}</view>
+        <view>还筐时间：{{item.backDate}}</view>
       </view>
       <view class="Details">
-        <view class="det">还筐详情</view>
-        <view class="money">实退：{{item.money}}</view>
+        <view class="det" catchtap="order" >还筐详情</view>
+        <view class="money">应退：￥{{item.depostiAble}}</view>
+      </view>
+   </view>  
+   </view>
+   <view wx:if="{{status==0}}" class="rebasket" wx:for='{{rebasket}}' key="key">
+      <view class="name">还筐人：{{item.backUserNickName}}</view>
+      <view class="numTime">
+        <view>还筐数量：{{item.backCounts}}</view>
+        <view>还筐时间：{{item.backDate}}</view>
+      </view>
+      <view class="Details">
+        <view class="det" catchtap="basketcomplete">还筐详情</view>
+        <view class="remoney">实退：￥{{item.deposit}}</view>
       </view>
    </view>
-   
 </view>

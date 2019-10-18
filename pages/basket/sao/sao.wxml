@@ -1,7 +1,7 @@
   
 <view class="header">
  <view class="headerChild">
- <view class="hraderl"><image src="/imgs/1.png"></image><text class="back">返回</text> </view>
+ <view class="hraderl" catchtap="return"><image src="/imgs/1.png"></image><text class="back">返回</text> </view>
  <view class="hraderz">订单详情</view>
  <view class="hraderr"> </view>
  </view>
@@ -14,6 +14,6 @@
   <view class="mingzi">和小月</view>
 
   <view class="product">提供下面二维码还筐</view>
-  <image src="/imgs/1.png" class="tupian"></image>
+  <image src="{{img}}" class="tupian" catchtap="order"></image>
   <!-- <image src="/imgs/kuangzi.png" class="kuangzi"></image> -->
   </view>

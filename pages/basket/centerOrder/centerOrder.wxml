@@ -12,22 +12,22 @@
  <!-- <view class="man"><view></view><text>订单编号：4586125874</text> </view> -->
  <view class="kuangzi">
  <view class="tu"><image src="/imgs/1.png"></image></view>
- <view class="cm">50cm筐子</view>
- <view class="yajin"><text>押金</text><text class="fen">￥30*1</text></view>
- <view class="zhujin"><text>租金</text><text class="fen">￥0.01*1</text></view>
- <view class="daprice">*100</view>
+ <view class="cm">{{Detail}}cm筐子</view>
+ <view class="yajin"><text>押金</text><text class="fen">￥{{deposit}}*1</text></view>
+ <view class="zhujin"><text>租金</text><text class="fen">￥{{rent}}*1</text></view>
+ <view class="daprice">*{{number}}</view>
   
  </view>
 
  <view class="pei">
  <view><text>配送信息：</text><text class="kehu">客户自取</text></view>
- <view><text>备注/留言：</text><text class="jidan">筐子是需要装50个鸡蛋</text></view>
+ <view><text>备注/留言：</text><text class="jidan">{{concent}}</text></view>
  </view>
  </view>
 
 
  <view class="little">
- <view class="tex"><text>小计：</text><text class="wan">￥1000.00</text></view>
+ <view class="tex"><text>小计：</text><text class="wan">￥{{deposit*number+rent*number*Days}}</text></view>
  </view>
 
  <view class="totleprice">
@@ -37,12 +37,12 @@
   <view class="left3">押金</view>
   <view class="left4">租金</view></view>
   <view class="totlepricer">
-   <view class="wu">500</view>
-  <view class="san">30</view>
-  <view class="left3">￥3000.00</view>
-  <view class="left4">￥100.00</view>
+   <view class="wu">{{deposit*number}}</view>
+  <view class="san">{{Days}}</view>
+  <view class="left3">￥{{deposit*number}}</view>
+  <view class="left4">￥{{rent*number*Days}}</view>
   </view>
  </view>
 
- <view class="shifu"><view>实付款</view><view class="qian">￥1580.00</view></view>
+ <view class="shifu"><view>实付款</view><view class="qian">￥{{deposit*number+rent*number*Days}}</view></view>
  <button class="button" catchtap="payOrder" >立即支付</button>

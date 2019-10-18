@@ -1,22 +1,24 @@
-// pages/basket/centerOrder/centerOrder.js
+const app = getApp()
+const util = require('../../../utils/util.js');
+const utilMd4 = require('../../../utils/MD5.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    count: null
   },
 
-  Return:function(e){
+  Return: function (e) {
     wx.reLaunch({
       url: "../../basket/basketmodify/basketmodify"
     })
   },
 
-  payOrder:function(e){
+  payOrder: function (e) {
     wx.reLaunch({
-      url: "../../basket/payOrder/payOrder"
+      url: "../../basket/addbacketOrder/addbacketOrder?payLent=" + this.data.payLent + '&paydeposit=' + this.data.paydeposit + '&sum=' + this.data.sum +'&orderid='+this.data.orderid
     })
   },
 
@@ -24,6 +26,70 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    let that = this;
+    let Detail = options.Detail
+    let ID = options.ID
+    let deposit = options.deposit
+    let rent = options.rent
+    let number = options.number
+    let Days = options.Days
+    let concent = options.concent
+    let payLent = options.rent * options.number * options.Days
+    let paydeposit = options.deposit * options.number
+    let sum = payLent + paydeposit
+    let orderid = options.orderid
+    this.setData({
+      Detail: Detail,
+      ID: ID,
+      deposit: deposit,
+      rent: rent,
+      number: number,
+      Days: Days,
+      concent: concent,
+      payLent: payLent,
+      paydeposit: paydeposit,
+      sum: sum,
+      orderid: orderid
+
+
+    })
+    wx.setStorage({
+      key: 'orderID',
+      data: this.data.OrderID,
+    })
+    wx.getStorage({
+      key: 'modelList',
+      success: function(res) {
+        console.log(res.data.ID)
+        that.setData({
+          userid: res.data.ID
+        })
+        let sysInfo = app.globalData.sysInfo;
+        let time = util.formatTime(new Date());
+        let b64 = utilMd4.hexMD4(time + app.globalData.key + that.data.ID + that.data.userid + that.data.number + that.data.Days + that.data.concent).toLocaleUpperCase();
+
+
+        wx.request({
+
+          url: app.globalData.url + 'api/Basket_/BasketRent?typeId=' + that.data.ID + '&userId=' + that.data.userid + '&count=' + that.data.number + '&days=' + that.data.Days + '&remark=' + that.data.concent + '&securityStr=' + b64,
+          header: {
+            'content-type': 'application/json'
+          },
+          method: 'POST',
+          success(res) {
+            console.log(res)
+            // this.setData({
+            //   OrderID: res.data.modelList[0].OrderID
+            // })
+
+          }
+
+        })
+      },
+    })
+    
+
 
   },
 

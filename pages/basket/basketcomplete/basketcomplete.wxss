@@ -41,7 +41,8 @@ Page{
 }
 .body .list .listharder{
   display: flex;
-  justify-content: space-between;
+  font-size: 30rpx;
+  justify-content: space-around;
 }
 .body .list .listbody{
   margin-top: 10rpx;
@@ -63,7 +64,7 @@ Page{
 }
 .body .list .listbody .block view{
   color: #ccc;
-  font-size: 25rpx;
+  font-size: 24rpx;
   width: 33.3%;
 }
 

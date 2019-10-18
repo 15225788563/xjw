@@ -1,6 +1,5 @@
 {
   "pages": [
-  
     "pages/index/index",
     "pages/home/home",
     "pages/Reportform/Report form",
@@ -11,8 +10,11 @@
     "pages/basket/basketmodify/basketmodify",
     "pages/basket/basketquery/basketquery",
     "pages/basket/payOrder/payOrder",
+    "pages/basket/payOrder2/payOrder2",
+    "pages/basket/addbacketOrder/addbacketOrder",
     "pages/basket/centerPay/centerPay",
     "pages/basket/sao/sao",
+    "pages/basket/receivables/receivables",
     "pages/basket/orderIndex/orderIndex",
     "pages/basket/centerOrder/centerOrder",
     "pages/basket/orderContent/orderContent",
@@ -20,25 +22,26 @@
     "pages/basket/order/order",
     "pages/register/register",
     "pages/Reset/Reset",
-    "pages/Land/Land"
+    "pages/Land/Land",
+    "imgs/searchss.png"
   ],
   "tabBar": {
     "list": [
       {
-        "pagePath":"pages/home/home",
-        "text":"首页"
+        "pagePath": "pages/home/home",
+        "text": "首页"
       },
       {
-        "pagePath":"pages/Reportform/Report form",
-        "text":"报表"
+        "pagePath": "pages/Reportform/Report form",
+        "text": "报表"
       },
       {
-        "pagePath":"pages/Share/Share",
-        "text":"共享"
+        "pagePath": "pages/Share/Share",
+        "text": "共享"
       },
       {
-        "pagePath":"pages/My/My",
-        "text":"我的"
+        "pagePath": "pages/My/My",
+        "text": "我的"
       }
     ]
   },
@@ -47,7 +50,7 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "筐子科技",
     "navigationBarTextStyle": "black",
-    "navigationStyle":"custom"
+    "navigationStyle": "custom"
   },
   "sitemapLocation": "sitemap.json"
 }

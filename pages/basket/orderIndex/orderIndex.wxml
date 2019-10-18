@@ -2,7 +2,7 @@
 <!-- header头部 -->
  <view class="header">
  <view class="headerChild">
- <view bindtap="Return" class="hraderl"><image src="/imgs/1.png"></image><text class="back">返回</text> </view>
+ <view bindtap="Return" class="hraderl"><image src="/imgs/1.png"></image><text class="back" bindtap="back">返回</text> </view>
  <view class="hraderz">订单详情</view>
  <view class="hraderr"></view>
  </view>
@@ -50,8 +50,8 @@
  </view>
 
   <view class="button">
-  <button type="primary">支付</button>
-  <button>修改</button>
+  <button type="primary" bindtap="pays">支付</button>
+  <button catchtap="changeOrder">修改</button>
   <button>取消</button>
   </view>
 

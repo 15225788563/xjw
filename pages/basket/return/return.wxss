@@ -10,28 +10,29 @@
 }
 .left image{
   position: absolute;
-  top: 10rpx;
-  left: 10rpx;
+  top: 58rpx;
+  left: -50rpx;
 }
 .header .left{
   position: relative;
   height: 150rpx;
   line-height: 150rpx;
   margin: 0 100rpx;
+  font-size: 28rpx;
 }
 .header .cent{
-  margin-left: 25rpx;
-  font-weight: bold;
-  font-size: 42rpx;
+  margin-left: 125rpx;
+  font-size: 36rpx;
 }
 .rebasket{
   border: 1px solid #fff;
   border-radius: 15rpx;
   width: 90%;
   background-color: #fff;
+  padding: 5rpx;
   margin: 15rpx auto;
 }
-.rebasket .name{
+.rebasket .name,.rename{
   border-left: 15rpx solid #09c15f;
   padding-left:12rpx; 
   margin: 25rpx;
@@ -47,6 +48,7 @@
 }
 .Details{
   display: flex;
+  position: relative;
 }
 .Details .det{
   font-size: 24rpx;
@@ -55,8 +57,18 @@
   padding-left : 55rpx;
   height: 80rpx;
   line-height: 80rpx;
+  position: relative;
 }
 .Details .money{
+  color: #f00;
+  position: absolute;
+  top: 20rpx;
+  right: 45rpx;
+}
+.Details .remoney{
   font-size: 28rpx;
-  margin: 20rpx 0rpx 0 350rpx;
+  line-height: 85rpx;
+  display: inline;
+  position: absolute;
+  right: 50rpx;
 }
