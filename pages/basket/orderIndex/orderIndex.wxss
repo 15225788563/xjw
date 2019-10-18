@@ -255,3 +255,6 @@ color: #fe0002;
      
    }
     
+.body{
+  font-size: 20rpx;
+}

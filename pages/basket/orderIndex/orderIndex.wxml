@@ -2,9 +2,9 @@
 <!-- header头部 -->
  <view class="header">
  <view class="headerChild">
- <view class="hraderl"><image src="/imgs/1.png"></image><text class="back">返回</text> </view>
+ <view bindtap="Return" class="hraderl"><image src="/imgs/1.png"></image><text class="back">返回</text> </view>
  <view class="hraderz">订单详情</view>
- <view class="hraderr"><image src="/imgs/searchss.png"></image></view>
+ <view class="hraderr"></view>
  </view>
  </view>
 
@@ -16,14 +16,14 @@
 
  <!-- 租界人 -->
  <view class="binkman">
- <view class="man"><view></view><text>租借人：</text><text>{{name}}</text></view>
+ <view class="man"><view></view><text>租借人：</text><text>{{list.UserName}}</text></view>
  <view class="kuangzi">
  <view class="tu"><image src="/imgs/1.png"></image></view>
- <view class="cm">50cm筐子</view>
- <view class="yajin"><text>押金</text><text class="fen">￥30*1</text></view>
- <view class="zhujin"><text>租金</text><text class="fen">￥0.01*1</text></view>
- <view class="daprice">*100</view>
- <view class="totle">共100件箱子</view>
+ <view class="cm">{{list.Capacity}}cm筐子</view>
+ <view class="yajin"><text>押金</text><text class="fen">￥{{list.PayRent}}*1</text></view>
+ <view class="zhujin"><text>租金</text><text class="fen">￥{{list.RentPrice}}*1</text></view>
+ <view class="daprice">*{{list.SumCount}}</view>
+ <view class="totle">共{{list.SumCount}}件箱子</view>
  </view>
 
  <view class="totleprice">
@@ -33,10 +33,10 @@
   <view class="left3">押金</view>
   <view class="left4">租金</view></view>
   <view class="totlepricer">
-   <view>￥200.00</view>
-  <view class="san">30</view>
-  <view class="left3">￥200.00</view>
-  <view class="left4">￥998.00</view>
+   <view>￥{{itm.SumPay}}</view>
+  <view class="san">{{list.RentDays}}</view>
+  <view class="left3">￥{{list.PayRent*list.SumCount}}</view>
+  <view class="left4">￥{{list.RentPrice*list.SumCount}}</view>
   </view>
  </view>
 
@@ -45,8 +45,8 @@
 
  <view class="body">
  <view><text class="gang"></text><text class="message">订单信息</text></view>
- <view class="bian"><text>订单编号：</text><text class="hao">51133332659444</text></view>
- <view class="shi"><text>订单时间：</text><text class="hao">2019-08-14</text><text class="miao">10:49</text></view>
+ <view class="bian"><text>订单编号：</text><text class="hao">{{list.OrderId}}</text></view>
+ <view class="shi"><text>订单时间：</text><text class="hao">{{list.OrderDate}}</text><text class="miao">10:49</text></view>
  </view>
 
   <view class="button">

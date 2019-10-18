@@ -14,35 +14,34 @@ Page({
 
   onLoad: function () {
     var that = this;
-    // 查看是否授权
-    wx.getSetting({
-      success: function (res) {
-        console.log(res)
-        if (res.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
-            success: function (res) {
-              //从数据库获取用户信息
-              that.queryUsreInfo();
-              // 用户已经授权过
-              wx.getStorage({
-                key: 'modelList',
-                success: function(res) {
-                  if (res.data.modelList){
-                    wx.reLaunch({
-                      url: '../home/home'
-                    })
-                  }else{
-                    wx.reLaunch({
-                      url: '../register/register'
-                    })
-                  }
-                },
-              })
-            }
-          });
-        }
-      }
+    wx.getStorage({
+      key: 'modelList',
+      success: function(res) {
+        that.setData({
+          modelList:res.data.modelList
+        })
+      },
     })
+    // 查看是否授权
+    if(that.data.modelList){
+      wx.reLaunch({
+        url: '../home/home'
+      })
+    }else{
+      wx.getSetting({
+        success: function (res) {
+          console.log(res)
+          if (res.authSetting['scope.userInfo']) {
+            wx.getUserInfo({
+              success: function (res) {
+                //从数据库获取用户信息
+                that.queryUsreInfo();
+              }
+            });
+          }
+        }
+      })
+    }
   },
 
   bindGetUserInfo: function (e) {
@@ -76,12 +75,15 @@ Page({
               wx.reLaunch({
                 url: '../home/home'
               })
-            }, 500)
-          }else{
+            }, 1000)
+          }
+          else{
             console.log("还未注册 调到注册页")
+            setTimeout(function () {
             wx.reLaunch({
               url: '../register/register'
-            })
+              })
+            }, 1000)
           }
         }
       })
@@ -127,25 +129,24 @@ Page({
       method: "GET",
       success(res) {
         // console.log(res.data.modelList)
-       if(res.data.modelList){
-         console.log("已注册 调到登录页")
-         wx.setStorage({
-           key: 'modelList',
-           data: res.data.modelList[0],
-         })
-         setTimeout(function () {
-           wx.reLaunch({
-             url: '../home/home'
-           })
-         }, 500)
-       }else{
-         console.log("还未注册 调到注册页")
-         setTimeout(function () {
-          wx.reLaunch({
-            url: '../register/register'
+        
+        setTimeout(function () {
+        if(res.data.modelList){
+          wx.setStorage({
+            key: 'modelList',
+            data: res.data.modelList[0],
           })
-         }, 500)
-       }
+          console.log("已注册 调到登录页")
+            wx.reLaunch({
+            url: '../home/home'
+            })
+        }else{
+            console.log("还未注册 调到注册页")
+            wx.reLaunch({
+              url: '../register/register'
+            })
+        }
+        }, 1000)
       }
     })
   },

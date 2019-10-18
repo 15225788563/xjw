@@ -28,19 +28,19 @@
           <text>订单详情</text>
         </view>
         <view class="orders">
-          <text class="Ordername">{{item.Ordername}}</text><text class="txxt">{{item.Ordertiem}}</text>
+          <text class="Ordername">{{item.Capacity}}cm筐子{{item.SumCount}}个</text><text class="txxt">{{item.OrderDate}}</text>
         </view>
-        <text class="txxt">订单号:{{item.Ordernumber}}</text>
+        <text class="txxt">订单号:{{item.OrderId}}</text>
         <view class="orderx">
           <view>
-            <text class="txxt">支付定金：{{item.Orderrent}}
+            <text class="txxt">支付定金：{{item.SumPay}}
             </text>
-            <text class="txxt">支付押金：{{item.Orderdeposit*item.Orderrent}}
+            <text class="txxt">支付押金：{{item.DepositPrice*item.SumCount}}
             </text>
-            <text class="txxt">订单状态：{{item.Orderstate}}
+            <text class="txxt">订单状态：{{item.BasketTypename}}
             </text> 
           </view>
-          <button class="btn" data-="">查看详情</button>
+          <button class="btn" data-OrderStatus="{{item.OrderStatus}}" data-orderid="{{item.OrderId}}" catchtap="orderdetails">查看详情</button>
         </view>
       </view>
     </view>

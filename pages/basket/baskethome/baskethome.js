@@ -1,4 +1,7 @@
 // pages/basket/baskethome.js
+const app = getApp()
+const util = require('../../../utils/util.js');
+const utilMd4 = require('../../../utils/MD5.js');
 Page({
 
   /**
@@ -38,32 +41,8 @@ Page({
         "name": "筐子共享"
       },
     ],
-    Orderlist: [
-      {
-        "Ordername": "50cm100个筐子",
-        "Ordertiem": "2019-6-11 10:00",
-        "Ordernumber": "15678566944645984",
-        "Orderrent": "100",
-        "Orderdeposit": "30",
-        "Orderstate": "已完成",
-      },
-      {
-        "Ordername": "50cm100个筐子",
-        "Ordertiem": "2019-6-11 10:00",
-        "Ordernumber": "15678566944645984",
-        "Orderrent": "100",
-        "Orderdeposit": "30",
-        "Orderstate": "待付款",
-      },
-      {
-        "Ordername": "50cm100个筐子",
-        "Ordertiem": "2019-6-11 10:00",
-        "Ordernumber": "15678566944645984",
-        "Orderrent": "100",
-        "Orderdeposit": "30",
-        "Orderstate": "待领筐",
-      },
-    ]
+    Orderlist: [],
+    baskettype:[]
   },
 
   btn:function(e){
@@ -89,11 +68,101 @@ Page({
     }
   },
 
+  orderdetails(e){
+    let OrderStatus = e.currentTarget.dataset.orderstatus;
+    console.log(OrderStatus)
+    let orderid = e.currentTarget.dataset.orderid
+    console.log(orderid);
+    if (OrderStatus==0){
+      wx.reLaunch({
+        url: '../../basket/orderIndex/orderIndex?order=' + orderid,
+      })
+    } else if (OrderStatus==2){
+      wx.reLaunch({
+        url: '../../basket/orderContent/orderContent?order=' + orderid,
+      })
+    } else if (OrderStatus == 3){
+      wx.reLaunch({
+        url: "../../basket/basketcomplete/basketcomplete?orderid=" + orderid
+      })
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
+    let sysInfo = app.globalData.sysInfo;
+    let time = util.formatTime(new Date());
+    let b65 = utilMd4.hexMD4(time + app.globalData.key).toLocaleUpperCase();
+    // 框子类型
+    wx.request({
+      url: app.globalData.url + 'api/Basket_/GetBasketTypeList?securityStr=' + b65,
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        that.setData({
+          baskettype: res.data.modelList
+        })
+        console.log(that.data.baskettype)
+        wx.setStorage({
+          key: 'baskettype',
+          data: res.data.modelList,
+        })
+      }
+    })
+    wx.getStorage({
+      key: 'modelList',
+      success: function(res) {
+        console.log(res.data.ID)
+        let userid=res.data.ID;
+        let username= res.data.UserName
+        let b66 = utilMd4.hexMD4(time + app.globalData.key + userid + username + 0 + 3).toLocaleUpperCase();
+        wx.request({
+          url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + username + '&start=0&count=3&type=&securityStr=' + b66,
+          header: {
+            'content-type': 'application/json'
+          },
+          success(res) {
+            
+            that.setData({
+              Orderlist: res.data.modelList
+            })
+            console.log(that.data.Orderlist)
+            that.puth()
+          },
+        })
+      },
+    })
+    
+  },
 
+  puth() {
+    let that = this;
+    let order = that.data.Orderlist;
+    let basket = that.data.baskettype;
+    for (let i in order) {
+      for (let j in basket) {
+        if (order[i].BasketType == basket[j].ID) {
+          order[i].Capacity = basket[j].Capacity
+          order[i].RentPrice = basket[j].RentPrice
+          order[i].Detail = basket[j].Detail
+          order[i].DepositPrice = basket[j].DepositPrice
+        }
+        if (order[i].OrderStatus == 0) {
+          order[i].BasketTypename = "待付款"
+        } else if (order[i].OrderStatus == 2) {
+          order[i].BasketTypename = "待还筐"
+        } else if (order[i].OrderStatus == 3) {
+          order[i].BasketTypename = "已完成"
+        }
+      }
+    }
+    that.setData({
+      Orderlist: order
+    })
   },
 
   /**

@@ -12,7 +12,6 @@ Page({
     start:0,
     count:10,
     Orderlist:[],
-    // basket:[],
     baskettype:[],
     footer:false
   },
@@ -25,6 +24,7 @@ Page({
       url: "../../basket/baskethome/baskethome"
     })
   },
+
 
   details:function(e){
     // console.log(e.currentTarget.dataset.orderid)
@@ -55,72 +55,187 @@ Page({
     })
     switch(e.target.dataset.num){
       case '4':
-        that.query("")
+        that.setData({
+          footer: true,
+          start: 0,
+          count: 10
+        })
+        wx.getStorage({
+          key: 'modelList',
+          success: function (res) {
+            let start = that.data.start;
+            let count = 10
+            let userid = res.data.ID
+            let name = res.data.UserName
+            let sysInfo = app.globalData.sysInfo;
+            let time = util.formatTime(new Date());
+            let b64 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + that.data.count + '').toLocaleUpperCase();
+            wx.request({
+              url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=&securityStr=' + b64,
+              header: {
+                'content-type': 'application/json'
+              },
+              success(res) {
+                // console.log(res.data.modelList)
+                if (res.data.modelList) {
+                  var arr1 = that.data.Orderlist;
+                  var arr2 = res.data.modelList;
+                  arr1 = arr1.concat(arr2);
+                  that.setData({
+                    Orderlist: arr1
+                  })
+                } else {
+                  console.log("我是有底线的")
+                  that.setData({
+                    footer: true,
+                  })
+                }
+                that.puth()
+              },
+            })
+          },
+        })
         break;
       case '1':
         that.setData({
-          Orderlist: []
+          Orderlist: [],
+          start: 0,
+          count: 10
         })
-        that.query(0)
+        wx.getStorage({
+          key: 'modelList',
+          success: function (res) {
+            let start = that.data.start;
+            let count = 10
+            let userid = res.data.ID
+            let name = res.data.UserName
+            let sysInfo = app.globalData.sysInfo;
+            let time = util.formatTime(new Date());
+            let b64 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + that.data.count + 0).toLocaleUpperCase();
+            wx.request({
+              url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=0&securityStr=' + b64,
+              header: {
+                'content-type': 'application/json'
+              },
+              success(res) {
+                // console.log(res.data.modelList)
+                if (res.data.modelList) {
+                  var arr1 = that.data.Orderlist;
+                  var arr2 = res.data.modelList;
+                  arr1 = arr1.concat(arr2);
+                  that.setData({
+                    Orderlist: arr1
+                  })
+                } else {
+                  console.log("我是有底线的")
+                  that.setData({
+                    footer: true,
+                  })
+                }
+                that.puth()
+              },
+            })
+          },
+        })
         break; 
       case '2':
         that.setData({
-          Orderlist: []
+          Orderlist: [],
+          start: 0,
+          count: 100
         })
-        that.query(2)
+        wx.getStorage({
+          key: 'modelList',
+          success: function (res) {
+            let start = that.data.start;
+            let userid = res.data.ID
+            let name = res.data.UserName
+            let sysInfo = app.globalData.sysInfo;
+            let time = util.formatTime(new Date());
+            let b64 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + that.data.count + 2).toLocaleUpperCase();
+            wx.request({
+              url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=2&securityStr=' + b64,
+              header: {
+                'content-type': 'application/json'
+              },
+              success(res) {
+                // console.log(res.data.modelList)
+                if (res.data.modelList) {
+                  var arr1 = that.data.Orderlist;
+                  var arr2 = res.data.modelList;
+                  arr1 = arr1.concat(arr2);
+                  that.setData({
+                    Orderlist: arr1
+                  })
+                } else {
+                  console.log("我是有底线的")
+                  that.setData({
+                    footer: true,
+                  })
+                }
+                that.puth()
+              },
+            })
+          },
+        })
         break;
       case '3':
         that.setData({
-          Orderlist: []
+          Orderlist: [],
+          start: 0,
+          count:100
         })
-        that.query(3)
+        wx.getStorage({
+          key: 'modelList',
+          success: function (res) {
+            let start = that.data.start;
+            let userid = res.data.ID
+            let name = res.data.UserName
+            let sysInfo = app.globalData.sysInfo;
+            let time = util.formatTime(new Date());
+            let b64 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + that.data.count + 3).toLocaleUpperCase();
+            wx.request({
+              url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=3&securityStr=' + b64,
+              header: {
+                'content-type': 'application/json'
+              },
+              success(res) {
+                // console.log(res.data.modelList)
+                if (res.data.modelList) {
+                  var arr1 = that.data.Orderlist;
+                  var arr2 = res.data.modelList;
+                  arr1 = arr1.concat(arr2);
+                  that.setData({
+                    Orderlist: arr1
+                  })
+                } else {
+                  console.log("我是有底线的")
+                  that.setData({
+                    footer: true,
+                  })
+                }
+                that.puth()
+              },
+            })
+          },
+        })
         break;
     }
   },
 
-  query:function(e){
-    let key = e;
-    let start = this.data.start;
-    if (key==2||key==3){
-      var count = 40
-    }else{
-      var count = 10;
-    }
-    let that = this
-    let sysInfo = app.globalData.sysInfo;
-    let time = util.formatTime(new Date());
-    wx.getStorage({
-      key: 'modelList',
-      success: function(res) {
-        // console.log(res.data)
-        let userid = res.data.ID
-        let name = res.data.UserName
-        let b64 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + count + key).toLocaleUpperCase();
-        
-        wx.request({
-          url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + count +'&type='+key+'&securityStr='+b64,
-          header: {
-            'content-type': 'application/json'
-          },
-          success(res) {
-              console.log(res.data.modelList)
-              if(res.data.modelList){
-                var arr1 = that.data.Orderlist;
-                var arr2 = res.data.modelList;
-                arr1 = arr1.concat(arr2);
-                that.setData({
-                  Orderlist: arr1
-                })
-              }else{
-                console.log("我是有底线的")
-                that.setData({
-                  footer:true,
-                  start:0
-                })
-              }
-          }, 
-        })
-      },
+  //待取筐详情
+  Takebasket(e){
+    let orderid = e.currentTarget.dataset.orderid
+    wx.reLaunch({
+      url: '../../basket/orderContent/orderContent?order='+orderid,
+    })
+  },
+
+  //待付款详情
+  orderdetails(e){
+    let orderid = e.currentTarget.dataset.orderid
+    wx.reLaunch({
+      url: '../../basket/orderIndex/orderIndex?order='+orderid,
     })
   },
 
@@ -133,7 +248,6 @@ Page({
     let sysInfo = app.globalData.sysInfo;
     let time = util.formatTime(new Date());
     let b64 = utilMd4.hexMD4(time+app.globalData.key+0+10).toLocaleUpperCase();
-    let b65 = utilMd4.hexMD4(time + app.globalData.key + 0 + 10).toLocaleUpperCase();
     wx.request({
       url: app.globalData.url + 'api/Basket_/GetBasketOrderStatus?start=0&count=10&securityStr=' + b64,
       header: {
@@ -143,23 +257,72 @@ Page({
         // console.log(res.data.modelList)
       }
     })
-
-    // 框子类型
-    wx.request({
-      url: app.globalData.url + 'api/Basket_/GetBasketTypeList?start=0&count=10&securityStr=' + b65,
-      header: {
-        'content-type': 'application/json'
-      },
-      success(res) {
-        console.log(res.data.modelList)
-        that.setData({
-          baskettype: res.data.modelList
-        })
-      }
-    })
-
-    that.query("")
     
+    wx.getStorage({
+      key: 'baskettype',
+      success: function (res) {
+        // console.log(res.data)
+        that.setData({
+          baskettype: res.data
+        })
+      },
+    })
+    
+
+    wx.getStorage({
+      key: 'modelList',
+      success: function (res) {
+        let start = that.data.start;
+        let userid = res.data.ID
+        let name = res.data.UserName
+        let sysInfo = app.globalData.sysInfo;
+        let time = util.formatTime(new Date());
+        let b66 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + that.data.count + '').toLocaleUpperCase();
+        wx.request({
+          url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=&securityStr=' + b66,
+          header: {
+            'content-type': 'application/json'
+          },
+          success(res) {
+            // console.log(res.data.modelList)
+            if (res.data.modelList) {
+              var arr1 = that.data.Orderlist;
+              var arr2 = res.data.modelList;
+              arr1 = arr1.concat(arr2);
+              that.setData({
+                Orderlist: arr1
+              })
+            } else {
+              console.log("我是有底线的")
+              that.setData({
+                footer: true,
+              })
+            }
+            that.puth()
+          },
+        })
+      },
+    })
+  },
+
+  puth(){
+    let that = this
+    let order = that.data.Orderlist;
+    let basket = that.data.baskettype;
+    for (let i in order){
+      for (let j in basket){
+        if (order[i].BasketType == basket[j].ID){
+          order[i].Capacity = basket[j].Capacity
+          order[i].RentPrice = basket[j].RentPrice
+          order[i].Detail = basket[j].Detail
+          order[i].DepositPrice = basket[j].DepositPrice
+        }
+      }
+    }
+    // console.log(order)
+    that.setData({
+      Orderlist: order
+    })
   },
 
   /**
@@ -203,10 +366,43 @@ Page({
     let that = this;
     that.setData({
       count: 10,
-      start: that.data.start + that.data.count
+      start: that.data.start + that.data.count 
     })
 
-    that.query("")
+    wx.getStorage({
+      key: 'modelList',
+      success: function (res) {
+        let start = that.data.start;
+        let userid = res.data.ID
+        let name = res.data.UserName
+        let sysInfo = app.globalData.sysInfo;
+        let time = util.formatTime(new Date());
+        let b66 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + that.data.count + '').toLocaleUpperCase();
+        wx.request({
+          url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=&securityStr=' + b66,
+          header: {
+            'content-type': 'application/json'
+          },
+          success(res) {
+            console.log(res.data.modelList)
+            if (res.data.modelList) {
+              var arr1 = that.data.Orderlist;
+              var arr2 = res.data.modelList;
+              arr1 = arr1.concat(arr2);
+              that.setData({
+                Orderlist: arr1
+              })
+            } else {
+              console.log("我是有底线的")
+              that.setData({
+                footer: true,
+              })
+            }
+            that.puth()
+          },
+        })
+      },
+    })
   },
 
   /**

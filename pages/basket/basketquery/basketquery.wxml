@@ -17,8 +17,7 @@
   </view>
   <view class="Order">
     <block wx:for="{{Orderlist}}"wx:key="key" wx:for-item="i">
-      <block wx:for="{{baskettype}}" wx:for-item="j" wx:key="key">
-        <view class="list" data-BasketType="{{item.BasketType}}">
+      <view class="list" data-BasketType="{{item.BasketType}}">
           <view class="listharder">
             <text>订单编号：{{i.OrderId}}</text>
             <block wx:if="{{i.OrderStatus==0}}">
@@ -37,11 +36,11 @@
                 <image src="/imgs/1.png" />
                 <view class="txtblock">
                   <view>
-                    <text class="name">{{i.BasketType==j.ID?j.Capacity:''}}cm筐子</text>
+                    <text class="name">{{i.Capacity}}cm筐子</text>
                     <view class="money">
-                      <text class="txt">押金：{{i.BasketType==j.ID?j.DepositPrice:''}}×1
+                      <text class="txt">押金：{{i.DepositPrice}}×1
                       </text>
-                      <text class="txt">租金：{{i.BasketType==j.ID?j.RentPrice:''}}×1</text>
+                      <text class="txt">租金：{{i.RentPrice}}×1</text>
                     </view>
                   </view>
                   <text class="txt">×{{i.SumCount}}</text>
@@ -55,7 +54,7 @@
             <block wx:else>
               <view class="Waitingbasket">
                 <view class="block">
-                  <text>规格：{{i.BasketType==j.ID?j.Detail:''}}
+                  <text>规格：{{i.Detail}}
                   </text>
                   <text>数量：{{i.SumCount}}
                   </text>
@@ -71,30 +70,31 @@
               </view>
             </block>
           </view>
-          <view class="listfooter">
-            <block wx:if="{{item.OrderStatus!=3}}">
-              <text>订单详情</text>
-            </block>
-            <block wx:else>
-              <text data-orderid="{{item.OrderId}}" catchtap="details">筐子详情</text>
-            </block>
-            <block wx:if="{{item.OrderStatus==0}}">
+          <block wx:if="{{i.OrderStatus==0}}">
+            <view class="listfooter">
+              <text data-orderid="{{i.OrderId}}" catchtap="orderdetails">订单详情</text>
               <view>
                 <button size="mini" class="active">支付</button>
                 <button size="mini" data-orderid="{{item.OrderId}}" catchtap="modify">修改</button>
                 <button size="mini">取消</button>
               </view>
-            </block>
-            <block wx:if="{{item.OrderStatus==2}}">
+            </view>
+          </block>
+          <block wx:elif="{{i.OrderStatus==2}}">
+            <view class="listfooter">
+              <text data-orderid="{{i.OrderId}}" catchtap="Takebasket">订单详情</text>
               <view>
                 <button size="mini" class="active">收货</button>
                 <button size="mini" catchtap="modify">取消</button>
               </view>
-            </block>
-            <block wx:if="{{item.OrderStatus==3}}"></block>
-          </view>
-        </view>
-      </block>
+            </view>
+          </block>
+          <block wx:elif="{{i.OrderStatus==3}}">
+            <view class="listfooter" data-orderid="{{i.OrderId}}" catchtap="details">
+              <text>筐子详情</text>
+            </view>
+          </block>
+      </view>
     </block>
   </view>
   <view wx:if="{{footer}}" class="footer">
