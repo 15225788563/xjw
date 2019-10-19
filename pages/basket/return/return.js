@@ -14,7 +14,7 @@ Page({
   },
   order: function (e) {
     wx.reLaunch({
-      url: "../../basket/order/order"
+      url: "../../basket/order/order?basketID=" + this.data.basketID + "&backOrderID=" + this.data.backOrderID
     })
   },
   sao:function(e){
@@ -68,7 +68,9 @@ Page({
                 _this.setData({
                   rebasket: res.data.modelList,
                   basket: res.data.modelList,
-                  status: res.data.modelList[0].status
+                  status: res.data.modelList[0].status,
+                  backOrderID: res.data.modelList[0].backOrderID,
+                  basketID: res.data.modelList[0].basketID
                 })
               },
             })
