@@ -1,4 +1,7 @@
 // pages/basket/addbacketOrder/addbacketOrder.js
+const app = getApp()
+const util = require('../../../utils/util.js');
+const utilMd4 = require('../../../utils/MD5.js');
 Page({
 
   /**
@@ -9,9 +12,22 @@ Page({
   },
 
   centerPay:function(e){
-    wx.redirectTo({
-      url: "../../basket/centerPay/centerPay?orderid=" + this.data.orderid + '&payLent=' + this.data.payLent + '&paydeposit=' + this.data.paydeposit,
-    }) 
+    var that = this
+    
+    let orderid = that.data.orderid
+    let sysInfo = app.globalData.sysInfo;
+    let time = util.formatTime(new Date());
+    let b64 = utilMd4.hexMD4(time + app.globalData.key + orderid).toLocaleUpperCase();
+    
+    app.Promise({ url: 'api/Basket_/ConfirmPay?orderId=' + orderid + '&securityStr=' + b64, method: "POST" }).then((res) => {
+      console.log(res)
+      if(res.errInfo=="0"){
+        wx.redirectTo({
+          url: "../../basket/centerPay/centerPay?orderid=" + this.data.orderid + '&payLent=' + this.data.payLent + '&paydeposit=' + this.data.paydeposit,
+        }) 
+      }
+    })
+
   },
 
   /**
@@ -23,7 +39,6 @@ Page({
     let paydeposit = options.paydeposit
     let sum = options.sum
     let orderid = options.orderid
-
     this.setData({
       payLent: payLent,
       paydeposit: paydeposit,

@@ -65,6 +65,5 @@ App({
   globalData: {
     userInfo: null,
     key: "^wang7kuang2jian8zikebaiji$",
-    url:"http://49.234.123.71/"
   },
 })

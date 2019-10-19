@@ -92,10 +92,13 @@ Page({
     })
   },
   centerOrder: function (e) {
+    var that = this
     wx.reLaunch({
-      url: "../../basket/centerOrder/centerOrder?Detail=" + this.data.detail + '&deposit=' + this.data.deposit + '&rent=' + this.data.rent + '&bastet=' + this.data.bastet + '&ID=' + this.data.ID + '&concent=' + this.data.concent + '&number=' + this.data.number + '&Days=' + this.data.Days +'&orderid='+this.data.orderid
+      url: "../../basket/centerOrder/centerOrder?Detail=" + that.data.detail + '&deposit=' + that.data.deposit + '&rent=' + that.data.rent + '&bastet=' + that.data.bastet + '&ID=' + that.data.ID + '&concent=' + that.data.concent + '&number=' + that.data.number + '&Days=' + that.data.Days + '&orderid=' + that.data.orderid
     })
   },
+
+
   bindTextAreaBlur: function (e) {
     console.log(e.detail.value)
     this.setData({
@@ -156,6 +159,10 @@ Page({
                bastet: res.modelList[0],
                ID: res.modelList[0].ID,
                detail: res.modelList[0].Detail,
+               
+
+
+   
              })
            }
          })
@@ -170,33 +177,30 @@ Page({
                   bastet: res.modelList[0],
                   ID: res.modelList[0].ID,
                   detail: res.modelList[0].Detail,
+                 BasketType: res.modelList[0].BasketType,
+                 PayableDeposit: res.modelList[0].BasketType,
+                 PayableRent: res.modelList[0].PayableRent,
+                 RentDateCount: res.modelList[0].RentDateCount,
+                 Count: res.modelList[0].Count
+ 
+
                })
              }
            })
 
            let b66 = utilMd4.hexMD4(time + app.globalData.key + that.data.orderid + that.data.userid).toLocaleUpperCase();
            let that = this
-
-           wx.request({
-             url: app.globalData.url + 'api/Basket_/GetBasketToUserOrder?orderId=' + that.data.orderid + '&userId=' + that.data.userid+'&securityStr=' + b66,
-             header: {
-               'content-type': 'application/json'
-             },
-             success(res) {
-               console.log(res.data.modelList[0])
-               that.setData({
-                 SumCount: res.data.modelList[0].SumCount,
-                 RentDays: res.data.modelList[0].RentDays,
-                 OrderDate: res.data.modelList[0].OrderDate
-               })
-               that.setData({
-                 number: that.data.SumCount,
-                 Days: that.data.RentDays
-               })
-
-             }
-
-
+           app.Promise({ url: 'api/Basket_/GetBasketToUserOrder?orderId=' + that.data.orderid + '&userId=' + that.data.userid + '&securityStr=' + b66, method: "GET" }).then((res) => {
+             console.log(res.modelList[0])
+             that.setData({
+               SumCount: res.modelList[0].SumCount,
+               RentDays: res.modelList[0].RentDays,
+               OrderDate: res.modelList[0].OrderDate
+             })
+             that.setData({
+               number: that.data.SumCount,
+               Days: that.data.RentDays
+             })
            })
          }
           

@@ -141,7 +141,7 @@ Page({
       let b64 = utilMd4.hexMD4(time + that.data.phone + that.data.passWord).toLocaleUpperCase();
       // console.log(b64)
       wx.request({
-        url: app.globalData.url + 'api/Home_Page/UpdatePw?userName=' + that.data.phone + '&passWord=' + that.data.passWord + '&securityStr=' + b64,
+        url: 'http://49.234.123.71/api/Home_Page/UpdatePw?userName=' + that.data.phone + '&passWord=' + that.data.passWord + '&securityStr=' + b64,
         header: {
           'content-type': 'application/json'
         },

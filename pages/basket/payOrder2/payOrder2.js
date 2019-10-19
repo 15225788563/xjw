@@ -29,11 +29,11 @@ Page({
     let orderid = options.orderid
     let PayRent = options.PayRent
     let PayDeposit = options.PayDeposit
-    this.setData({
+    this.setData({ 
       orderid: orderid,
       PayRent: PayRent,
       PayDeposit: PayDeposit,
-
+     
     })
   },
 

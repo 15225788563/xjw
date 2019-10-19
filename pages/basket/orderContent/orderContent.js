@@ -42,19 +42,13 @@ Page({
     })
     
     let b65 = utilMd4.hexMD4(time + app.globalData.key + orderid).toLocaleUpperCase();
-    let Url = app.globalData.url + 'api/Basket_/CreateQrImage?Id=' + orderid + '&securityStr=' + b65;
+    let Url = 'http://49.234.123.71/api/Basket_/CreateQrImage?Id=' + orderid + '&securityStr=' + b65;
     //获取二维码
-    wx.request({
-      url: app.globalData.url + 'api/Basket_/CreateQrImage?Id=' + orderid +'&securityStr=' + b65,
-      header: {
-        'content-type': 'application/json'
-      },
-      success(res){
-        // console.log(res.data)
+    app.Promise({ url:'api/Basket_/CreateQrImage?Id=' + orderid + '&securityStr=' + b65, method: "GET" }).then((res) => {
+      console.log(res)
         that.setData({
-          Url:Url
+          Url: Url
         })
-      }
     })
 
     //获取订单
@@ -67,15 +61,11 @@ Page({
           userid :res.data.ID
         })
         let b64 = utilMd4.hexMD4(time + app.globalData.key + orderid + that.data.userid+2).toLocaleUpperCase();
-        wx.request({
-          url: app.globalData.url + 'api/Basket_/GetBasketToUserOrder?orderId=' + orderid + '&userId=' + that.data.userid +'&type=2&securityStr='+b64,
-          header: {
-            'content-type': 'application/json'
-          },
-          success(res){
-            console.log(res.data.modelList[0])
+        app.Promise({ url: 'api/Basket_/GetBasketToUserOrder?orderId=' + orderid + '&userId=' + that.data.userid + '&type=2&securityStr=' + b64, method: "GET" }).then((res) => {
+          console.log(res)
+          if(res.errInfo=="0"){
             that.setData({
-              Orderlist:res.data.modelList
+              Orderlist: res.modelList
             })
             that.puth()
           }

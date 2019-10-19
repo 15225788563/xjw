@@ -22,8 +22,6 @@
 
  <view class="body">
   <view>选择支付方式</view>
-   
-  
   <view class="weix"><image src="/imgs/1.png"></image><text class="yonghu">微信支付</text><text class="tuijian">推荐微信用户使用</text></view>
   <view class="zibao"><image src="/imgs/1.png"></image><text class="yonghu">支付宝支付</text><text class="tuijian">推荐支付宝用户使用</text></view>
   <view class="qita"><image src="/imgs/1.png"></image><text class="yonghu">其他方式支付</text><text class="tuijian">其他方式使用</text></view>

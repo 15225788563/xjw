@@ -17,9 +17,18 @@ Page({
   },
 
   payOrder: function (e) {
-    wx.reLaunch({
-      url: "../../basket/addbacketOrder/addbacketOrder?payLent=" + this.data.payLent + '&paydeposit=' + this.data.paydeposit + '&sum=' + this.data.sum +'&orderid='+this.data.orderid
+    var that = this
+    let sysInfo = app.globalData.sysInfo;
+    let time = util.formatTime(new Date());
+    let b65 = utilMd4.hexMD4(time + app.globalData.key + that.data.ID + that.data.userid + that.data.number + that.data.Days + that.data.concent).toLocaleUpperCase();
+    console.log(b65)
+    app.Promise({ url: 'api/Basket_/BasketRent?typeId=' + that.data.ID + '&userId=' + that.data.userid + '&count=' + that.data.number + '&days=' + that.data.Days + '&remark=' + that.data.concent + '&securityStr=' + b65, method: "POST" }).then((res) => {
+      console.log(res)
+      wx.reLaunch({
+        url: "../../basket/addbacketOrder/addbacketOrder?orderid=" + res.modelList[0].OrderID
+      })
     })
+    
   },
 
   /**

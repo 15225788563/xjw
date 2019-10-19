@@ -148,18 +148,7 @@ Page({
             })
           } else if (res.errInfo == "0"){
             console.log(res)
-            let time = util.formatTime(new Date());
-            let b65 = utilMd4.hexMD4(time + app.globalData.key + app.globalData.openid)
-            app.Promise({ url: "api/Home_Page/GetUserInfoByWxCode?wxCode=" + app.globalData.openid + "&securityStr=" + b65, method: "GET" }).then((res) => {
-              console.log("已注册 调到登录页")
-              wx.setStorage({
-                key: 'modelList',
-                data: res.modelList[0],
-              })
-              wx.reLaunch({
-                url: '../home/home'
-              })
-            })
+            
           }
         })
     }
