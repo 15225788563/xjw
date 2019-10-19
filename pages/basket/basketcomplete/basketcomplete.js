@@ -22,39 +22,7 @@ Page({
  
 
   whole:function(e){
-    var _this = this
-    wx.getStorage({
-      key: 'modelList',
-      success: function(res) {
-        _this.setData({
-          userid: res.data.ID,
-          username: res.data.UserName
-        })
-        let sysInfo = app.globalData.sysInfo;
-        let time = util.formatTime(new Date());
-        let b64 = utilMd4.hexMD4(time + app.globalData.key + _this.data.userid).toLocaleUpperCase();
-        // console.log(b64)
-        // 最新需求
-        wx.request({
-          url: app.globalData.url + 'api/Basket_/GetBackList?userId=' + _this.data.userid+'&securityStr=' + b64,
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          method: "get",
-          success(res) {
-            for (var i in res.data.modelList) {
-              res.data.modelList[i].basketID = res.data.modelList[i].basketID.split(",");
-            }
-            console.log(res.data.modelList)
-            _this.setData({
-              list: res.data.modelList
-            })
-          },
-        })
-        console.log("点击全部")
-      },
-    })
- 
+    console.log("点击全部")
   },
 
   /**
@@ -74,21 +42,16 @@ Page({
         let b64 = utilMd4.hexMD4(time + app.globalData.key + _this.data.userid).toLocaleUpperCase();
         // console.log(b64)
         // 最新需求
-        wx.request({
-          url: app.globalData.url + 'api/Basket_/GetBackList?userId=' + _this.data.userid + '&securityStr=' + b64,
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          method: "get",
-          success(res) {
-            for (var i in res.data.modelList) {
-              res.data.modelList[i].basketID = res.data.modelList[i].basketID.split(",");
+        app.Promise({ url: 'api/Basket_/GetBackList?userId=' + _this.data.userid + '&securityStr=' + b64, method: "GET" }).then((res) => {
+          if(res.errInfo="0"){
+            for (var i in res.modelList) {
+              res.modelList[i].basketID = res.modelList[i].basketID.split(",");
             }
-            console.log(res.data.modelList)
+            console.log(res.modelList)
             _this.setData({
-              list: res.data.modelList
+              list: res.modelList
             })
-          },
+          }
         })
       },
 
@@ -141,21 +104,16 @@ Page({
         let b64 = utilMd4.hexMD4(time + app.globalData.key + _this.data.userid).toLocaleUpperCase();
         // console.log(b64)
         // 最新需求
-        wx.request({
-          url: app.globalData.url + 'api/Basket_/GetBackList?userId=' + _this.data.userid + '&securityStr=' + b64,
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          method: "get",
-          success(res) {
-            for (var i in res.data.modelList) {
-              res.data.modelList[i].basketID = res.data.modelList[i].basketID.split(",");
+        app.Promise({ url: 'api/Basket_/GetBackList?userId=' + _this.data.userid + '&securityStr=' + b64, method: "GET" }).then((res) => {
+          if (res.errInfo = "0") {
+            for (var i in res.modelList) {
+              res.modelList[i].basketID = res.modelList[i].basketID.split(",");
             }
-            console.log(res.data.modelList)
+            console.log(res.modelList)
             _this.setData({
-              list: res.data.modelList
+              list: res.modelList
             })
-          },
+          }
         })
       },
     })

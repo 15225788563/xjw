@@ -103,22 +103,21 @@ Page({
     let time = util.formatTime(new Date());
     let b65 = utilMd4.hexMD4(time + app.globalData.key).toLocaleUpperCase();
     // 框子类型
-    wx.request({
-      url: app.globalData.url + 'api/Basket_/GetBasketTypeList?securityStr=' + b65,
-      header: {
-        'content-type': 'application/json'
-      },
-      success(res) {
+    app.Promise({ url: 'api/Basket_/GetBasketTypeList?securityStr=' + b65, method: "GET" }).then((res) => {
+      // console.log(res)
+      if(res.errInfo=="0"){
         that.setData({
-          baskettype: res.data.modelList
+          baskettype: res.modelList
         })
-        console.log(that.data.baskettype)
+        console.log(that.baskettype)
         wx.setStorage({
           key: 'baskettype',
-          data: res.data.modelList,
+          data: res.modelList,
         })
       }
     })
+    
+
     wx.getStorage({
       key: 'modelList',
       success: function (res) {
@@ -126,19 +125,15 @@ Page({
         let userid = res.data.ID;
         let username = res.data.UserName
         let b66 = utilMd4.hexMD4(time + app.globalData.key + userid + username + 0 + 3).toLocaleUpperCase();
-        wx.request({
-          url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + username + '&start=0&count=3&type=&securityStr=' + b66,
-          header: {
-            'content-type': 'application/json'
-          },
-          success(res) {
-
+        app.Promise({ url: 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + username + '&start=0&count=3&type=&securityStr=' + b66, method: "GET" }).then((res) => {
+          console.log(res)
+          if(res.errInfo=="0"){
             that.setData({
-              Orderlist: res.data.modelList
+              Orderlist: res.modelList
             })
             console.log(that.data.Orderlist)
             that.puth()
-          },
+          }
         })
       },
     })

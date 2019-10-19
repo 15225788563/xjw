@@ -14,6 +14,8 @@ Page({
 
   onLoad: function () {
     var that = this;
+    let sysInfo = app.globalData.sysInfo;
+
     // 查看是否授权
     wx.getSetting({
       success: function (res) {
@@ -23,21 +25,6 @@ Page({
             success: function (res) {
               //从数据库获取用户信息
               that.queryUsreInfo();
-              // 用户已经授权过
-              wx.getStorage({
-                key: 'modelList',
-                success: function(res) {
-                  if (res.data.modelList){
-                    wx.reLaunch({
-                      url: '../home/home'
-                    })
-                  }else{
-                    wx.reLaunch({
-                      url: '../register/register'
-                    })
-                  }
-                },
-              })
             }
           });
         }
@@ -46,43 +33,32 @@ Page({
   },
 
   bindGetUserInfo: function (e) {
+    let that = this;
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
-      var that = this;
       // console.log(e.detail.userInfo)
       wx.sett
       //授权成功后，传输openid判断
-      let that = this;
-      let sysInfo = app.globalData.sysInfo;
       let time = util.formatTime(new Date());
       let b64 = utilMd4.hexMD4(time + app.globalData.key + app.globalData.openid).toLocaleUpperCase();
-      // console.log(b64)
-      // console.log(app.globalData.openid)
-      wx.request({
-        url: app.globalData.url + "api/Home_Page/GetUserInfoByWxCode?wxCode=" + app.globalData.openid + "&securityStr=" + b64,
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        method: "GET",
-        success(res) {
-          // console.log(res.data.modelList)
-          if(res.data.modelList){
-            console.log("已注册 调到登录页")
-            wx.setStorage({
-              key: 'modelList',
-              data: res.data.modelList[0],
-            })
-            setTimeout(function () {
-              wx.reLaunch({
-                url: '../home/home'
-              })
-            }, 500)
-          }else{
-            console.log("还未注册 调到注册页")
-            wx.reLaunch({
-              url: '../register/register'
-            })
-          }
+      console.log(b64)
+      app.Promise({ url:"api/Home_Page/GetUserInfoByWxCode?wxCode="+app.globalData.openid + "&securityStr="+that.data.b64, method:"GET"}).then((res)=>{
+        console.log(res)
+        if (res.errInfo == '0') {
+          console.log("已注册 调到登录页")
+          wx.setStorage({
+            key: 'modelList',
+            data: res.modelList[0],
+          })
+          wx.reLaunch({
+            url: '../home/home'
+          })
+        } else if (res.errInfo == '-1') {
+          console.log(res)
+          console.log("还未注册 调到注册页")
+          wx.reLaunch({
+            url: '../register/register'
+          })
         }
       })
 
@@ -119,33 +95,24 @@ Page({
     let time = util.formatTime(new Date());
     let b64 = utilMd4.hexMD4(time + app.globalData.key + app.globalData.openid).toLocaleUpperCase();
     console.log(b64)
-    wx.request({
-      url: app.globalData.url + "api/Home_Page/GetUserInfoByWxCode?wxCode=" + app.globalData.openid + "&securityStr=" + b64,
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      method: "GET",
-      success(res) {
-        // console.log(res.data.modelList)
-       if(res.data.modelList){
-         console.log("已注册 调到登录页")
-         wx.setStorage({
-           key: 'modelList',
-           data: res.data.modelList[0],
-         })
-         setTimeout(function () {
-           wx.reLaunch({
-             url: '../home/home'
-           })
-         }, 500)
-       }else{
-         console.log("还未注册 调到注册页")
-         setTimeout(function () {
-          wx.reLaunch({
-            url: '../register/register'
-          })
-         }, 500)
-       }
+    app.Promise({ url: "api/Home_Page/GetUserInfoByWxCode?wxCode=" + app.globalData.openid + "&securityStr=" + b64, method: "GET" }).then((res) => {
+      getApp().globalData.userInfo = res.data;
+      console.log(res)
+      if (res.errInfo == '0') {
+        console.log("已注册 调到登录页")
+        wx.setStorage({
+          key: 'modelList',
+          data: res.modelList[0],
+        })
+        wx.reLaunch({
+          url: '../home/home'
+        })
+      } else if (res.errInfo == '-1') {
+        console.log(res)
+        console.log("还未注册 调到注册页")
+        wx.reLaunch({
+          url: '../register/register'
+        })
       }
     })
   },

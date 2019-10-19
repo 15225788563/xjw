@@ -105,19 +105,20 @@ Page({
 
   //提交修改
   changeOrder:function(){
-    if (this.data.orderid != null) {
+    let that = this
+    if (that.data.orderid != null) {
     
     
-    this.setData({
-      SumCount1:this.data.number,
-      RentDays1:this.data.Days,
-      rent:this.data.rent,
-      deposit: this.data.deposit
+      that.setData({
+      SumCount1: that.data.number,
+      RentDays1: that.data.Days,
+      rent: that.data.rent,
+      deposit: that.data.deposit
       
       
     })
       wx.reLaunch({
-        url: "../../basket/payOrder/payOrder?SumCount1=" + this.data.SumCount1 + '&RentDays1=' + this.data.RentDays1 + '&rent=' + this.data.rent + '&deposit=' + this.data.deposit + '&orderid=' + this.data.orderid
+        url: "../../basket/payOrder/payOrder?SumCount1=" + that.data.SumCount1 + '&RentDays1=' + that.data.RentDays1 + '&rent=' + that.data.rent + '&deposit=' + that.data.deposit + '&orderid=' + that.data.orderid
       })
 
     }
@@ -128,17 +129,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    let that = this
+    var that = this
     let sysInfo = app.globalData.sysInfo;
     let time = util.formatTime(new Date());
     let b64 = utilMd4.hexMD4(time + app.globalData.key).toLocaleUpperCase();
     
-    this.setData({
+    that.setData({
       orderid: options.orderid
     })
     
-    console.log(this.data.orderid)
+    console.log(that.data.orderid)
      wx.getStorage({
        key: 'modelList',
        success: function(res) {
@@ -146,42 +146,30 @@ Page({
          that.setData({
            userid: res.data.ID
          })
-         wx.request({
-           url: app.globalData.url + 'api/Basket_/GetBasketTypeList?securityStr=' + b64,
-           header: {
-             'content-type': 'application/json'
-           },
-           success(res) {
-             console.log(res.data)
+         app.Promise({ url: 'api/Basket_/GetBasketTypeList?securityStr=' + b64, method: "GET" }).then((res) => {
+           console.log(res)
+           if(res.errInfo=="0"){
              that.setData({
-               list: res.data.modelList,
-               deposit: res.data.modelList[0].RentPrice,
-               rent: res.data.modelList[0].DepositPrice,
-               bastet: res.data.modelList[0],
-               ID: res.data.modelList[0].ID,
-               detail: res.data.modelList[0].Detail,
+               list: res.modelList,
+               deposit: res.modelList[0].RentPrice,
+               rent: res.modelList[0].DepositPrice,
+               bastet: res.modelList[0],
+               ID: res.modelList[0].ID,
+               detail: res.modelList[0].Detail,
              })
            }
          })
-
-         if (that.data.orderid != null) {
-
-           wx.request({
-
-             url: app.globalData.url + 'api/Basket_/GetBasketTypeList?securityStr=' + b64,
-             header: {
-               'content-type': 'application/json'
-             },
-             success(res) {
-               console.log(res.data)
+         if (that.data.orderid) {
+           app.Promise({ url: 'api/Basket_/GetBasketTypeList?securityStr=' + b64, method: "GET" }).then((res) => {
+             console.log(res)
+             if (res.errInfo == "0") {
                that.setData({
-                 list: res.data.modelList,
-                 deposit: res.data.modelList[0].RentPrice,
-                 rent: res.data.modelList[0].DepositPrice,
-                 bastet: res.data.modelList[0],
-                 ID: res.data.modelList[0].ID,
-                 detail: res.data.modelList[0].Detail,
-
+                  list: res.modelList,
+                  deposit: res.modelList[0].RentPrice,
+                  rent: res.modelList[0].DepositPrice,
+                  bastet: res.modelList[0],
+                  ID: res.modelList[0].ID,
+                  detail: res.modelList[0].Detail,
                })
              }
            })
@@ -190,11 +178,7 @@ Page({
            let that = this
 
            wx.request({
-
-             // url: app.globalData.url + 'api/Basket_/GetBasketToUserOrder?orderId=' + this.data.orderid + '&userId=61&securityStr=' + b66,
              url: app.globalData.url + 'api/Basket_/GetBasketToUserOrder?orderId=' + that.data.orderid + '&userId=' + that.data.userid+'&securityStr=' + b66,
-
-
              header: {
                'content-type': 'application/json'
              },

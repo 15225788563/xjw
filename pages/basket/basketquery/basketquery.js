@@ -34,14 +34,19 @@ Page({
     })
   },
 
+  payOrder(e){
+    let orderid = e.currentTarget.dataset.orderid
+    wx.reLaunch({
+      url: "../../basket/payOrder/payOrder?orderid=" + orderid
+    })  
+  },
+
   modify:function(e){
     // console.log(e.currentTarget.dataset.orderid)
     let orderid = e.currentTarget.dataset.orderid
-    setTimeout(function () {
-      wx.reLaunch({
-        url: "../../basket/basketmodify/basketmodify?orderid="+orderid
-      })  
-    }, 500)
+    wx.reLaunch({
+      url: "../../basket/basketmodify/basketmodify?orderid="+orderid
+    })  
   },
 
   /**
@@ -58,28 +63,23 @@ Page({
         that.setData({
           footer: true,
           start: 0,
-          count: 10
         })
         wx.getStorage({
           key: 'modelList',
           success: function (res) {
             let start = that.data.start;
-            let count = 10
+            let count = that.data.count;
             let userid = res.data.ID
             let name = res.data.UserName
             let sysInfo = app.globalData.sysInfo;
             let time = util.formatTime(new Date());
             let b64 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + that.data.count + '').toLocaleUpperCase();
-            wx.request({
-              url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=&securityStr=' + b64,
-              header: {
-                'content-type': 'application/json'
-              },
-              success(res) {
-                // console.log(res.data.modelList)
-                if (res.data.modelList) {
+            app.Promise({ url: 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=&securityStr=' + b64, method: "GET" }).then((res) => {
+              // console.log(res)
+              if(res.errInfo=="0"){
+                if (res.modelList) {
                   var arr1 = that.data.Orderlist;
-                  var arr2 = res.data.modelList;
+                  var arr2 = res.modelList;
                   arr1 = arr1.concat(arr2);
                   that.setData({
                     Orderlist: arr1
@@ -91,7 +91,7 @@ Page({
                   })
                 }
                 that.puth()
-              },
+              }
             })
           },
         })
@@ -112,16 +112,12 @@ Page({
             let sysInfo = app.globalData.sysInfo;
             let time = util.formatTime(new Date());
             let b64 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + that.data.count + 0).toLocaleUpperCase();
-            wx.request({
-              url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=0&securityStr=' + b64,
-              header: {
-                'content-type': 'application/json'
-              },
-              success(res) {
-                // console.log(res.data.modelList)
-                if (res.data.modelList) {
+            app.Promise({ url: 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=0&securityStr=' + b64, method: "GET" }).then((res) => {
+              // console.log(res)
+              if (res.errInfo == "0") {
+                if (res.modelList) {
                   var arr1 = that.data.Orderlist;
-                  var arr2 = res.data.modelList;
+                  var arr2 = res.modelList;
                   arr1 = arr1.concat(arr2);
                   that.setData({
                     Orderlist: arr1
@@ -133,7 +129,7 @@ Page({
                   })
                 }
                 that.puth()
-              },
+              }
             })
           },
         })
@@ -153,16 +149,12 @@ Page({
             let sysInfo = app.globalData.sysInfo;
             let time = util.formatTime(new Date());
             let b64 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + that.data.count + 2).toLocaleUpperCase();
-            wx.request({
-              url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=2&securityStr=' + b64,
-              header: {
-                'content-type': 'application/json'
-              },
-              success(res) {
-                // console.log(res.data.modelList)
-                if (res.data.modelList) {
+            app.Promise({ url: 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=2&securityStr=' + b64, method: "GET" }).then((res) => {
+              // console.log(res)
+              if (res.errInfo == "0") {
+                if (res.modelList) {
                   var arr1 = that.data.Orderlist;
-                  var arr2 = res.data.modelList;
+                  var arr2 = res.modelList;
                   arr1 = arr1.concat(arr2);
                   that.setData({
                     Orderlist: arr1
@@ -174,7 +166,7 @@ Page({
                   })
                 }
                 that.puth()
-              },
+              }
             })
           },
         })
@@ -194,16 +186,12 @@ Page({
             let sysInfo = app.globalData.sysInfo;
             let time = util.formatTime(new Date());
             let b64 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + that.data.count + 3).toLocaleUpperCase();
-            wx.request({
-              url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=3&securityStr=' + b64,
-              header: {
-                'content-type': 'application/json'
-              },
-              success(res) {
-                // console.log(res.data.modelList)
-                if (res.data.modelList) {
+            app.Promise({ url: 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=3&securityStr=' + b64, method: "GET" }).then((res) => {
+              // console.log(res)
+              if (res.errInfo == "0") {
+                if (res.modelList) {
                   var arr1 = that.data.Orderlist;
-                  var arr2 = res.data.modelList;
+                  var arr2 = res.modelList;
                   arr1 = arr1.concat(arr2);
                   that.setData({
                     Orderlist: arr1
@@ -215,7 +203,7 @@ Page({
                   })
                 }
                 that.puth()
-              },
+              }
             })
           },
         })
@@ -233,6 +221,7 @@ Page({
 
   //待付款详情
   orderdetails(e){
+    console.log(e)
     let orderid = e.currentTarget.dataset.orderid
     wx.reLaunch({
       url: '../../basket/orderIndex/orderIndex?order='+orderid,
@@ -248,16 +237,10 @@ Page({
     let sysInfo = app.globalData.sysInfo;
     let time = util.formatTime(new Date());
     let b64 = utilMd4.hexMD4(time+app.globalData.key+0+10).toLocaleUpperCase();
-    wx.request({
-      url: app.globalData.url + 'api/Basket_/GetBasketOrderStatus?start=0&count=10&securityStr=' + b64,
-      header: {
-        'content-type': 'application/json'
-      },
-      success(res) {
-        // console.log(res.data.modelList)
-      }
+    app.Promise({ url: 'api/Basket_/GetBasketOrderStatus?start=0&count=10&securityStr=' + b64, method: "GET" }).then((res) => {
+      
     })
-    
+
     wx.getStorage({
       key: 'baskettype',
       success: function (res) {
@@ -278,16 +261,11 @@ Page({
         let sysInfo = app.globalData.sysInfo;
         let time = util.formatTime(new Date());
         let b66 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + that.data.count + '').toLocaleUpperCase();
-        wx.request({
-          url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=&securityStr=' + b66,
-          header: {
-            'content-type': 'application/json'
-          },
-          success(res) {
-            // console.log(res.data.modelList)
-            if (res.data.modelList) {
+        app.Promise({ url: 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=&securityStr=' + b66, method: "GET" }).then((res) => {
+          if(res.errInfo=="0"){
+            if (res.modelList) {
               var arr1 = that.data.Orderlist;
-              var arr2 = res.data.modelList;
+              var arr2 = res.modelList;
               arr1 = arr1.concat(arr2);
               that.setData({
                 Orderlist: arr1
@@ -299,7 +277,7 @@ Page({
               })
             }
             that.puth()
-          },
+          }
         })
       },
     })

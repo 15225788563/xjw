@@ -72,7 +72,7 @@ Page({
 
       let b64 = utilMd4.hexMD4(time + app.globalData.key + phone).toLocaleUpperCase();
       wx.request({
-        'url': app.globalData.url + 'api/Home_Page/SendVerCodeSms?phoneNumber=' + phone + '&SecurityStr=' + b64,
+        'url': 'http://49.234.123.71/api/Home_Page/SendVerCodeSms?phoneNumber=' + phone + '&SecurityStr=' + b64,
         success(res) {
           console.log(res)
           // that.setData({
@@ -137,21 +137,31 @@ Page({
       })
     } else{
       let b64 = utilMd4.hexMD4(time + app.globalData.key + that.data.phone + that.data.passWord + app.globalData.openid + verCode).toLocaleUpperCase();
-      console.log(b64)
-      console.log(that.data.phone)
-      console.log(that.data.passWord)
-      console.log(app.globalData.openid)
-      console.log(that.data.code)
-      wx.request({
-        url: app.globalData.url + 'api/Home_Page/AddUserByWx?userName=' + that.data.phone + '&passWord=' + that.data.passWord + '&wxCode=' + app.globalData.openid + '&verCode=' + verCode+'&securityStr='+b64,
-        header: {
-          'content-type': 'application/json'
-        },
-        method:"POST",
-        success(res) {
-          console.log(res.data)
-        }
-      })
+
+      app.Promise({url:'api/Home_Page/AddUserByWx?userName=' + that.data.phone + '&passWord=' + that.data.passWord + '&wxCode=' + app.globalData.openid + '&verCode=' + verCode + '&securityStr=' + b64, method:"POST",}).then((res) =>{
+          console.log(res)
+          if (res.errInfo=="-5"){
+            wx.showToast({
+              title: '验证码错误',
+              icon: 'none',
+              duration: 1000
+            })
+          } else if (res.errInfo == "0"){
+            console.log(res)
+            let time = util.formatTime(new Date());
+            let b65 = utilMd4.hexMD4(time + app.globalData.key + app.globalData.openid)
+            app.Promise({ url: "api/Home_Page/GetUserInfoByWxCode?wxCode=" + app.globalData.openid + "&securityStr=" + b65, method: "GET" }).then((res) => {
+              console.log("已注册 调到登录页")
+              wx.setStorage({
+                key: 'modelList',
+                data: res.modelList[0],
+              })
+              wx.reLaunch({
+                url: '../home/home'
+              })
+            })
+          }
+        })
     }
   },
 

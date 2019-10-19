@@ -16,83 +16,88 @@
     </view>
   </view>
   <view class="Order">
-    <block wx:for="{{Orderlist}}"wx:key="key">
-      <view class="list" data-BasketType="{{item.BasketType}}">
-        <view class="listharder">
-          <text>订单编号：{{item.OrderId}}</text>
-          <block wx:if="{{item.OrderStatus==0}}">
-            <text class="state">等待付款</text>
-          </block>
-          <block wx:if="{{item.OrderStatus==2}}">
-            <text class="state">等待取筐</text> 
-          </block>
-          <block wx:if="{{item.OrderStatus==3}}">
-            <text class="state">已完成</text>
-          </block>
-        </view>
-        <view class="listbody">
-          <block wx:if="{{item.OrderStatus!=2}}">
-            <view class="order">
-              <image src="/imgs/1.png" />
-              <view class="txtblock">
-                <view>
-                  <text class="name">{{item.BasketType==2?88:item.BasketType==3?3:item.BasketType==6?1:''}}cm筐子</text>
-                  <view class="money">
-                    <text class="txt">押金：{{item.BasketType==2?10:item.BasketType==3?25:item.BasketType==6?11111:''}}×1
-                    </text>
-                    <text class="txt">租金：{{item.BasketType==2?20:item.BasketType==3?0.15:item.BasketType==6?11111:''}}×1</text>
+    <block wx:for="{{Orderlist}}"wx:key="key" wx:for-item="i">
+      <view class="list" data-BasketType="{{i.BasketType}}">
+          <view class="listharder">
+            <text>订单编号：{{i.OrderId}}</text>
+            <block wx:if="{{i.OrderStatus==0}}">
+              <text class="state">等待付款</text>
+            </block>
+            <block wx:if="{{i.OrderStatus==2}}">
+              <text class="state">等待取筐</text>
+            </block>
+            <block wx:if="{{i.OrderStatus==3}}">
+              <text class="state">已完成</text>
+            </block>
+          </view>
+          <view class="listbody">
+            <block wx:if="{{i.OrderStatus!=2}}">
+              <view class="order">
+                <image src="/imgs/1.png" />
+                <view class="txtblock">
+                  <view>
+                    <text class="name">{{i.Capacity}}cm筐子</text>
+                    <view class="money">
+                      <text class="txt">押金：{{i.DepositPrice}}×1
+                      </text>
+                      <text class="txt">租金：{{i.RentPrice}}×1</text>
+                    </view>
                   </view>
+                  <text class="txt">×{{i.SumCount}}</text>
                 </view>
-                <text class="txt">×{{item.SumCount}}</text>
+              </view>
+              <view class="Total">
+                <text>共{{i.SumCount}}件</text>
+                <text>合计:{{i.SumPay}}</text>
+              </view>
+            </block>
+            <block wx:else>
+              <view class="Waitingbasket">
+                <view class="block">
+                  <text>规格：{{i.Detail}}
+                  </text>
+                  <text>数量：{{i.SumCount}}
+                  </text>
+                  <text>支付时间：{{i.PayDate}}
+                  </text>
+                  <text>还筐时间：{{i.ExpireDate}}
+                  </text>
+                </view>
+                <image src="/imgs/19.png" />
+              </view>
+              <view class="Totals">
+                <text>实付：￥{{i.SumPay}}</text>
+              </view>
+            </block>
+          </view>
+          <block wx:if="{{i.OrderStatus==0}}">
+            <view class="listfooter">
+              <text data-orderid="{{i.OrderId}}" catchtap="orderdetails">订单详情</text>
+              <view>
+                <button size="mini" data-orderid="{{i.OrderId}}" catchtap='payOrder' class="active">支付</button>
+                <button size="mini" data-orderid="{{i.OrderId}}" catchtap="modify">修改</button>
+                <button size="mini">取消</button>
               </view>
             </view>
-            <view class="Total">
-              <text>共{{item.SumCount}}件</text>
-              <text>合计:{{item.SumPay}}</text>
-            </view>
           </block>
-          <block wx:else>
-            <view class="Waitingbasket">
-              <view class="block">
-                <text>规格：{{item.BasketType==2?"8888":item.BasketType==3?"50*50*40":item.BasketType==6?"50*40*40*80":''}}
-                </text>
-                <text>数量：{{item.SumCount}}
-                </text>
-                <text>支付时间：{{item.PayDate}}
-                </text>
-                <text>还筐时间：{{item.ExpireDate}}
-                </text>
+          <block wx:elif="{{i.OrderStatus==2}}">
+            <view class="listfooter">
+              <text data-orderid="{{i.OrderId}}" catchtap="Takebasket">订单详情</text>
+              <view>
+                <button size="mini" class="active">收货</button>
+                <button size="mini" catchtap="modify">取消</button>
               </view>
-              <image src="/imgs/19.png" />
-            </view>
-            <view class="Totals">
-              <text>实付：￥{{item.SumPay}}</text>
             </view>
           </block>
-        </view>
-        <view class="listfooter">
-          <block wx:if="{{item.OrderStatus!=3}}">
-            <text>订单详情</text>
-          </block>
-          <block wx:else>
-            <text catchtap="">筐子详情</text>
-          </block>
-          <block wx:if="{{item.OrderStatus==0}}">
-            <view>
-              <button size="mini" class="active">支付</button>
-              <button size="mini" data-orderid="{{item.OrderId}}" catchtap="modify">修改</button>
-              <button size="mini">取消</button>
+          <block wx:elif="{{i.OrderStatus==3}}">
+            <view class="listfooter" data-orderid="{{i.OrderId}}" catchtap="details">
+              <text>筐子详情</text>
             </view>
           </block>
-          <block wx:if="{{item.OrderStatus==2}}">
-            <view>
-              <button size="mini" class="active">收货</button>
-              <button size="mini" catchtap="modify">取消</button>
-            </view>
-          </block>
-          <block wx:if="{{item.OrderStatus==3}}"></block>
-        </view>
       </view>
     </block>
+  </view>
+  <view wx:if="{{footer}}" class="footer">
+      <text>我是有底线的</text>
   </view>
 </view>

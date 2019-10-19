@@ -112,7 +112,6 @@ Page({
       key: 'modelList',
       success: function(res) {
         console.log(res.data.ID)
-
         _this.setData({
           userID: res.data.ID
         })
@@ -122,65 +121,42 @@ Page({
         let b64 = utilMd4.hexMD4(time + app.globalData.key + _this.data.userID).toLocaleUpperCase();
         // console.log(b64)
         // 最新需求
-        wx.request({
-          url: app.globalData.url+'api/Home_Page/GetDemanddetails?detailId=' + _this.data.userID+'&securityStr=' + b64,
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          method: "GET",
-          success(res) {
+        app.Promise({ url: 'api/Home_Page/GetDemanddetails?detailId=' + _this.data.userID + '&securityStr=' + b64, method: "GET" }).then((res) => {
+          // console.log(res)
+          if(res.errInfo=="0"){
             _this.setData({
-              demandlist: res.data.modelList
+              demandlist: res.modelList
             })
-
-            // console.log(_this.data.demandlist)
-          },
-        }),
-          // 订单记录
-        wx.request({
-          url: app.globalData.url +'api/Home_Page/GetOrderDetailById?Id=' + _this.data.userID + '&securityStr=' + b64,
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          method: "GET",
-          success(res) {
-            _this.setData({
-              order: res.data.modelList
-            })
-            // console.log(_this.data.order)
           }
-        }),
+        })
+        // 订单记录
+        app.Promise({ url: 'api/Home_Page/GetOrderDetailById?Id=' + _this.data.userID + '&securityStr=' + b64, method: "GET" }).then((res) => {
+          // console.log(res)
+          if (res.errInfo == "0") {
+            _this.setData({
+              order: res.modelList
+            })
+          }
+        })
 
         //销售额
-        wx.request({
-          url: app.globalData.url +'api/Home_Page/GetTodayPay?Id=' + _this.data.userID +'&securityStr='+b64,
-          
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          success(res) {
-            
+        app.Promise({ url:'api/Home_Page/GetTodayPay?Id='+ _this.data.userID+'&securityStr='+b64, method: "GET" }).then((res) => {
+          // console.log(res)
+          if (res.errInfo == "0") {
             _this.setData({
-              ShouldGet: res.data.modelList[0].ShouldGet,
-              TodayBuy: res.data.modelList[0].TodayBuy,
-              TodaySell: res.data.modelList[0].TodaySell
+              ShouldGet: res.modelList[0].ShouldGet,
+              TodayBuy: res.modelList[0].TodayBuy,
+              TodaySell: res.modelList[0].TodaySell
             })
-            // console.log(res.data.modelList[0])
           }
         })
         //常用联系人
-        wx.request({
-          url: app.globalData.url +'api/Home_Page/GetGetTopContacts?userId=' + _this.data.userID + '&securityStr=' + b64,
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          method: "GET",
-          success: function (res) {
-            //请求成功后的回调
+        app.Promise({ url: 'api/Home_Page/GetGetTopContacts?userId=' + _this.data.userID + '&securityStr=' + b64, method: "GET" }).then((res) => {
+          // console.log(res)
+          if (res.errInfo == "0") {
             _this.setData({
-              contact: res.data.modelList
+              contact: res.modelList
             })
-            // console.log(_this.data.contact)
           }
         })
       },

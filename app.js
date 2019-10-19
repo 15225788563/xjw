@@ -45,9 +45,25 @@ App({
       }
     })
   },
+
+  Promise: function (promise) {
+    let APIURL = 'http://49.234.123.71/';
+    return new Promise(function (resolve, reject) {
+      wx.request({
+        url: APIURL + promise.url,
+        data: promise.data,
+        method: promise.method,
+        success(res) {
+          resolve(res.data);
+        },
+        fail(e) {
+          console.log(e)
+        }
+      });
+    })
+  },
   globalData: {
     userInfo: null,
     key: "^wang7kuang2jian8zikebaiji$",
-    url:"http://49.234.123.71/"
   },
 })
