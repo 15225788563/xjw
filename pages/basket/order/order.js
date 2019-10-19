@@ -31,7 +31,8 @@ Page({
     var _this = this
     _this.setData({
       backOrderID: options.backOrderID,
-      basketID: options.basketID
+      basketID: options.basketID,
+      status: options.status
     })
     wx.getStorage({
       key: 'modelList',
@@ -45,32 +46,25 @@ Page({
         let b63 = utilMd4.hexMD4(time + app.globalData.key + _this.data.backOrderID + _this.data.userid + _this.data.basketID).toLocaleUpperCase();
         // console.log(b64)
         // 归还列表
-        wx.request({
-          url: app.globalData.url + 'api/Basket_/GetBackDetail?backOrderId=' + _this.data.backOrderID + '&userId=' + _this.data.userid + '&basketId=' + _this.data.basketID+'&securityStr=' + b63,
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          method: "GET",
-          success(res) {
-            console.log(res.data.modelList)
+        app.Promise({ url: 'api/Basket_/GetBackDetail?backOrderId=' + _this.data.backOrderID + '&userId=' + _this.data.userid + '&basketId=' + _this.data.basketID + '&securityStr=' + b63, method: "GET" }).then((res) => {
+          console.log(res)
+          if(res.errInfo=="0"){
             _this.setData({
-              RentName: res.data.modelList[0].RentName,
-              backDate: res.data.modelList[0].backDate,
-              backCounts: res.data.modelList[0].backCounts,
-              diffAmount: res.data.modelList[0].diffAmount,
-              deposit: res.data.modelList[0].deposit,
-              depositBasketID: res.data.modelList[0].depositBasketID,
-              // list: res.data.modelList,
+              RentName: res.modelList[0].RentName,
+              backDate: res.modelList[0].backDate,
+              backCounts: res.modelList[0].backCounts,
+              diffAmount: res.modelList[0].diffAmount,
+              deposit: res.modelList[0].deposit,
+              depositBasketID: res.modelList[0].depositBasketID,
             })
-            let list=res.data.modelList
-            for (var i in list){
+            let list = res.modelList
+            for (var i in list) {
               list[i].basketID = list[i].basketID.split(",")
             }
             _this.setData({
-              list:list
+              list: list
             })
-            console.log(_this.data.list)
-          },
+          }
         })
       },
     })

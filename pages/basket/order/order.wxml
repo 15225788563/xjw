@@ -6,8 +6,8 @@
       </view>
       <text class="cent">确认订单</text>
    </view>
-   <view class="main" wx:if="{{status!=3}}">
-      <view class="mony">实退金额：<text>￥{{depostiAble}}</text></view>
+   <view class="main">
+      <view class="mony">实退金额：<text>￥{{deposit}}</text></view>
       <view class="real">
          <view class="name">还筐人：{{RentName}}</view>
          <view class="realtop">
@@ -19,7 +19,7 @@
       </view>
    </view>
    <view class="body">
-    <block wx:if="{{status!=0}}" wx:for="{{list}}" wx:key="key">
+    <block wx:for="{{list}}" wx:key="key">
       <view class="list">
         <view class="listharder">
           <text>租借人:{{item.name}}</text>

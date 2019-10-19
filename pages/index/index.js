@@ -42,7 +42,7 @@ Page({
       let time = util.formatTime(new Date());
       let b64 = utilMd4.hexMD4(time + app.globalData.key + app.globalData.openid).toLocaleUpperCase();
       console.log(b64)
-      app.Promise({ url:"api/Home_Page/GetUserInfoByWxCode?wxCode="+app.globalData.openid + "&securityStr="+that.data.b64, method:"GET"}).then((res)=>{
+      app.Promise({ url:"api/Home_Page/GetUserInfoByWxCode?wxCode="+app.globalData.openid + "&securityStr="+b64, method:"GET"}).then((res)=>{
         console.log(res)
         if (res.errInfo == '0') {
           console.log("已注册 调到登录页")

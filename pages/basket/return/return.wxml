@@ -18,7 +18,7 @@
    </view>  
    </view>
    <view wx:if="{{status==0}}" class="rebasket" wx:for='{{rebasket}}' key="key">
-      <view class="name">还筐人：{{item.backUserNickName}}</view>
+      <view class="name">还筐人：{{item.backUserName}}</view>
       <view class="numTime">
         <view>还筐数量：{{item.backCounts}}</view>
         <view>还筐时间：{{item.backDate}}</view>
