@@ -1,4 +1,4 @@
-// pages/basket/payOrder2/payOrder2.js
+// pages/basket/centerPay2/centerPay2.js
 Page({
 
   /**
@@ -7,34 +7,26 @@ Page({
   data: {
 
   },
-  back: function (e) {
-    wx.redirectTo({
-      url: '../../basket/orderIndex/orderIndex',
+
+  home:function(){
+    wx.reLaunch({
+      url: "../../home/home"
     })
   },
 
-
-
-
-  centerPay:function(){
-   wx.redirectTo({
-     url: '../../basket/centerPay2/centerPay2?orderid=' + this.data.orderid + '&PayRent=' + this.data.PayRent + '&PayDeposit=' + this.data.PayDeposit,
-   })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     console.log(options)
+   console.log(options)
     let orderid = options.orderid
     let PayRent = options.PayRent
     let PayDeposit = options.PayDeposit
-    this.setData({
-      orderid: orderid,
-      PayRent: PayRent,
-      PayDeposit: PayDeposit,
-
-    })
+   this.setData({
+     orderid: orderid,
+     PayRent: PayRent,
+     PayDeposit: PayDeposit,
+   })
   },
 
   /**

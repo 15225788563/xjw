@@ -10,7 +10,7 @@ Page({
 
   centerPay:function(e){
     wx.redirectTo({
-      url: "../../basket/centerPay/centerPay",
+      url: "../../basket/centerPay/centerPay?orderid=" + this.data.orderid + '&payLent=' + this.data.payLent + '&paydeposit=' + this.data.paydeposit,
     }) 
   },
 

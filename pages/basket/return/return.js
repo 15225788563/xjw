@@ -57,7 +57,7 @@ Page({
         let b63 = utilMd4.hexMD4(time + app.globalData.key + _this.data.userid).toLocaleUpperCase();
         app.Promise({ url: 'api/Basket_/GetBackList?userId=' + _this.data.userid + '&securityStr=' + b63, method: "GET" }).then((res) => {
           console.log(res)
-          if(res.errInfo=="0"){
+          if (res.errInfo == "0") {
             _this.setData({
               rebasket: res.modelList,
               basket: res.modelList,

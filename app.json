@@ -13,6 +13,7 @@
     "pages/basket/payOrder2/payOrder2",
     "pages/basket/addbacketOrder/addbacketOrder",
     "pages/basket/centerPay/centerPay",
+    "pages/basket/centerPay2/centerPay2",
     "pages/basket/sao/sao",
     "pages/basket/receivables/receivables",
     "pages/basket/orderIndex/orderIndex",

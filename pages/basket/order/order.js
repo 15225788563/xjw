@@ -8,26 +8,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[]
-    
-  
+    list: []
+
+
   },
   receivables: function (e) {
     wx.reLaunch({
       url: "../../basket/receivables/receivables?basketID=" + this.data.basketID + "&depostiAble=" + this.data.depositBasketID + "&orderDate=" + this.data.OrderDate + "&backOrderID=" + this.data.backOrderID
     })
   },
-  sao: function(e) {
+  sao: function (e) {
     wx.reLaunch({
       url: "../../basket/sao/sao"
     })
-   
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var _this = this
     _this.setData({
       backOrderID: options.backOrderID,
@@ -36,7 +36,7 @@ Page({
     })
     wx.getStorage({
       key: 'modelList',
-      success: function(res) {
+      success: function (res) {
         _this.setData({
           userid: res.data.ID,
           username: res.data.UserName
@@ -48,7 +48,7 @@ Page({
         // 归还列表
         app.Promise({ url: 'api/Basket_/GetBackDetail?backOrderId=' + _this.data.backOrderID + '&userId=' + _this.data.userid + '&basketId=' + _this.data.basketID + '&securityStr=' + b63, method: "GET" }).then((res) => {
           console.log(res)
-          if(res.errInfo=="0"){
+          if (res.errInfo == "0") {
             _this.setData({
               RentName: res.modelList[0].RentName,
               backDate: res.modelList[0].backDate,
@@ -68,55 +68,55 @@ Page({
         })
       },
     })
-  
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

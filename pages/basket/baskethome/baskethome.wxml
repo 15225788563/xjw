@@ -26,7 +26,7 @@
   <!-- 订单 -->
   <view class="Order">
     <view wx:for="{{Orderlist}}" wx:key="key">
-      <view class="list">
+      <view class="list" data-OrderStatus="{{item.OrderStatus}}" data-orderid="{{item.OrderId}}" catchtap="orderdetails">
         <view class="hemo">
           <text>订单详情</text>
         </view>
@@ -43,7 +43,7 @@
             <text class="txxt">订单状态：{{item.BasketTypename}}
             </text> 
           </view>
-          <button class="btn" data-OrderStatus="{{item.OrderStatus}}" data-orderid="{{item.OrderId}}" catchtap="orderdetails">查看详情</button>
+          <button class="btn">查看详情</button>
         </view>
       </view>
     </view>

@@ -45,4 +45,4 @@
  </view>
 
  <view class="shifu"><view>实付款</view><view class="qian">￥{{deposit*number+rent*number*Days}}</view></view>
- <button class="button" catchtap="payOrder" >立即支付</button>
+ <button class="button" catchtap="payOrder">立即支付</button>

@@ -23,9 +23,9 @@ Page({
 
 
   pays: function (e) {
-    this.puth()
+    // this.puth()
     wx.redirectTo({
-      url: '../../basket/payOrder2/payOrder2?PayRent=' + this.list.PayRent,
+      url: '../../basket/payOrder2/payOrder2?orderid=' + this.data.orderid + '&PayRent=' + this.data.PayRent + '&PayDeposit=' + this.data.PayDeposit
     })
   },
 
@@ -73,33 +73,45 @@ Page({
             that.setData({
               Orderlist: res.modelList
             })
-            that.puth()
+            // that.puth()
+            let order = that.data.Orderlist;
+            let basket = that.data.baskettype;
+            for (let i in order) {
+              for (let j in basket) {
+                if (order[i].BasketType == basket[j].ID) {
+                  order[i].Capacity = basket[j].Capacity
+                  order[i].RentPrice = basket[j].RentPrice
+                  order[i].Detail = basket[j].Detail
+                  order[i].DepositPrice = basket[j].DepositPrice
+                }
+              }
+            }
+            //console.log(order)
+            that.setData({
+              Orderlist: order,
+              list: that.data.Orderlist[0]
+            })
+            console.log(that.data.list)
+             that.setData({
+               orderid: that.data.list.OrderId,
+               PayRent: that.data.list.PayRent,
+               PayDeposit: that.data.list.PayDeposit,
+
+             })
+             
+
+
+
           }
         })
       },
     })
   },
 
-  puth() {
-    let that = this
-    let order = that.data.Orderlist;
-    let basket = that.data.baskettype;
-    for (let i in order) {
-      for (let j in basket) {
-        if (order[i].BasketType == basket[j].ID) {
-          order[i].Capacity = basket[j].Capacity
-          order[i].RentPrice = basket[j].RentPrice
-          order[i].Detail = basket[j].Detail
-          order[i].DepositPrice = basket[j].DepositPrice
-        }
-      }
-    }
-    //console.log(order)
-    that.setData({
-      Orderlist: order,
-      list: that.data.Orderlist[0]
-    })
-  },
+  // puth() {
+  //   let that = this
+   
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
