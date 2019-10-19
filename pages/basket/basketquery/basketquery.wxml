@@ -74,8 +74,8 @@
             <view class="listfooter">
               <text data-orderid="{{i.OrderId}}" catchtap="orderdetails">订单详情</text>
               <view>
-                <button size="mini" data-orderid="{{i.OrderId}}" catchtap='payOrder' class="active">支付</button>
-                <button size="mini" data-orderid="{{i.OrderId}}" catchtap="modify">修改</button>
+                <button size="mini" data-order="{{i}}" data-orderid="{{i.OrderId}}" catchtap='payOrder' class="active">支付</button>
+                <button size="mini" catchtap="modify">修改</button>
                 <button size="mini">取消</button>
               </view>
             </view>

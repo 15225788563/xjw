@@ -51,7 +51,7 @@ App({
     return new Promise(function (resolve, reject) {
       wx.request({
         url: APIURL + promise.url,
-        data: promise.data,
+        data: promise.data, 
         method: promise.method,
         success(res) {
           resolve(res.data);

@@ -6,23 +6,23 @@
       </view>
       <text class="cent">确认订单</text>
    </view>
-   <view class="main" wx:if="{{status!=0}}">
-      <view class="mony">实退金额：<text>￥{{deposit}}</text></view>
+   <view class="main" wx:if="{{status!=3}}">
+      <view class="mony">实退金额：<text>￥{{depostiAble}}</text></view>
       <view class="real">
-         <view class="name">还筐人：{{backUserName}}</view>
+         <view class="name">还筐人：{{RentName}}</view>
          <view class="realtop">
           <view>还筐时间：<text>{{backDate}}</text></view>
           <view>已接收(件) <text>{{backCounts}}</text></view>
           <view class="det">逾期违约金（元）<text>{{diffAmount}}</text></view>
-          <view class="money">应退押金（元）：<text>{{depostiAble}}</text></view>
+          <view class="money">应退押金（元）：<text>{{deposit}}</text></view>
         </view>
       </view>
    </view>
    <view class="body">
-    <block wx:if="{{status==0}}" wx:for="{{list}}" wx:key="key">
+    <block wx:if="{{status!=0}}" wx:for="{{list}}" wx:key="key">
       <view class="list">
         <view class="listharder">
-          <text>租借人:{{item.RentName}}</text>
+          <text>租借人:{{item.name}}</text>
           <text>订单时间：{{item.OrderDate}}</text>
         </view>
         <view class="listbody">
@@ -37,7 +37,7 @@
         </view>
         <view class="listfooter">
           <text>支付时间:{{item.OrderDate}}</text>
-          <text>共{{item.Count}}个筐子 押金共计:<text class="rmb">￥{{item.depositBasketID}}</text></text>
+          <text>共{{item.Count}}个筐子 押金共计:<text class="rmb">￥{{item.depostiAble*30}}</text></text>
         </view>
       </view>
     </block>

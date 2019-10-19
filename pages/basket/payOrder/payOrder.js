@@ -33,23 +33,20 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    let payLent = options.payLent
-    let paydeposit = options.paydeposit
-    let sum = options.sum
-    let rent=options.rent
-    let deposit = options.deposit
-    let SumCount1 = options.SumCount1
-    let RentDays1 = options.RentDays1
+     
     let orderid = options.orderid
+    let RentPrice = options.RentPrice
+    let SumCount = options.SumCount
+     
+    let PayRent = options.PayRent
+    let PayDeposit = options.PayDeposit
     this.setData({
-      payLent: payLent,
-      paydeposit: paydeposit,
-      sum: sum,
-      rent: rent,
-      deposit: deposit,
-      SumCount1: SumCount1,
-      RentDays1: RentDays1,
-      orderid: orderid
+      orderid: orderid,
+      RentPrice: RentPrice,
+      SumCount: SumCount,
+      PayRent: PayRent,
+      PayDeposit: PayDeposit,
+      
 
     })
 

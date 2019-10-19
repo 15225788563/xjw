@@ -35,9 +35,14 @@ Page({
   },
 
   payOrder(e){
-    let orderid = e.currentTarget.dataset.orderid
+    console.log(e)
+    let orderid = e.currentTarget.dataset.order.OrderId
+    let RentPrice = e.currentTarget.dataset.order.RentPrice
+    let SumCount = e.currentTarget.dataset.order.SumCount
+    let PayRent = e.currentTarget.dataset.order.PayRent
+    let PayDeposit = e.currentTarget.dataset.order.PayDeposit
     wx.reLaunch({
-      url: "../../basket/payOrder/payOrder?orderid=" + orderid
+      url: "../../basket/payOrder/payOrder?orderid=" + orderid + '&RentPrice=' + RentPrice+'&SumCount='+SumCount+'&PayRent=' + PayRent+'&PayDeposit=' + PayDeposit
     })  
   },
 

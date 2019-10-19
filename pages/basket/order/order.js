@@ -14,7 +14,7 @@ Page({
   },
   receivables: function (e) {
     wx.reLaunch({
-      url: "../../basket/receivables/receivables?deposit=" + this.data.deposit + "&backDate=" + this.data.backDate +  "&depostiAble=" + this.data.depostiAble
+      url: "../../basket/receivables/receivables?basketID=" + this.data.basketID + "&depostiAble=" + this.data.depositBasketID + "&orderDate=" + this.data.OrderDate + "&backOrderID=" + this.data.backOrderID
     })
   },
   sao: function(e) {
@@ -54,12 +54,12 @@ Page({
           success(res) {
             console.log(res.data.modelList)
             _this.setData({
-              deposit: res.data.modelList[0].deposit,
-              backUserName: res.data.modelList[0].backUserName,
+              RentName: res.data.modelList[0].RentName,
               backDate: res.data.modelList[0].backDate,
               backCounts: res.data.modelList[0].backCounts,
               diffAmount: res.data.modelList[0].diffAmount,
-              depostiAble: res.data.modelList[0].depostiAble,
+              deposit: res.data.modelList[0].deposit,
+              depositBasketID: res.data.modelList[0].depositBasketID,
               // list: res.data.modelList,
             })
             let list=res.data.modelList
