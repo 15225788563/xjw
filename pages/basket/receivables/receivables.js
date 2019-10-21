@@ -46,8 +46,8 @@ Page({
           userid: res.data.ID,
           username: res.data.UserName
         })
-        let backOrderId = "RK-201910122113011488";
-        let basketId = "BK-1908171703153045"
+        // let backOrderId = "RK-201910122113011488";
+        // let basketId = "BK-1908171703153045"
         let sysInfo = app.globalData.sysInfo;
         let time = util.formatTime(new Date());
         let b63 = utilMd4.hexMD4(time + app.globalData.key + _this.data.userid).toLocaleUpperCase();
