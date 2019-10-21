@@ -14,7 +14,7 @@ Page({
     Orderlist:[],
     baskettype:[],
     footer:false,
-    type:null
+    type:''
   },
 
   /**
@@ -67,9 +67,10 @@ Page({
     switch(e.target.dataset.num){
       case '4':
         that.setData({
-          footer: true,
+          Orderlist: [],
           start: 0,
-          type:null,
+          footer: false,
+          type:'',
         })
         wx.getStorage({
           key: 'modelList',
@@ -80,8 +81,8 @@ Page({
             let name = res.data.UserName
             let sysInfo = app.globalData.sysInfo;
             let time = util.formatTime(new Date());
-            let b64 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + that.data.count + '').toLocaleUpperCase();
-            app.Promise({ url: 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=&securityStr=' + b64, method: "GET" }).then((res) => {
+            let b64 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + that.data.count + that.data.type).toLocaleUpperCase();
+            app.Promise({ url: 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type='+that.data.type+'&securityStr=' + b64, method: "GET" }).then((res) => {
               // console.log(res)
               if(res.errInfo=="0"){
                 if (res.modelList) {
@@ -108,6 +109,7 @@ Page({
           Orderlist: [],
           start: 0,
           count: 10,
+          footer: false,
           type:0,
         })
         wx.getStorage({
@@ -146,6 +148,7 @@ Page({
           Orderlist: [],
           start: 0,
           count: 10,
+          footer: false,
           type:2
         })
         wx.getStorage({
@@ -184,6 +187,7 @@ Page({
           Orderlist: [],
           start: 0,
           count:10,
+          footer: false,
           type:3
         })
         wx.getStorage({
@@ -365,7 +369,7 @@ Page({
         let time = util.formatTime(new Date());
         let b66 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + that.data.count + that.data.type).toLocaleUpperCase();
         app.Promise({ url: 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type='+that.data.type+'&securityStr=' + b66, method: "GET" }).then((res) => {
-          console.log(res)
+          // console.log(res)
           if(res.errInfo=="0"){
               var arr1 = that.data.Orderlist;
               var arr2 = res.modelList;
