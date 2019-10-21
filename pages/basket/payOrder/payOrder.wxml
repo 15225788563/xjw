@@ -1,40 +1,56 @@
-  
 <view class="header">
- <view class="headerChild">
- <view bindtap="Return" class="hraderl"><image src="/imgs/1.png"></image><text class="back">返回</text> </view>
- <view class="hraderz">支付订单</view>
- <view class="hraderr"></view>
- </view>
- </view>
+  <view class="headerChild">
+    <view bindtap="Return" class="hraderl">
+      <image src="/imgs/1.png"></image>
+      <text class="back">返回</text> </view>
+    <view class="hraderz">支付订单</view>
+    <view class="hraderr"></view>
+  </view>
+</view>
 
- <view class="payAll">
- <view class="headerzi zi1">订单号：{{orderid}}</view>
- <!-- <view class="headerzi zi2" wx-if="{{!orderid}}">支付租金：{{payLent}}元</view> -->
- <view class="headerzi zi2"  >支付租金：{{PayRent}}元</view>
+<view class="payAll">
+  <view class="headerzi zi1">订单号：{{orderid}}</view>
+  <!-- <view class="headerzi zi2" wx-if="{{!orderid}}">支付租金：{{payLent}}元</view> -->
+  <view class="headerzi zi2">支付租金：{{PayRent}}元</view>
 
- <!-- <view class="headerzi zi3">支付押金：{{paydeposit}}元</view> -->
- <view class="headerzi zi3">支付押金：{{RentPrice}}元</view>
- <view class="ying"><text>应付合计：</text><text class="money">￥{{PayRent+RentPrice}}</text></view>
+  <!-- <view class="headerzi zi3">支付押金：{{paydeposit}}元</view> -->
+  <view class="headerzi zi3">支付押金：{{RentPrice}}元</view>
+  <view class="ying">
+    <text>应付合计：</text>
+    <text class="money">￥{{PayRent+RentPrice}}</text>
+  </view>
 
- </view>
+</view>
 
 
- <view class="body">
+<view class="body">
   <view>选择支付方式</view>
-   
-  
-  <view class="weix"><image src="/imgs/1.png"></image><text class="yonghu">微信支付</text><text class="tuijian">推荐微信用户使用</text></view>
-  <view class="zibao"><image src="/imgs/1.png"></image><text class="yonghu">支付宝支付</text><text class="tuijian">推荐支付宝用户使用</text></view>
-  <view class="qita"><image src="/imgs/1.png"></image><text class="yonghu">其他方式支付</text><text class="tuijian">其他方式使用</text></view>
-   
- </view>
- <form>
- <radio-group name="radio-group" >
-       <radio  class="radio1" value="0" /> 
-       <radio  class="radio2"  value="1"/> 
-       <radio  class="radio3"  value="2"/> 
-      
-    </radio-group>
-    </form>
 
-    <button class="button" bindtap="centerPay">确认支付  {{sum}}</button>
+
+  <view class="weix">
+    <image src="/imgs/1.png"></image>
+    <text class="yonghu">微信支付</text>
+    <text class="tuijian">推荐微信用户使用</text>
+  </view>
+  <view class="zibao">
+    <image src="/imgs/1.png"></image>
+    <text class="yonghu">支付宝支付</text>
+    <text class="tuijian">推荐支付宝用户使用</text>
+  </view>
+  <view class="qita">
+    <image src="/imgs/1.png"></image>
+    <text class="yonghu">其他方式支付</text>
+    <text class="tuijian">其他方式使用</text>
+  </view>
+
+</view>
+<form>
+  <radio-group name="radio-group">
+    <radio class="radio1" value="0" />
+    <radio class="radio2" value="1" />
+    <radio class="radio3" value="2" />
+
+  </radio-group>
+</form>
+
+<button class="button" bindtap="centerPay">确认支付 {{sum}}</button>

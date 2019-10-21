@@ -158,11 +158,7 @@ Page({
                rent: res.modelList[0].DepositPrice,
                bastet: res.modelList[0],
                ID: res.modelList[0].ID,
-               detail: res.modelList[0].Detail,
-               
-
-
-   
+               detail: res.modelList[0].Detail,              
              })
            }
          })
@@ -189,9 +185,9 @@ Page({
            })
 
            let b66 = utilMd4.hexMD4(time + app.globalData.key + that.data.orderid + that.data.userid).toLocaleUpperCase();
-           let that = this
+          //  let that = this
            app.Promise({ url: 'api/Basket_/GetBasketToUserOrder?orderId=' + that.data.orderid + '&userId=' + that.data.userid + '&securityStr=' + b66, method: "GET" }).then((res) => {
-             console.log(res.modelList[0])
+            //  console.log(res.modelList[0])
              that.setData({
                SumCount: res.modelList[0].SumCount,
                RentDays: res.modelList[0].RentDays,
