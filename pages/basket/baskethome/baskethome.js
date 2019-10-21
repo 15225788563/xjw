@@ -55,17 +55,17 @@ Page({
     let id = e.currentTarget.dataset.navid;
     switch (id) {
       case '1':
-        wx.reLaunch({
+        wx.navigateTo({
           url: "../../basket/basketmodify/basketmodify"
         })
         break;
       case '2':
-        wx.reLaunch({
+        wx.navigateTo({
           url: "../../basket/return/return"
         })
         break;
       case '3':
-        wx.reLaunch({
+        wx.navigateTo({
           url: "../../basket/basketquery/basketquery"
         })
         break;

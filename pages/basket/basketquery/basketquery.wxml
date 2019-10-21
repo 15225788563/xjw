@@ -75,7 +75,7 @@
               <text data-orderid="{{i.OrderId}}" catchtap="orderdetails">订单详情</text>
               <view>
                 <button size="mini" data-order="{{i}}" data-orderid="{{i.OrderId}}" catchtap='payOrder' class="active">支付</button>
-                <button size="mini" catchtap="modify">修改</button>
+                <button size="mini" data-orderid="{{i.OrderId}}" catchtap="modify">修改</button>
                 <button size="mini">取消</button>
               </view>
             </view>
@@ -85,7 +85,7 @@
               <text data-orderid="{{i.OrderId}}" catchtap="Takebasket">订单详情</text>
               <view>
                 <button size="mini" class="active">收货</button>
-                <button size="mini" catchtap="modify">取消</button>
+                <button size="mini" >取消</button>
               </view>
             </view>
           </block>

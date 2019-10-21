@@ -74,8 +74,15 @@ Page({
   },
 
   Return: function (e) {
-    wx.reLaunch({
-      url: "../../basket/basketquery/basketquery"
+    let pages = getCurrentPages();      //获取所有页面
+    let currentPage = null;   //当前页面
+    let prevPage = null; //上一个页面
+    if (pages.length >= 2) {
+      currentPage = pages[pages.length - 1]; //获取当前页面，将其赋值
+      prevPage = pages[pages.length - 2]; //获取上一个页面，将其赋值
+    }
+    wx: wx.navigateBack({     //返回上一个页面
+      delta: 1,
     })
   },
 
@@ -132,7 +139,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
+    let that = this
     let sysInfo = app.globalData.sysInfo;
     let time = util.formatTime(new Date());
     let b64 = utilMd4.hexMD4(time + app.globalData.key).toLocaleUpperCase();
@@ -159,10 +166,6 @@ Page({
                bastet: res.modelList[0],
                ID: res.modelList[0].ID,
                detail: res.modelList[0].Detail,
-               
-
-
-   
              })
            }
          })
@@ -177,19 +180,16 @@ Page({
                   bastet: res.modelList[0],
                   ID: res.modelList[0].ID,
                   detail: res.modelList[0].Detail,
-                 BasketType: res.modelList[0].BasketType,
-                 PayableDeposit: res.modelList[0].BasketType,
-                 PayableRent: res.modelList[0].PayableRent,
-                 RentDateCount: res.modelList[0].RentDateCount,
-                 Count: res.modelList[0].Count
- 
-
+                  BasketType: res.modelList[0].BasketType,
+                  PayableDeposit: res.modelList[0].BasketType,
+                  PayableRent: res.modelList[0].PayableRent,
+                  RentDateCount: res.modelList[0].RentDateCount,
+                  Count: res.modelList[0].Count
                })
              }
            })
 
            let b66 = utilMd4.hexMD4(time + app.globalData.key + that.data.orderid + that.data.userid).toLocaleUpperCase();
-           let that = this
            app.Promise({ url: 'api/Basket_/GetBasketToUserOrder?orderId=' + that.data.orderid + '&userId=' + that.data.userid + '&securityStr=' + b66, method: "GET" }).then((res) => {
              console.log(res.modelList[0])
              that.setData({
@@ -203,16 +203,8 @@ Page({
              })
            })
          }
-          
        },
      })
-     
-      
-   
-     
-
- 
-
   },
 
   /**

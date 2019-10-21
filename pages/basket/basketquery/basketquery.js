@@ -47,9 +47,8 @@ Page({
   },
 
   modify:function(e){
-    // console.log(e.currentTarget.dataset.orderid)
     let orderid = e.currentTarget.dataset.orderid
-    wx.reLaunch({
+    wx.navigateTo({
       url: "../../basket/basketmodify/basketmodify?orderid="+orderid
     })  
   },
