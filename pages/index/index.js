@@ -19,7 +19,7 @@ Page({
     // 查看是否授权
     wx.getSetting({
       success: function (res) {
-        console.log(res)
+        // console.log(res)
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
             success: function (res) {
@@ -36,8 +36,12 @@ Page({
     let that = this;
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
-      // console.log(e.detail.userInfo)
+      console.log(e.detail.userInfo.avatarUrl)
       wx.sett
+      wx.setStorage({
+        key: 'userimg',
+        data: e.detail.userInfo.avatarUrl,
+      })
       //授权成功后，传输openid判断
       let time = util.formatTime(new Date());
       let b64 = utilMd4.hexMD4(time + app.globalData.key + app.globalData.openid).toLocaleUpperCase();
@@ -85,7 +89,6 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-    // console.log(userInfo)
   },
 
 

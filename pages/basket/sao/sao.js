@@ -20,32 +20,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options.ID[1]);
-    // let that=this;
-    // that.setData({
-    //   ID:options.ID[1]
-    // })
+
     var _this = this
-    let sysInfo = app.globalData.sysInfo;
-    let time = util.formatTime(new Date());
-    let b64 = utilMd4.hexMD4(time + app.globalData.key + 61).toLocaleUpperCase();
-    // console.log(b64)
-    let img = app.globalData.url + 'api/Basket_/CreateQrImage?Id=61&securityStr=' + b64
-    // 最新需求
-    wx.request({
-      url: app.globalData.url + 'api/Basket_/CreateQrImage?Id=61&securityStr=' + b64,
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      method: "get",
-      success(res) {
-        // console.log(res)
+    wx.getStorage({
+      key: 'modelList',
+      success: function (res) {
+        console.log(res.data.ID)
         _this.setData({
-          sao:res.data,
-          rebasket: res.data.modelList,
-          img:img,
+          userid: res.data.ID
         })
       },
+    })
+    let sysInfo = app.globalData.sysInfo;
+    let time = util.formatTime(new Date());
+    let b64 = utilMd4.hexMD4(time + app.globalData.key + _this.data.userid).toLocaleUpperCase();
+    let img = 'http://49.234.123.71/api/Basket_/CreateQrImage?Id=' + _this.data.userid+'&securityStr=' + b64
+    
+    // 获取二维码
+    app.Promise({ url: 'api/Basket_/CreateQrImage?Id=' + _this.data.userid+'&securityStr=' + b64, method: "GET" }).then((res) => {
+      _this.setData({
+        img: img,
+      })
     })
   },
 

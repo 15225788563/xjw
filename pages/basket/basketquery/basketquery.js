@@ -111,7 +111,6 @@ Page({
           key: 'modelList',
           success: function (res) {
             let start = that.data.start;
-            let count = 10
             let userid = res.data.ID
             let name = res.data.UserName
             let sysInfo = app.globalData.sysInfo;
@@ -348,7 +347,6 @@ Page({
   onReachBottom: function () {
     let that = this;
     that.setData({
-      count: 10,
       start: that.data.start + that.data.count 
     })
 
@@ -361,28 +359,22 @@ Page({
         let sysInfo = app.globalData.sysInfo;
         let time = util.formatTime(new Date());
         let b66 = utilMd4.hexMD4(time + app.globalData.key + userid + name + start + that.data.count + '').toLocaleUpperCase();
-        wx.request({
-          url: app.globalData.url + 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=&securityStr=' + b66,
-          header: {
-            'content-type': 'application/json'
-          },
-          success(res) {
-            console.log(res.data.modelList)
-            if (res.data.modelList) {
+        app.Promise({ url: 'api/Basket_/GetBasketToUserList?userId=' + userid + '&userName=' + name + '&start=' + start + '&count=' + that.data.count + '&type=&securityStr=' + b66, method: "GET" }).then((res) => {
+          console.log(res)
+          if(res.errInfo=="0"){
               var arr1 = that.data.Orderlist;
-              var arr2 = res.data.modelList;
+              var arr2 = res.modelList;
               arr1 = arr1.concat(arr2);
               that.setData({
                 Orderlist: arr1
               })
-            } else {
-              console.log("我是有底线的")
-              that.setData({
-                footer: true,
-              })
-            }
             that.puth()
-          },
+          }else if(res.errInfo=="-1"){
+            console.log("我是有底线的")
+            that.setData({
+              footer: true,
+            })
+          }
         })
       },
     })

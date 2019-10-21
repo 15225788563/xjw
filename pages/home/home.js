@@ -151,7 +151,7 @@ Page({
           }
         })
         //常用联系人
-        app.Promise({ url: 'api/Home_Page/GetGetTopContacts?userId=' + _this.data.userID + '&securityStr=' + b64, method: "GET" }).then((res) => {
+        app.Promise({ url: 'api/Home_Page/GetTopContacts?userId=' + _this.data.userID + '&securityStr=' + b64, method: "GET" }).then((res) => {
           // console.log(res)
           if (res.errInfo == "0") {
             _this.setData({
