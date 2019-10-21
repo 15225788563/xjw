@@ -41,7 +41,7 @@ Page({
     let SumCount = e.currentTarget.dataset.order.SumCount
     let PayRent = e.currentTarget.dataset.order.PayRent
     let PayDeposit = e.currentTarget.dataset.order.PayDeposit
-    wx.reLaunch({
+    wx.navigateTo({
       url: "../../basket/payOrder/payOrder?orderid=" + orderid + '&RentPrice=' + RentPrice+'&SumCount='+SumCount+'&PayRent=' + PayRent+'&PayDeposit=' + PayDeposit
     })  
   },
@@ -217,7 +217,7 @@ Page({
   //待取筐详情
   Takebasket(e){
     let orderid = e.currentTarget.dataset.orderid
-    wx.reLaunch({
+    wx.navigateTo({
       url: '../../basket/orderContent/orderContent?order='+orderid,
     })
   },

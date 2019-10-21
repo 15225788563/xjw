@@ -84,7 +84,7 @@
             <view class="listfooter">
               <text data-orderid="{{i.OrderId}}" catchtap="Takebasket">订单详情</text>
               <view>
-                <button size="mini" class="active">收货</button>
+                <button size="mini" >收货</button>
                 <button size="mini" >取消</button>
               </view>
             </view>

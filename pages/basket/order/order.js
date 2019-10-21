@@ -47,7 +47,7 @@ Page({
         // console.log(b64)
         // 归还列表
         app.Promise({ url: 'api/Basket_/GetBackDetail?backOrderId=' + _this.data.backOrderID + '&userId=' + _this.data.userid + '&basketId=' + _this.data.basketID + '&securityStr=' + b63, method: "GET" }).then((res) => {
-          console.log(res)
+          // console.log(res)
           if(res.errInfo=="0"){
             _this.setData({
               RentName: res.modelList[0].RentName,

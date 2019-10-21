@@ -11,8 +11,8 @@ Page({
   },
 
   Return: function (e) {
-    wx.reLaunch({
-      url: "../../basket/basketmodify/basketmodify"
+    wx: wx.navigateBack({     //返回上一个页面
+      delta: 1,
     })
   },
 
@@ -24,7 +24,7 @@ Page({
     console.log(b65)
     app.Promise({ url: 'api/Basket_/BasketRent?typeId=' + that.data.ID + '&userId=' + that.data.userid + '&count=' + that.data.number + '&days=' + that.data.Days + '&remark=' + that.data.concent + '&securityStr=' + b65, method: "POST" }).then((res) => {
       console.log(res)
-      wx.reLaunch({
+      wx.navigateTo({
         url: "../../basket/addbacketOrder/addbacketOrder?orderid=" + res.modelList[0].OrderID
       })
     })

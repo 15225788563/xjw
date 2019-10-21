@@ -100,7 +100,7 @@ Page({
   },
   centerOrder: function (e) {
     var that = this
-    wx.reLaunch({
+    wx.navigateTo({
       url: "../../basket/centerOrder/centerOrder?Detail=" + that.data.detail + '&deposit=' + that.data.deposit + '&rent=' + that.data.rent + '&bastet=' + that.data.bastet + '&ID=' + that.data.ID + '&concent=' + that.data.concent + '&number=' + that.data.number + '&Days=' + that.data.Days + '&orderid=' + that.data.orderid
     })
   },
