@@ -18,7 +18,7 @@ Page({
 
   centerPay:function(){
    wx.redirectTo({
-     url: '../../basket/centerPay2/centerPay2?orderid=' + this.data.orderid + '&PayRent=' + this.data.PayRent + '&PayDeposit=' + this.data.PayDeposit,
+     url: '../../basket/centerPay2/centerPay2?orderid=' + this.data.orderid + '&PayRent=' + this.data.PayRent + '&PayDeposit=' + this.data.PayDeposit + '&OrderDate=' + this.data.OrderDate,
    })
   },
   /**
@@ -27,13 +27,15 @@ Page({
   onLoad: function (options) {
      console.log(options)
     let orderid = options.orderid
-    let PayRent = options.PayRent
-    let PayDeposit = options.PayDeposit
+    let PayRent = parseFloat(options.PayRent)
+    let PayDeposit = parseFloat(options.PayDeposit)
+    let OrderDate = options.OrderDate
     this.setData({ 
       orderid: orderid,
       PayRent: PayRent,
       PayDeposit: PayDeposit,
-     
+      OrderDate: OrderDate,
+      
     })
   },
 

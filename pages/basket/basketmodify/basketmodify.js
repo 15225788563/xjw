@@ -166,6 +166,7 @@ Page({
                bastet: res.modelList[0],
                ID: res.modelList[0].ID,
                detail: res.modelList[0].Detail,
+
              })
            }
          })
@@ -184,7 +185,9 @@ Page({
                   PayableDeposit: res.modelList[0].BasketType,
                   PayableRent: res.modelList[0].PayableRent,
                   RentDateCount: res.modelList[0].RentDateCount,
-                  Count: res.modelList[0].Count
+                  Count: res.modelList[0].Count,
+                  orderid: res.modelList[0].OrderID,
+                  OrderDate: res.modelList[0].OrderDate,
                })
              }
            })

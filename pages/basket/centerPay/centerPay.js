@@ -24,7 +24,7 @@ Page({
 
   lookOrder:function(e){
     wx.reLaunch({
-      url: '../../basket/baskethome/baskethome',
+      url: '../../basket/basketquery/basketquery',
     }) 
   },
 
@@ -33,13 +33,15 @@ Page({
    */
   onLoad: function (options) {
    console.log(options)
-    let orderid = options.orderid
-    let PayRent = options.PayRent
-    let PayDeposit = options.PayDeposit
+    let orderid = options.OrderID
+    let PayRent = parseFloat(options.PayRent)
+    let PayDeposit = parseFloat(options.PayDeposit)
+    let OrderDate = options.OrderDate
     this.setData({
       orderid: orderid,
       PayRent: PayRent,
       PayDeposit: PayDeposit,
+      OrderDate: OrderDate
 
     })
 

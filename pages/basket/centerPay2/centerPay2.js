@@ -14,18 +14,26 @@ Page({
     })
   },
 
+  lookOrder: function (e) {
+    wx.reLaunch({
+      url: '../../basket/basketquery/basketquery',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
    console.log(options)
     let orderid = options.orderid
-    let PayRent = options.PayRent
-    let PayDeposit = options.PayDeposit
+    let PayRent = parseFloat(options.PayRent)
+    let PayDeposit = parseFloat(options.PayDeposit)
+    let OrderDate = options.OrderDate
    this.setData({
      orderid: orderid,
      PayRent: PayRent,
      PayDeposit: PayDeposit,
+     OrderDate: OrderDate,
    })
   },
 

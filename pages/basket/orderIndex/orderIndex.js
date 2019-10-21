@@ -25,7 +25,7 @@ Page({
   pays: function (e) {
     // this.puth()
     wx.redirectTo({
-      url: '../../basket/payOrder2/payOrder2?orderid=' + this.data.orderid + '&PayRent=' + this.data.PayRent + '&PayDeposit=' + this.data.PayDeposit
+      url: '../../basket/payOrder2/payOrder2?orderid=' + this.data.orderid + '&PayRent=' + this.data.PayRent + '&PayDeposit=' + this.data.PayDeposit + '&OrderDate=' + this.data.OrderDate
     })
   },
 
@@ -96,6 +96,7 @@ Page({
                orderid: that.data.list.OrderId,
                PayRent: that.data.list.PayRent,
                PayDeposit: that.data.list.PayDeposit,
+               OrderDate: that.data.list.OrderDate
 
              })
              

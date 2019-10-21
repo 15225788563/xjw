@@ -13,8 +13,8 @@
  <view class="headerzi zi2"  >支付租金：{{PayRent}}元</view>
 
  <!-- <view class="headerzi zi3">支付押金：{{paydeposit}}元</view> -->
- <view class="headerzi zi3">支付押金：{{RentPrice}}元</view>
- <view class="ying"><text>应付合计：</text><text class="money">￥{{PayRent+RentPrice}}</text></view>
+ <view class="headerzi zi3">支付押金：{{PayDeposit}}元</view>
+ <view class="ying"><text>应付合计：</text><text class="money">￥{{PayRent+PayDeposit}}</text></view>
 
  </view>
 

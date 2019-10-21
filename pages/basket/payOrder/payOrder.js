@@ -23,7 +23,7 @@ Page({
 
   centerPay: function (e) {
     wx.redirectTo({
-      url: "../../basket/centerPay/centerPay?orderid=" + this.data.orderid + '&PayRent=' + this.data.PayRent + '&PayDeposit=' + this.data.PayDeposit,
+      url: "../../basket/centerPay2/centerPay2?orderid=" + this.data.orderid + '&PayRent=' + this.data.PayRent + '&PayDeposit=' + this.data.PayDeposit + '&OrderDate=' + this.data.OrderDate,
     }) 
   },
 
@@ -43,17 +43,19 @@ Page({
     console.log(options)
      
     let orderid = options.orderid
-    let RentPrice = options.RentPrice
-    let SumCount = options.SumCount
      
-    let PayRent = options.PayRent
-    let PayDeposit = options.PayDeposit
+   
+     
+    let PayRent = parseFloat(options.PayRent)
+    let PayDeposit = parseFloat(options.PayDeposit)
+    let SumCount = options.SumCount
+    let OrderDate = options.OrderDate
     this.setData({
-      orderid: orderid,
-      RentPrice: RentPrice,
+      orderid: orderid,    
       SumCount: SumCount,
       PayRent: PayRent,
       PayDeposit: PayDeposit,
+      OrderDate: OrderDate,
       
 
     })

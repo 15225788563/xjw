@@ -41,8 +41,9 @@ Page({
     let SumCount = e.currentTarget.dataset.order.SumCount
     let PayRent = e.currentTarget.dataset.order.PayRent
     let PayDeposit = e.currentTarget.dataset.order.PayDeposit
+    let OrderDate = e.currentTarget.dataset.order.OrderDate
     wx.navigateTo({
-      url: "../../basket/payOrder/payOrder?orderid=" + orderid + '&RentPrice=' + RentPrice+'&SumCount='+SumCount+'&PayRent=' + PayRent+'&PayDeposit=' + PayDeposit
+      url: "../../basket/payOrder/payOrder?orderid=" + orderid + '&RentPrice=' + RentPrice + '&SumCount=' + SumCount + '&PayRent=' + PayRent + '&PayDeposit=' + PayDeposit + '&OrderDate=' + OrderDate
     })  
   },
 

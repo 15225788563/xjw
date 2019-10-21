@@ -1,7 +1,4 @@
 // pages/basket/addbacketOrder/addbacketOrder.js
-const app = getApp()
-const util = require('../../../utils/util.js');
-const utilMd4 = require('../../../utils/MD5.js');
 Page({
 
   /**
@@ -11,37 +8,10 @@ Page({
 
   },
 
-  Return(){
-    let pages = getCurrentPages();      //获取所有页面
-    let currentPage = null;   //当前页面
-    let prevPage = null; //上一个页面
-    if (pages.length >= 2) {
-      currentPage = pages[pages.length - 1]; //获取当前页面，将其赋值
-      prevPage = pages[pages.length - 2]; //获取上一个页面，将其赋值
-    }
-
-    wx: wx.navigateBack({     //返回上一个页面
-      delta: 1,
+  centerPay: function (e) {
+    wx.redirectTo({
+      url: "../../basket/centerPay/centerPay?OrderID=" + this.data.OrderID + '&PayRent=' + this.data.PayRent + '&PayDeposit=' + this.data.PayDeposit + '&OrderDate=' + this.data.OrderDate + '&sum=' + this.data.sum,
     })
-  },
-
-  centerPay:function(e){
-    var that = this
-    
-    let orderid = that.data.orderid
-    let sysInfo = app.globalData.sysInfo;
-    let time = util.formatTime(new Date());
-    let b64 = utilMd4.hexMD4(time + app.globalData.key + orderid).toLocaleUpperCase();
-    
-    app.Promise({ url: 'api/Basket_/ConfirmPay?orderId=' + orderid + '&securityStr=' + b64, method: "POST" }).then((res) => {
-      console.log(res)
-      if(res.errInfo=="0"){
-        wx.redirectTo({
-          url: "../../basket/centerPay/centerPay?orderid=" + this.data.orderid + '&payLent=' + this.data.payLent + '&paydeposit=' + this.data.paydeposit,
-        }) 
-      }
-    })
-
   },
 
   /**
@@ -49,15 +19,23 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    let payLent = options.payLent
-    let paydeposit = options.paydeposit
-    let sum = options.sum
-    let orderid = options.orderid
+    let PayRent = parseFloat(options.payLent)
+    let PayDeposit = parseFloat(options.paydeposit)
+
+    let OrderID = options.OrderID
+    let OrderDate = options.OrderDate
+    let sum = options.payLent + options.paydeposit
+
+
+
     this.setData({
-      payLent: payLent,
-      paydeposit: paydeposit,
+      PayRent: PayRent,
+      PayDeposit: PayDeposit,
       sum: sum,
-      orderid: orderid
+      OrderID: OrderID,
+      OrderDate: OrderDate
+
+
     })
   },
 
