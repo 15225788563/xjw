@@ -1,0 +1,73 @@
+<view class="Page">
+  <!-- 报溢单管理 -->
+  <view class="Fixedhead">
+    <view class="harder">
+      <view class="harders" bindtap="Return">
+        <image src="/imgs/1.png" />
+        <text class="txt">返回</text>
+      </view>
+      <text class="tex">报溢单管理</text>
+      <image src="/imgs/17.png" />
+    </view>
+    <view class="nav">
+      <text class='{{num==4?"active":""}}' data-num='4' catchtap="changeOil">全部</text>
+      <text class='{{num==1?"active":""}}' data-num='1' catchtap="changeOil">待审核</text>
+      <text class='{{num==2?"active":""}}' data-num='2' catchtap="changeOil">已审核</text>
+      <text class='{{num==3?"active":""}}' data-num='3' catchtap="changeOil">已完成</text>
+    </view>
+  </view>
+  <view class="damage">
+    <block wx:for="{{Overflowlist}}" wx:key="key" wx:for-item="i">
+      <view class="list" data-BasketType="{{i.BasketType}}">
+        <view class="listharder">
+          <text class="damageId">报溢单编号：{{i.OverflowId}}</text>
+          <block wx:if="{{i.OrderStatus==0}}">
+            <text class="state">等待审核中</text>
+          </block>
+          <block wx:if="{{i.OrderStatus==2}}">
+            <text class="state">已审核</text>
+          </block>
+          <block wx:if="{{i.OrderStatus==3}}">
+            <text class="state">已完成</text>
+          </block>
+        </view>
+        <view class="listbody">
+          <block wx:if="{{i.OrderStatus!=2}}">
+            <view class="order">
+              <view class="txtblock">
+                <view>
+                  <text class="name">报溢产品名称：{{i.OverflowName}}</text>
+                  <view class="sum">
+                    <text class="txt">报溢产品数量：{{i.dOverflowSum}}
+                      </text>
+                    <view>
+                      报溢人：
+                      <text class="txt">{{i.OverflowUser}}</text>
+                    </view>
+                    <view>
+                      报溢时间:
+                      <text class="txt">{{i.OverflowDate}}</text>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+        <!-- <block wx:if="{{i.OrderStatus==0}}"> -->
+          <view class="listfooter">
+            <text data-orderid="{{i.OrderId}}" catchtap="orderdetails">订单详情</text>
+            <view>
+              <button size="mini" data-order="{{i}}" data-orderid="{{i.OrderId}}" catchtap='payOrder' class="active">待审核</button>
+              <button size="mini" data-orderid="{{i.OrderId}}" catchtap="modify">已审核</button>
+              <button size="mini">已完成</button>
+            </view>
+          </view>
+        <!-- </block> -->
+      </view>
+    </block>
+  </view>
+  <view wx:if="{{footer}}" class="footer">
+    <text>我是有底线的</text>
+  </view>
+</view>

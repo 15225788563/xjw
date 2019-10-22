@@ -1,6 +1,9 @@
 {
   "pages": [
+      "pages/basket/receivables/receivables",
     "pages/index/index",
+    "pages/Inventory/damage/damage",
+    "pages/Inventory/Overflow/Overflow",
     "pages/home/home",
     "pages/Reportform/Report form",
     "pages/Share/Share",
@@ -15,7 +18,7 @@
     "pages/basket/centerPay/centerPay",
     "pages/basket/centerPay2/centerPay2",
     "pages/basket/sao/sao",
-    "pages/basket/receivables/receivables",
+  
     "pages/basket/orderIndex/orderIndex",
     "pages/basket/centerOrder/centerOrder",
     "pages/basket/orderContent/orderContent",

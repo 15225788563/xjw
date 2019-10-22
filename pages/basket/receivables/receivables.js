@@ -46,35 +46,17 @@ Page({
           userid: res.data.ID,
           username: res.data.UserName
         })
-        let backOrderId = "RK-201910122113011488";
-        let basketId = "BK-1908171703153045"
         let sysInfo = app.globalData.sysInfo;
         let time = util.formatTime(new Date());
         let b63 = utilMd4.hexMD4(time + app.globalData.key + _this.data.userid).toLocaleUpperCase();
         // console.log(b64)
         // 最新需求
-        wx.request({
-          url: app.globalData.url + 'api/Basket_/ComfireReceive?backOrderId=' + _this.data.backOrderID + '&securityStr=' + b63,
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          method: "POST",
-          success(res) {
-            console.log(res.data.modelList)
-            _this.setData({
-            //   reals: res.data.modelList,
-            //   list: res.data.modelList,
-            //   basketID: res.data.modelList,
-            //   depostiAble: res.data.modelList[0].depostiAble,
-            //   OrderDate: res.data.modelList[0].OrderDate,
-            //   status: res.data.modelList[0].status
-            })
-          },
+        app.Promise({ url: 'api/Basket_/ComfireReceive?backOrderId=' + _this.data.backOrderID + '&securityStr=' + b63, method: "POST" }).then((res)=>{
+         
         })
-      },
+       },
     })
-
-  },
+    },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -1,0 +1,135 @@
+/* pages/Inventory/damage/damage.wxss */
+Page{
+  background:#f5f5f5;
+}
+.Fixedhead{
+  width: 100%;
+  position:fixed;
+  top: 0;
+  z-index: 999;
+}
+.harder{
+  padding: 0 30rpx;
+  height: 128rpx;
+  background: #33da82;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20rpx;
+}
+.harder .tex{
+  font-weight: bold;
+  font-size: 34rpx;
+}
+.harder .harders{
+  display: flex;
+  align-items: center;
+}
+.harder .harders .txt{
+  margin-left: 10rpx;
+  font-size: 28rpx;
+}
+.harder image{
+  width: 38rpx;
+  height: 38rpx;
+}
+.nav{
+  padding: 0 30rpx;
+  height: 71rpx;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav .active{
+  color: #33da82;
+  border-bottom: 6rpx solid #33da82;
+}
+.nav text{
+  font-size: 28rpx;
+}
+.damage{
+  margin-top: 220rpx;
+  padding: 0 30rpx;
+}
+.damage .list{
+  height: 340rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  margin-bottom: 12rpx;
+  
+}
+.damage .list .listharder{
+  padding: 0 21rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3rpx solid #dcdcdc;
+}
+.damage .list .listharder .damageId{
+  border-left:12rpx solid #33da82; 
+  padding-left: 10rpx;
+}
+.damage .list .listharder .state{
+  color:#f00;
+}
+.listbody{
+  height: auto;
+  line-height: 40rpx;
+  padding: 10rpx 21rpx 10rpx 21rpx;
+  border-bottom: 3rpx solid #dcdcdc;
+}
+.damage>.list>.listbody>.order{
+  display: flex;
+  align-items: center;
+}
+.damage>.list>.listbody>.Waitingbasket{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.damage>.list>.listbody>.Waitingbasket>.block{
+  font-size: 22rpx;
+  color: #696768;
+}
+.damage .list .listbody .txtblock{
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  font-size: 24rpx;
+
+}
+.damage .list .listbody .txtblock .money{
+  margin-top: 10rpx;
+  line-height: 24rpx;
+}
+.damage .list .listbody .txtblock .txt{
+  font-size: 24rpx;
+  color: #4b4b4b;
+}
+.damage .list .listfooter{
+  padding: 0 21rpx;
+  height: 86rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.damage .list .listfooter text{
+  color: #33da82;
+}
+
+.damage .list .listfooter button{
+  width: 98rpx;
+  height: 50rpx;
+  font-size: 20rpx;
+  margin-left: 10rpx;
+}
+
+.damage .list .listfooter .active{
+  background: #33da82;
+  color: #fff;
+}
